@@ -22,7 +22,8 @@
 .classpath
 .project
 .settings/
- 
+bin/ 
+
 # Intellij
 .idea/
 *.iml
