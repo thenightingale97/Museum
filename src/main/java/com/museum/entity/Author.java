@@ -24,6 +24,7 @@ public class Author{
 	@Column
 	private String lastName;
 	
+	@Column
 	@OneToMany(mappedBy="author")
 	private List<Showpiece> showpieces;
 	

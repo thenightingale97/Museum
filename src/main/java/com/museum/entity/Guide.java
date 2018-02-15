@@ -30,6 +30,7 @@ public class Guide {
 	@Column
 	private GuidePosition position;
 	
+	@Column
 	@OneToMany(mappedBy="guide")
 	private List<Event> events;
 	
