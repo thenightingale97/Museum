@@ -1,5 +1,5 @@
 package com.museum.entity;
 
-public class TestEntity {
-
+public enum ShowpieceType {
+	
 }
