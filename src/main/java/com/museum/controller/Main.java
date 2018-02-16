@@ -1,7 +1,5 @@
 package com.museum.controller;
 
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import com.museum.dao.GuideDao;
 import com.museum.dao.impl.GuideDaoImpl;
