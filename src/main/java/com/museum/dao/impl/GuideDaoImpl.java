@@ -11,7 +11,7 @@ public class GuideDaoImpl implements GuideDao{
 	
 	
 	@Override
-	public void addGuide(Guide guide) {
+	public void add(Guide guide) {
 		EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 		EntityManager manager = factory.createEntityManager();
 		manager.getTransaction().begin();
