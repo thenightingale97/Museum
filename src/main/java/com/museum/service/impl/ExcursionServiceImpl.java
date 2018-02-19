@@ -9,7 +9,7 @@ import com.museum.service.ExcursionService;
 
 public class ExcursionServiceImpl  implements ExcursionService{
 	
-	ExcursionDao excursionDao = new ExcursionDaoImpl();
+	private ExcursionDao excursionDao = new ExcursionDaoImpl();
 	
 	@Override
 	public void save(Excursion excursion) {
