@@ -4,7 +4,7 @@ import java.util.List;
 
 import com.museum.entity.Author;
 
-public interface AuthorDao {
+public interface AuthorDao extends Dao{
 	void save(Author author);
 	void update(Author author);
 	void delete(int id);

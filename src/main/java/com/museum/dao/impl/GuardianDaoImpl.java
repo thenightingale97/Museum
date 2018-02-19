@@ -1,29 +1,29 @@
 package com.museum.dao.impl;
 
-
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.museum.controller.Controller;
-import com.museum.dao.GuideDao;
-import com.museum.entity.Guide;
+import com.museum.dao.GuardianDao;
+import com.museum.entity.Guardian;
 
-public class GuideDaoImpl implements GuideDao{
-private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
+public class GuardianDaoImpl implements GuardianDao{
+	
+	private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	
 	@Override
-	public void save(Guide guide) {
+	public void save(Guardian guardian) {
 		em.getTransaction().begin();
-		em.persist(guide);
+		em.persist(guardian);
 		em.getTransaction().commit();
 		em.close();
 	}
 
 	@Override
-	public void update(Guide guide) {
+	public void update(Guardian guardian) {
 		em.getTransaction().begin();
-		em.merge(guide);
+		em.merge(guardian);
 		em.getTransaction().commit();
 		em.close();
 	}
@@ -31,29 +31,29 @@ private EntityManager em = Controller.getEntityManagerFactory().createEntityMana
 	@Override
 	public void delete(int id) {
 		em.getTransaction().begin();
-		Guide excursion = find(id);
-		em.remove(excursion);
+		Guardian guardian = find(id);
+		em.remove(guardian);
 		em.getTransaction().commit();
 		em.close();
 	}
 
 	@Override
-	public Guide find(int id) {
+	public Guardian find(int id) {
 		em.getTransaction().begin();
-		Guide guide = em.find(Guide.class, id);
+		Guardian guardian = em.find(Guardian.class, id);
 		em.getTransaction().commit();
 		em.close();
-		return guide;
+		return guardian;
 	}
 
 	@Override
-	public List<Guide> findAll() {
+	public List<Guardian> findAll() {
 		em.getTransaction().begin();
 		@SuppressWarnings("unchecked")
-		List<Guide> guides = em.createQuery("SELECT g FROM Guide g").getResultList();
+		List<Guardian> guardians = em.createQuery("SELECT e FROM Excursion e").getResultList();
 		em.getTransaction().commit();
 		em.close();
-		return guides;
+		return guardians;
 	}
 
 }

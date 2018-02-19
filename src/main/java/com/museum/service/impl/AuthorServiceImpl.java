@@ -9,7 +9,7 @@ import com.museum.service.AuthorService;
 
 public class AuthorServiceImpl implements AuthorService{
 	
-	AuthorDao authorDao = new AuthorDaoImpl();
+	private AuthorDao authorDao = new AuthorDaoImpl();
 
 	@Override
 	public void save(Author author) {
@@ -34,6 +34,11 @@ public class AuthorServiceImpl implements AuthorService{
 	@Override
 	public List<Author> findAll() {
 		return authorDao.findAll();
+	}
+
+	@Override
+	public void close() {
+		authorDao.close();
 	}
 
 }
