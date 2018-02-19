@@ -49,6 +49,7 @@ private EntityManager em = Controller.getEntityManagerFactory().createEntityMana
 	@Override
 	public List<Event> findAll() {
 		em.getTransaction().begin();
+		@SuppressWarnings("unchecked")
 		List<Event> events = em.createQuery("SELECT e FROM Event e").getResultList();
 		em.getTransaction().commit();
 		em.close();

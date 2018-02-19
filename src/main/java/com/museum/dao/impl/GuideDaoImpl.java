@@ -49,6 +49,7 @@ private EntityManager em = Controller.getEntityManagerFactory().createEntityMana
 	@Override
 	public List<Guide> findAll() {
 		em.getTransaction().begin();
+		@SuppressWarnings("unchecked")
 		List<Guide> guides = em.createQuery("SELECT g FROM Guide g").getResultList();
 		em.getTransaction().commit();
 		em.close();

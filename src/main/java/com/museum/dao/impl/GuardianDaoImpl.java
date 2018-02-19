@@ -49,6 +49,7 @@ public class GuardianDaoImpl implements GuardianDao{
 	@Override
 	public List<Guardian> findAll() {
 		em.getTransaction().begin();
+		@SuppressWarnings("unchecked")
 		List<Guardian> guardians = em.createQuery("SELECT e FROM Excursion e").getResultList();
 		em.getTransaction().commit();
 		em.close();

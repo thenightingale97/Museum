@@ -49,6 +49,7 @@ public class ExcursionDaoImpl implements ExcursionDao{
 	@Override
 	public List<Excursion> findAll() {
 		em.getTransaction().begin();
+		@SuppressWarnings("unchecked")
 		List<Excursion> excursions = em.createQuery("SELECT e FROM Excursion e").getResultList();
 		em.getTransaction().commit();
 		em.close();
