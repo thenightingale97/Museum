@@ -33,9 +33,11 @@ public class Showpiece {
 	
 	@ManyToOne
 	private Hall hall;
+
+	@Column
+	private String imageUrl;
 	
 	public Showpiece() {
-		
 	}
 
 	public int getId() {
@@ -78,4 +80,19 @@ public class Showpiece {
 		this.hall = hall;
 	}
 
+    public List<Excursion> getExcursions() {
+        return excursions;
+    }
+
+    public void setExcursions(List<Excursion> excursions) {
+        this.excursions = excursions;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
