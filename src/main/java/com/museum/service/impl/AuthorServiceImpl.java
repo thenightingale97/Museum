@@ -36,9 +36,4 @@ public class AuthorServiceImpl implements AuthorService{
 		return authorDao.findAll();
 	}
 
-	@Override
-	public void close() {
-		authorDao.close();
-	}
-
 }

@@ -42,19 +42,5 @@ public class AuthorRepositoryImpl implements AuthorRepository{
 		return authors;
 	}
 
-	@Override
-	public void begin() {
-		em.getTransaction().begin();
-	}
-
-	@Override
-	public void commit() {
-		em.getTransaction().commit();
-	}
-
-	@Override
-	public void close() {
-		em.close();
-	}
 	
 }
