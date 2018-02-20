@@ -4,10 +4,20 @@ import java.io.Serializable;
 import java.util.List;
 
 
-public interface Repository<E, PK extends Serializable> {
+public interface Repository<E, PK extends Serializable> extends AutoCloseable {
+
+    Class<E> getEntityClass();
+
     void save(E entity);
+
     void update(E entity);
+
     void delete(PK id);
+
     E find(PK id);
+
     List<E> findAll();
+
+    @Override
+    void close();
 }
