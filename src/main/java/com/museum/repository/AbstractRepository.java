@@ -14,31 +14,22 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
 
     @Override
     public void save(E entity) {
-        begin();
         entityManager.persist(entity);
-        commit();
     }
 
     @Override
     public void update(E entity) {
-        begin();
         entityManager.merge(entity);
-        commit();
     }
 
     @Override
     public void delete(PK id) {
-        begin();
-        entityManager.remove(findUntransactional(id));
-        commit();
+        entityManager.remove(find(id));
     }
 
     @Override
     public E find(PK id) {
-        begin();
-        E entity = findUntransactional(id);
-        commit();
-        return entity;
+        return entityManager.find(getEntityClass(), id);
     }
 
     @Override
@@ -56,10 +47,6 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
     @Override
     public void close() {
         entityManager.close();
-    }
-
-    protected E findUntransactional(PK id) {
-        return entityManager.find(getEntityClass(), id);
     }
 
     @Override
