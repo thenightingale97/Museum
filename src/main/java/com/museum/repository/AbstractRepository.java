@@ -47,27 +47,33 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
         String entityName = getEntityClass().getName();
         begin();
         List<E> entities = entityManager
-                .createQuery("SELECT a FROM " + entityName + " a")
+                .createQuery("SELECT entity FROM " + entityName + " entity")
                 .getResultList();
         commit();
         return entities;
+    }
+
+    @Override
+    public void close() {
+        entityManager.close();
     }
 
     protected E findUntransactional(PK id) {
         return entityManager.find(getEntityClass(), id);
     }
 
-    protected void begin() {
+    @Override
+    public void begin() {
         entityManager.getTransaction().begin();
     }
 
-    protected void commit() {
+    @Override
+    public void commit() {
         entityManager.getTransaction().commit();
     }
 
-    @Override
-    public void close() {
-        entityManager.close();
+    protected EntityManager getEntityManager() {
+        return entityManager;
     }
 
     @SuppressWarnings("unchecked")

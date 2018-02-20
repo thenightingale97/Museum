@@ -18,6 +18,10 @@ public interface Repository<E, PK extends Serializable> extends AutoCloseable {
 
     List<E> findAll();
 
+    void begin();
+
+    void commit();
+
     @Override
     void close();
 }
