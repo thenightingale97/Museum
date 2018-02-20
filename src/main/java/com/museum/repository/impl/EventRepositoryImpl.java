@@ -1,14 +1,14 @@
-package com.museum.dao.impl;
+package com.museum.repository.impl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.museum.controller.Controller;
-import com.museum.dao.EventDao;
 import com.museum.entity.Event;
+import com.museum.repository.EventRepository;
 
-public class EventDaoImpl implements EventDao{
+public class EventRepositoryImpl implements EventRepository{
 
 private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	

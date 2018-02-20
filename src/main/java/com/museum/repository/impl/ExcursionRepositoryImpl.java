@@ -1,14 +1,14 @@
-package com.museum.dao.impl;
+package com.museum.repository.impl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.museum.controller.Controller;
-import com.museum.dao.ExcursionDao;
 import com.museum.entity.Excursion;
+import com.museum.repository.ExcursionRepository;
 
-public class ExcursionDaoImpl implements ExcursionDao{
+public class ExcursionRepositoryImpl implements ExcursionRepository{
 	
 	private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	

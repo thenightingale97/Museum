@@ -2,14 +2,14 @@ package com.museum.service.impl;
 
 import java.util.List;
 
-import com.museum.dao.GuideDao;
-import com.museum.dao.impl.GuideDaoImpl;
 import com.museum.entity.Guide;
+import com.museum.repository.GuideRepository;
+import com.museum.repository.impl.GuideRepositoryImpl;
 import com.museum.service.GuideService;
 
 public class GuideServiceImpl implements GuideService{
 	
-	private GuideDao guideDao = new GuideDaoImpl();
+	private GuideRepository guideDao = new GuideRepositoryImpl();
 	
 	@Override
 	public void save(Guide guide) {

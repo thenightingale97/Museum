@@ -2,14 +2,14 @@ package com.museum.service.impl;
 
 import java.util.List;
 
-import com.museum.dao.EventDao;
-import com.museum.dao.impl.EventDaoImpl;
 import com.museum.entity.Event;
+import com.museum.repository.EventRepository;
+import com.museum.repository.impl.EventRepositoryImpl;
 import com.museum.service.EventService;
 
 public class EventServiceImpl implements EventService{
 	
-	private EventDao eventDao = new EventDaoImpl();
+	private EventRepository eventDao = new EventRepositoryImpl();
 	
 	@Override
 	public void save(Event event) {

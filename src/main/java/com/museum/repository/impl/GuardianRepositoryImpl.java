@@ -1,14 +1,14 @@
-package com.museum.dao.impl;
+package com.museum.repository.impl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.museum.controller.Controller;
-import com.museum.dao.GuardianDao;
 import com.museum.entity.Guardian;
+import com.museum.repository.GuardianRepository;
 
-public class GuardianDaoImpl implements GuardianDao{
+public class GuardianRepositoryImpl implements GuardianRepository{
 	
 	private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	

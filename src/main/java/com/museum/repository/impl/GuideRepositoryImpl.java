@@ -1,4 +1,4 @@
-package com.museum.dao.impl;
+package com.museum.repository.impl;
 
 
 import java.util.List;
@@ -6,10 +6,10 @@ import java.util.List;
 import javax.persistence.EntityManager;
 
 import com.museum.controller.Controller;
-import com.museum.dao.GuideDao;
 import com.museum.entity.Guide;
+import com.museum.repository.GuideRepository;
 
-public class GuideDaoImpl implements GuideDao{
+public class GuideRepositoryImpl implements GuideRepository{
 private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	
 	@Override

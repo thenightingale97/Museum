@@ -1,4 +1,4 @@
-package com.museum.dao.impl;
+package com.museum.repository.impl;
 
 import java.util.List;
 
@@ -6,10 +6,10 @@ import javax.persistence.EntityManager;
 
 
 import com.museum.controller.Controller;
-import com.museum.dao.AuthorDao;
 import com.museum.entity.Author;
+import com.museum.repository.AuthorRepository;
 
-public class AuthorDaoImpl implements AuthorDao{
+public class AuthorRepositoryImpl implements AuthorRepository{
 	
 	private EntityManager em = Controller.getEntityManagerFactory().createEntityManager();
 	
@@ -21,8 +21,8 @@ public class AuthorDaoImpl implements AuthorDao{
 	@Override
 	public void update(Author author) {
 		em.merge(author);
-	}
-
+	}      
+	
 	@Override
 	public void delete(int id) {
 		Author author = find(id);
