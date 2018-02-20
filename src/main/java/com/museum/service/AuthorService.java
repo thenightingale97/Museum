@@ -1,13 +1,6 @@
 package com.museum.service;
 
-import java.util.List;
-
 import com.museum.entity.Author;
 
-public interface AuthorService extends Service{
-	void save(Author author);
-	void update(Author author);
-	void delete(int id);
-	Author find(int id);
-	List<Author> findAll();
+public interface AuthorService extends Service<Author, Integer> {
 }
