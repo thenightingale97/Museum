@@ -1,10 +1,10 @@
-package com.museum.dao;
+package com.museum.repository;
 
 import java.util.List;
 
 import com.museum.entity.Guide;
 
-public interface GuideDao {
+public interface GuideRepository {
 	
 	void save(Guide guide);
 	void update(Guide guide);

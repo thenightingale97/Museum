@@ -2,14 +2,14 @@ package com.museum.service.impl;
 
 import java.util.List;
 
-import com.museum.dao.AuthorDao;
-import com.museum.dao.impl.AuthorDaoImpl;
 import com.museum.entity.Author;
+import com.museum.repository.AuthorRepository;
+import com.museum.repository.impl.AuthorRepositoryImpl;
 import com.museum.service.AuthorService;
 
 public class AuthorServiceImpl implements AuthorService{
 	
-	private AuthorDao authorDao = new AuthorDaoImpl();
+	private AuthorRepository authorDao = new AuthorRepositoryImpl();
 
 	@Override
 	public void save(Author author) {

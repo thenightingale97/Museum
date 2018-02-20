@@ -1,10 +1,10 @@
-package com.museum.dao;
+package com.museum.repository;
 
 import java.util.List;
 
 import com.museum.entity.Guardian;
 
-public interface GuardianDao {
+public interface GuardianRepository {
 	void save(Guardian guardian);
 	void update(Guardian guardian);
 	void delete(int id);

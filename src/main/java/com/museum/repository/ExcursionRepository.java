@@ -1,10 +1,10 @@
-package com.museum.dao;
+package com.museum.repository;
 
 import java.util.List;
 
 import com.museum.entity.Excursion;
 
-public interface ExcursionDao {
+public interface ExcursionRepository {
 	void save(Excursion excursion);
 	void update(Excursion excursion);
 	void delete(int id);

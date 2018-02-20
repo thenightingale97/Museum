@@ -2,14 +2,14 @@ package com.museum.service.impl;
 
 import java.util.List;
 
-import com.museum.dao.GuardianDao;
-import com.museum.dao.impl.GuardianDaoImpl;
 import com.museum.entity.Guardian;
+import com.museum.repository.GuardianRepository;
+import com.museum.repository.impl.GuardianRepositoryImpl;
 import com.museum.service.GuardianService;
 
 public class GuardianServiceImpl implements GuardianService{
 	
-	private GuardianDao guardianDao = new GuardianDaoImpl();
+	private GuardianRepository guardianDao = new GuardianRepositoryImpl();
 
 	@Override
 	public void save(Guardian guardian) {

@@ -1,10 +1,10 @@
-package com.museum.dao;
+package com.museum.repository;
 
 import java.util.List;
 
 import com.museum.entity.Event;
 
-public interface EventDao {
+public interface EventRepository {
 	void save(Event event);
 	void update(Event event);
 	void delete(int id);
