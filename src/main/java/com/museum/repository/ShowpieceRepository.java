@@ -4,9 +4,14 @@ import java.util.List;
 
 import com.museum.entity.Showpiece;
 
+import java.util.List;
 
 
 public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
     
-    List<Showpiece> getByHall(int id);
+    List<Showpiece> getByHall(int hallId);
+    
+    List<Showpiece> getByAuthor(int authorId);
+
+    List<Showpiece> getByGuardian(int guardianId);
 }

@@ -3,6 +3,8 @@ package com.museum.repository;
 import java.io.Serializable;
 import java.util.List;
 
+import com.museum.entity.Showpiece;
+
 
 public interface Repository<E, PK extends Serializable> extends AutoCloseable {
 
@@ -24,4 +26,5 @@ public interface Repository<E, PK extends Serializable> extends AutoCloseable {
 
     @Override
     void close();
+
 }
