@@ -1,21 +1,19 @@
 package com.museum.repository.impl;
 
 
+import java.util.List;
+
+import javax.persistence.TypedQuery;
+
 import com.museum.entity.Showpiece;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
-
-import javax.persistence.TypedQuery;
-import java.util.List;
 
 
 public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integer> implements ShowpieceRepository {
     
     /**
      * Task 2.
-     *
-     * @param authorId - id of some Author
-     * @return list of showpieces belongs to some author
      */
     @Override
     public List<Showpiece> getByAuthor(int authorId) {
@@ -38,13 +36,12 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
     
     /**
      * Task 4.
-     * SELECT showpiece.name, hall.name FROM showpiece JOIN hall ON 
-     * showpiece.hall_id = hall.id WHERE hall.name = "hall1 .. ";
      */
     @Override
-    public List<Showpiece> getByHall(int id) {
-        String sql = "SELECT showpiece FROM Showpiece showpiece JOIN showpiece.hall WHERE showpiece.hall = ?1";
+    public List<Showpiece> getByHall(int hallId) {
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.id = ?1";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
+        query.setParameter(1, hallId);
         return query.getResultList();
     }
 }
