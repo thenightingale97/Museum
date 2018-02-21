@@ -23,4 +23,19 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         query.setParameter(1, authorId);
         return query.getResultList();
     }
+    
+    /**
+     * Task 3.
+     */
+    @Override
+    public List<Showpiece> getByGuardian(int guardianId) {
+        /*
+         SELECT showpiece.name, showpiece.type, guardian.firstName, guardian.lastName
+         FROM showpiece JOIN hall ON hall_id = hall.id JOIN guardian ON guardian.id = guardian_id WHERE guardian.id = 1;
+         */
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.guardian.id = ?1";
+        TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
+        query.setParameter(1, guardianId);
+        return query.getResultList();
+    }
 }
