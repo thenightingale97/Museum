@@ -1,6 +1,7 @@
 package com.museum.repository.impl;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.TypedQuery;
@@ -43,5 +44,16 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
         query.setParameter(1, hallId);
         return query.getResultList();
+    }
+    
+    /**
+     * Task 9.
+     * ELECT COUNT(*) FROM event WHERE startTime >= "2018-02-20" AND startTime <= "2018-02-21";
+     */
+    @Override
+    public Integer getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        String sql = "SELECT COUNT(event) FROM Event event WHERE event.startTime >= ?1 AND event.startTime <= ?2";
+        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
+        return query.getSingleResult();
     }
 }

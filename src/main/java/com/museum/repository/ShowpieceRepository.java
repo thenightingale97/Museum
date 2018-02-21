@@ -1,5 +1,6 @@
 package com.museum.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.museum.entity.Showpiece;
@@ -11,4 +12,7 @@ public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
     List<Showpiece> getByAuthor(int authorId);
 
     List<Showpiece> getByGuardian(int guardianId);
+    
+    Integer getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
+    
 }
