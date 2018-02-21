@@ -11,14 +11,14 @@ import com.museum.service.GuideService;
 
 public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepository> implements GuideService {
 
-    protected GuideServiceImpl() {
+    public GuideServiceImpl() {
         super(new GuideRepositoryImpl());
     }
 
     @Override
     public List<Guide> getGuideByPosition(GuidePosition position) {
         getRepository().begin();
-        List<Guide> guides = getRepository().getGuideByPosition(position);
+        List<Guide> guides = getRepository().getByPosition(position);
         getRepository().commit();
         return guides;
     }

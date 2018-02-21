@@ -8,7 +8,7 @@ import com.museum.service.GuardianService;
 
 public class GuardianServiceImpl extends AbstractService<Guardian, Integer, GuardianRepository> implements GuardianService {
 
-    protected GuardianServiceImpl() {
+    public GuardianServiceImpl() {
         super(new GuardianRepositoryImpl());
     }
 }

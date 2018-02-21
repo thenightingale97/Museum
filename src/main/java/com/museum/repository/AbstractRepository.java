@@ -36,11 +36,9 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
     @SuppressWarnings("unchecked")
     public List<E> findAll() {
         String entityName = getEntityClass().getName();
-        begin();
         List<E> entities = entityManager
                 .createQuery("SELECT entity FROM " + entityName + " entity")
                 .getResultList();
-        commit();
         return entities;
     }
 

@@ -8,7 +8,7 @@ import com.museum.service.ExcursionService;
 
 public class ExcursionServiceImpl extends AbstractService<Excursion, Integer, ExcursionRepository> implements ExcursionService {
 
-	protected ExcursionServiceImpl() {
+        public ExcursionServiceImpl() {
 		super(new ExcursionRepositoryImpl());
 	}
 }
