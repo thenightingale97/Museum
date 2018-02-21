@@ -22,4 +22,12 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
         getRepository().commit();
         return guides;
     }
+
+    @Override
+    public Long getEventAmount(int guidId) {
+        getRepository().begin();
+        Long eventAmount = getRepository().getEventAmount(guidId);
+        getRepository().commit();
+        return eventAmount;
+    }
 }

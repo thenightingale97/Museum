@@ -13,8 +13,10 @@ import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.entity.Showpiece;
 import com.museum.repository.EventRepository;
+import com.museum.repository.GuideRepository;
 import com.museum.repository.ShowpieceRepository;
 import com.museum.repository.impl.EventRepositoryImpl;
+import com.museum.repository.impl.GuideRepositoryImpl;
 import com.museum.repository.impl.ShowpieceRepositoryImpl;
 import com.museum.service.AuthorService;
 import com.museum.service.GuideService;
@@ -30,6 +32,8 @@ public class Controller {
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 	
 	public static void main(String[] args) {
+	    GuideRepository eventRepository = new GuideRepositoryImpl();
+	    System.out.println(eventRepository.getEventAmount(3));
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactory() {

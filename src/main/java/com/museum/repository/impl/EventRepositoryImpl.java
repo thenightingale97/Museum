@@ -13,9 +13,6 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
 
     /**
      * Task 7.
-     * Select event.id, startTime, finishTime, excursion.name  from event   join excursion
-      on excursion.id   = event.excursion_id where where "2018-02-20" <= startTime 
-      AND "2018-02-21" >= finishTime;
      */
     @Override
     public List<Event> getByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
@@ -29,7 +26,6 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
     
     /**
      * Task 9.
-     * ELECT COUNT(*) FROM event WHERE startTime >= "2018-02-20" AND startTime <= "2018-02-21";
      */
     @Override
     public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {

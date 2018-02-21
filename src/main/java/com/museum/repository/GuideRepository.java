@@ -8,5 +8,6 @@ import com.museum.entity.GuidePosition;
 public interface GuideRepository extends Repository<Guide, Integer> {
   
     List<Guide> getByPosition(GuidePosition position);
-
+    
+    Long getEventAmount(int guidId);
 }

@@ -42,4 +42,17 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         List<Guide> resultList = query.getResultList();
         return resultList;
     }
+    
+    /**
+     * Task 10.1
+     */
+    @Override
+    public Long getEventAmount(int guidId) {
+        String sql = "SELECT COUNT(guide) " 
+                + "FROM Guide guide JOIN guide.events event " 
+                + "GROUP BY guide.id HAVING guide.id = ?1 ";
+        TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
+        query.setParameter(1, guidId);
+        return query.getSingleResult();
+    }
 }

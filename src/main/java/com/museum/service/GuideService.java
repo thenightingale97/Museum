@@ -9,4 +9,6 @@ public interface GuideService extends Service<Guide, Integer> {
     
     List<Guide> getGuideByPosition(GuidePosition position);
     
+    Long getEventAmount(int guidId);
+
 }
