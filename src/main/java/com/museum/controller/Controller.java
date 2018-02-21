@@ -1,15 +1,19 @@
 package com.museum.controller;
 
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import com.museum.entity.Author;
+import com.museum.entity.Event;
 import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.entity.Showpiece;
+import com.museum.repository.EventRepository;
+import com.museum.repository.impl.EventRepositoryImpl;
 import com.museum.service.AuthorService;
 import com.museum.service.GuideService;
 import com.museum.service.ShowpieceService;
@@ -24,7 +28,6 @@ public class Controller {
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 	
 	public static void main(String[] args) {
-        
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
