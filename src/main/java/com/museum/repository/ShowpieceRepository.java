@@ -13,6 +13,4 @@ public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
 
     List<Showpiece> getByGuardian(int guardianId);
     
-    Integer getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
-    
 }

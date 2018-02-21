@@ -46,14 +46,4 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         return query.getResultList();
     }
     
-    /**
-     * Task 9.
-     * ELECT COUNT(*) FROM event WHERE startTime >= "2018-02-20" AND startTime <= "2018-02-21";
-     */
-    @Override
-    public Integer getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        String sql = "SELECT COUNT(event) FROM Event event WHERE event.startTime >= ?1 AND event.startTime <= ?2";
-        TypedQuery<Integer> query = getEntityManager().createQuery(sql, Integer.class);
-        return query.getSingleResult();
-    }
 }

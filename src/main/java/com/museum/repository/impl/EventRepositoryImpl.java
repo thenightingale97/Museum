@@ -26,5 +26,18 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter(2, toTime);
         return query.getResultList();
     }
+    
+    /**
+     * Task 9.
+     * ELECT COUNT(*) FROM event WHERE startTime >= "2018-02-20" AND startTime <= "2018-02-21";
+     */
+    @Override
+    public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        String sql = "SELECT COUNT(event) FROM Event event WHERE event.startTime >= ?1 AND event.startTime <= ?2";
+        TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
+        query.setParameter(1, fromTime);
+        query.setParameter(2, toTime);
+        return query.getSingleResult();
+    }
 
 }
