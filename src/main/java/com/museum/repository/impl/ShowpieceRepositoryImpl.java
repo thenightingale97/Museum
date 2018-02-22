@@ -1,14 +1,16 @@
 package com.museum.repository.impl;
 
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
 import com.museum.entity.Showpiece;
+import com.museum.entity.ShowpieceMaterial;
+import com.museum.entity.ShowpieceTechnique;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
+
+import javax.persistence.TypedQuery;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 
 public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integer> implements ShowpieceRepository {
@@ -46,4 +48,31 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         return query.getResultList();
     }
     
+    /**
+     * Task 8.1
+     */
+    @Override
+    public Map<ShowpieceTechnique, Long> getStatisticByTechnique() {
+        String sql = "SELECT showpiece.technique, COUNT(showpiece) FROM Showpiece showpiece GROUP BY showpiece.technique";
+        TypedQuery<Object[]> query = getEntityManager().createQuery(sql, Object[].class);
+        Map<ShowpieceTechnique, Long> result = new HashMap<>();
+        for (Object[] objects : query.getResultList()) {
+            result.put((ShowpieceTechnique) objects[0], (Long) objects[1]);
+        }
+        return result;
+    }
+    
+    /**
+     * Task 8.2
+     */
+    @Override
+    public Map<ShowpieceMaterial, Long> getStatisticByMaterial() {
+        String sql = "SELECT showpiece.material, COUNT(showpiece) FROM Showpiece showpiece GROUP BY showpiece.material";
+        TypedQuery<Object[]> query = getEntityManager().createQuery(sql, Object[].class);
+        Map<ShowpieceMaterial, Long> result = new HashMap<>();
+        for (Object[] objects : query.getResultList()) {
+            result.put((ShowpieceMaterial) objects[0], (Long) objects[1]);
+        }
+        return result;
+    }
 }
