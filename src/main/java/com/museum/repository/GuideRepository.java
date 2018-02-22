@@ -10,6 +10,8 @@ public interface GuideRepository extends Repository<Guide, Integer> {
   
     List<Guide> findByPosition(GuidePosition position);
     
+    List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
+    
     Long getWorkTime(int guideId);
     
     Long getWorkTimeByPeriod(int guideId, LocalDateTime fromTime, LocalDateTime toTime);

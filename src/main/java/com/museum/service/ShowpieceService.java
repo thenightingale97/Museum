@@ -1,15 +1,21 @@
 package com.museum.service;
 
-import java.util.List;
-
 import com.museum.entity.Showpiece;
+import com.museum.entity.ShowpieceMaterial;
+import com.museum.entity.ShowpieceTechnique;
+
+import java.util.List;
+import java.util.Map;
 
 public interface ShowpieceService extends Service<Showpiece, Integer> {
     
-    List<Showpiece> getByHall(int hallId);
+    List<Showpiece> findByHall(int hallId);
     
-    List<Showpiece> getByAuthor(int authorId);
-
-    List<Showpiece> getByGuardian(int guardianId);
+    List<Showpiece> findByAuthor(int authorId);
     
+    List<Showpiece> findByGuardian(int guardianId);
+    
+    Map<ShowpieceTechnique, Long> getStatisticByTechnique();
+    
+    Map<ShowpieceMaterial, Long> getStatisticByMaterial();
 }

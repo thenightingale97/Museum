@@ -8,13 +8,11 @@ import com.museum.repository.GuideRepository;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
-
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
 public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> implements GuideRepository {
-    
     
     /**
      * Task 5.
@@ -31,7 +29,8 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
     /**
      * Task 6.
      */
-    public List<Guide> getByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+    @Override
+    public List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT guide FROM Guide guide " +
                 "WHERE guide NOT IN (" +
                 "SELECT guide FROM Guide JOIN guide.events event WHERE " +
