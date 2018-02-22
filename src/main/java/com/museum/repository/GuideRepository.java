@@ -13,4 +13,8 @@ public interface GuideRepository extends Repository<Guide, Integer> {
     Long getEventAmount(int guidId);
     
     Long getEventAmountByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
+    
+    Long getWorkTime(int guideId);
+    
+    Long getWorkTimeByPeriod(int guideId, LocalDateTime fromTime, LocalDateTime toTime);
 }

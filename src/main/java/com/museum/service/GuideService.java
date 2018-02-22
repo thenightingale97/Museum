@@ -13,5 +13,6 @@ public interface GuideService extends Service<Guide, Integer> {
     Long getEventAmount(int guidId);
     
     Long getEventAmountByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
-
+    
+    Long getWorkTime(int guideId);
 }
