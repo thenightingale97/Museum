@@ -7,6 +7,8 @@ import java.util.List;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+import org.hibernate.SessionFactory;
+
 import com.museum.entity.Author;
 import com.museum.entity.Event;
 import com.museum.entity.Guide;
@@ -32,8 +34,6 @@ public class Controller {
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 	
 	public static void main(String[] args) {
-	    GuideService eventRepository = new GuideServiceImpl();
-	    System.out.println(eventRepository.getWorkTime(4));
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
