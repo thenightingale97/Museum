@@ -2,56 +2,40 @@ package com.museum.service;
 
 import com.museum.repository.Repository;
 
+import javax.transaction.Transactional;
 import java.io.Serializable;
 import java.util.List;
 
 public abstract class AbstractService<E, PK extends Serializable, R extends Repository<E, PK>> implements Service<E, PK> {
-
-    private final R repository;
-
-    protected AbstractService(R repository) {
-        this.repository = repository;
-    }
-
+    
     @Override
+    @Transactional
     public void save(E entity) {
-        repository.begin();
-        repository.save(entity);
-        repository.commit();
+        getRepository().save(entity);
     }
 
     @Override
+    @Transactional
     public void update(E entity) {
-        repository.begin();
-        repository.update(entity);
-        repository.commit();
+        getRepository().update(entity);
     }
 
     @Override
+    @Transactional
     public void delete(PK primaryKey) {
-        repository.begin();
-        repository.delete(primaryKey);
-        repository.commit();
+        getRepository().delete(primaryKey);
     }
 
     @Override
     public E find(PK primaryKey) {
-        repository.begin();
-        E entity = repository.find(primaryKey);
-        repository.commit();
-        return entity;
+        return getRepository().find(primaryKey);
     }
 
     @Override
     public List<E> findAll() {
-        repository.begin();
-        List<E> entities = repository.findAll();
-        repository.commit();
-        return entities;
+        return getRepository().findAll();
     }
 
     @Override
-    public R getRepository() {
-        return repository;
-    }
+    public abstract R getRepository();
 }

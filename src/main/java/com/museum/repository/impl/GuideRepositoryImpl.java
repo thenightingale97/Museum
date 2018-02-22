@@ -5,6 +5,7 @@ import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.GuideRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
@@ -12,11 +13,12 @@ import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> implements GuideRepository {
     
     /**
      * Task 5.
-     * 
+     *
      */
     @Override
     public List<Guide> findByPosition(GuidePosition position) {
@@ -41,8 +43,7 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         query.setParameter("fromTime", fromTime);
         query.setParameter("toTime", toTime);
         
-        List<Guide> resultList = query.getResultList();
-        return resultList;
+        return query.getResultList();
     }
     
     /**

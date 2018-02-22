@@ -3,51 +3,42 @@ package com.museum.service.impl;
 import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.repository.GuideRepository;
-import com.museum.repository.impl.GuideRepositoryImpl;
 import com.museum.service.AbstractService;
 import com.museum.service.GuideService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 @Service
 public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepository> implements GuideService {
-
-    public GuideServiceImpl() {
-        super(new GuideRepositoryImpl());
+    
+    @Autowired
+    private GuideRepository repository;
+    
+    @Override
+    public GuideRepository getRepository() {
+        return repository;
     }
-
+    
     @Override
     public List<Guide> getGuideByPosition(GuidePosition position) {
-        getRepository().begin();
-        List<Guide> guides = getRepository().findByPosition(position);
-        getRepository().commit();
-        return guides;
+        return getRepository().findByPosition(position);
     }
     
     @Override
     public List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        getRepository().begin();
-        List<Guide> guides = getRepository().findByPeriod(fromTime, toTime);
-        getRepository().commit();
-        return guides;
+        return getRepository().findByPeriod(fromTime, toTime);
     }
     
     @Override
     public Long getWorkTimeByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime) {
-        getRepository().begin();
-        Long eventAmount = getRepository().getWorkTimeByPeriod(guidId, fromTime, toTime);
-        getRepository().commit();
-        return eventAmount;
+        return getRepository().getWorkTimeByPeriod(guidId, fromTime, toTime);
     }
 
     @Override
     public Long getWorkTime(int guideId) {
-        getRepository().begin();
-        Long workTime = getRepository().getWorkTime(guideId);
-        getRepository().commit();
-        return workTime;
+        return getRepository().getWorkTime(guideId);
     }
 }

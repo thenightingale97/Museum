@@ -3,20 +3,22 @@ package com.museum.repository.impl;
 import com.museum.entity.Event;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.EventRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.time.LocalDateTime;
 import java.util.List;
 
+@Repository
 public class EventRepositoryImpl extends AbstractRepository<Event, Integer> implements EventRepository {
-
+    
     /**
      * Task 7.
      */
     @Override
     public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " + 
-            "AND ?2 >= event.finishTime";
+        String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " +
+                "AND ?2 >= event.finishTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
         query.setParameter(1, fromTime);
         query.setParameter(2, toTime);

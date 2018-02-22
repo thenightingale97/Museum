@@ -3,10 +3,8 @@ package com.museum.repository;
 import java.io.Serializable;
 import java.util.List;
 
-import com.museum.entity.Showpiece;
 
-
-public interface Repository<E, PK extends Serializable> extends AutoCloseable {
+public interface Repository<E, PK extends Serializable> {
 
     Class<E> getEntityClass();
 
@@ -19,12 +17,5 @@ public interface Repository<E, PK extends Serializable> extends AutoCloseable {
     E find(PK id);
 
     List<E> findAll();
-
-    void begin();
-
-    void commit();
-
-    @Override
-    void close();
 
 }

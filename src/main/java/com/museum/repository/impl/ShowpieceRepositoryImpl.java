@@ -6,13 +6,14 @@ import com.museum.entity.ShowpieceMaterial;
 import com.museum.entity.ShowpieceTechnique;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
+import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
+@Repository
 public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integer> implements ShowpieceRepository {
     
     /**
