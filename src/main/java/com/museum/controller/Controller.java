@@ -32,8 +32,8 @@ public class Controller {
 	private static EntityManagerFactory factory = Persistence.createEntityManagerFactory("primary");
 	
 	public static void main(String[] args) {
-	    GuideRepository eventRepository = new GuideRepositoryImpl();
-	    System.out.println(eventRepository.getEventAmount(3));
+	    GuideService eventRepository = new GuideServiceImpl();
+	    System.out.println(eventRepository.getEventAmountByPeriod(4, LocalDateTime.parse("2018-02-22T00:00:00"), LocalDateTime.parse("2018-02-24T16:00:00")));
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactory() {

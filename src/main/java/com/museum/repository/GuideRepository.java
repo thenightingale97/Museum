@@ -1,5 +1,6 @@
 package com.museum.repository;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.museum.entity.Guide;
@@ -10,4 +11,6 @@ public interface GuideRepository extends Repository<Guide, Integer> {
     List<Guide> getByPosition(GuidePosition position);
     
     Long getEventAmount(int guidId);
+    
+    Long getEventAmountByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
 }
