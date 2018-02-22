@@ -1,13 +1,12 @@
 package com.museum.repository.impl;
 
-import java.time.LocalDateTime;
-import java.util.List;
-
-import javax.persistence.TypedQuery;
-
 import com.museum.entity.Event;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.EventRepository;
+
+import javax.persistence.TypedQuery;
+import java.time.LocalDateTime;
+import java.util.List;
 
 public class EventRepositoryImpl extends AbstractRepository<Event, Integer> implements EventRepository {
 
@@ -15,7 +14,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      * Task 7.
      */
     @Override
-    public List<Event> getByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+    public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " + 
             "AND ?2 >= event.finishTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
@@ -35,5 +34,33 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter(2, toTime);
         return query.getSingleResult();
     }
-
+    
+    /**
+     * Task 10.1
+     */
+    @Override
+    public Long getAmountByGuide(int guidId) {
+        String sql = "SELECT COUNT(guide) "
+                + "FROM Guide guide JOIN guide.events event "
+                + "WHERE guide.id = ?1 ";
+        TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
+        query.setParameter(1, guidId);
+        return query.getSingleResult();
+    }
+    
+    /**
+     * Task 10.2
+     */
+    @Override
+    public Long getAmountByPeriodAndGuide(int guidId, LocalDateTime fromTime, LocalDateTime toTime) {
+        String sql = "SELECT COUNT(guide) "
+                + "FROM Guide guide JOIN guide.events event "
+                + "WHERE (event.startTime >= ?1 AND event.finishTime <= ?2) "
+                + "AND (guide.id = ?3)";
+        TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
+        query.setParameter(1, fromTime);
+        query.setParameter(2, toTime);
+        query.setParameter(3, guidId);
+        return query.getSingleResult();
+    }
 }

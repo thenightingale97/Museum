@@ -9,11 +9,11 @@ import java.util.Map;
 
 public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
     
-    List<Showpiece> getByHall(int hallId);
+    List<Showpiece> findByHall(int hallId);
     
-    List<Showpiece> getByAuthor(int authorId);
-
-    List<Showpiece> getByGuardian(int guardianId);
+    List<Showpiece> findByAuthor(int authorId);
+    
+    List<Showpiece> findByGuardian(int guardianId);
     
     Map<ShowpieceTechnique, Long> getStatisticByTechnique();
     
