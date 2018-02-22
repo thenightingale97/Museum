@@ -11,6 +11,9 @@ import com.museum.service.ShowpieceService;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, ShowpieceRepository> implements ShowpieceService {
 
     public ShowpieceServiceImpl() {

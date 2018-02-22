@@ -9,6 +9,9 @@ import com.museum.service.EventService;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class EventServiceImpl extends AbstractService<Event, Integer, EventRepository> implements EventService {
 
     public EventServiceImpl() {

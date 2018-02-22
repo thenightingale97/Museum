@@ -10,6 +10,9 @@ import com.museum.service.GuideService;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
+@Service
 public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepository> implements GuideService {
 
     public GuideServiceImpl() {
