@@ -39,4 +39,12 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
         getRepository().commit();
         return eventAmount != null? eventAmount : 0;
     }
+
+    @Override
+    public Long getWorkTime(int guideId) {
+        getRepository().begin();
+        Long workTime = getRepository().getWorkTime(guideId);
+        getRepository().commit();
+        return workTime;
+    }
 }

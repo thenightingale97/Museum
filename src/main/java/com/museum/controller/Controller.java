@@ -33,7 +33,7 @@ public class Controller {
 	
 	public static void main(String[] args) {
 	    GuideService eventRepository = new GuideServiceImpl();
-	    System.out.println(eventRepository.getEventAmountByPeriod(4, LocalDateTime.parse("2018-02-22T00:00:00"), LocalDateTime.parse("2018-02-24T16:00:00")));
+	    System.out.println(eventRepository.getWorkTime(4));
 	}
 	
 	public static EntityManagerFactory getEntityManagerFactory() {
