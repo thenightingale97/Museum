@@ -13,9 +13,6 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
 
     /**
      * Task 7.
-     * Select event.id, startTime, finishTime, excursion.name  from event   join excursion
-      on excursion.id   = event.excursion_id where where "2018-02-20" <= startTime 
-      AND "2018-02-21" >= finishTime;
      */
     @Override
     public List<Event> getByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
@@ -25,6 +22,18 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter(1, fromTime);
         query.setParameter(2, toTime);
         return query.getResultList();
+    }
+    
+    /**
+     * Task 9.
+     */
+    @Override
+    public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        String sql = "SELECT COUNT(event) FROM Event event WHERE event.startTime >= ?1 AND event.startTime <= ?2";
+        TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
+        query.setParameter(1, fromTime);
+        query.setParameter(2, toTime);
+        return query.getSingleResult();
     }
 
 }

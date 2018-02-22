@@ -1,5 +1,6 @@
 package com.museum.service.impl;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import com.museum.entity.Guide;
@@ -21,5 +22,21 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
         List<Guide> guides = getRepository().getByPosition(position);
         getRepository().commit();
         return guides;
+    }
+
+    @Override
+    public Long getEventAmount(int guidId) {
+        getRepository().begin();
+        Long eventAmount = getRepository().getEventAmount(guidId);
+        getRepository().commit();
+        return eventAmount;
+    }
+
+    @Override
+    public Long getEventAmountByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime) {
+        getRepository().begin();
+        Long eventAmount = getRepository().getEventAmountByPeriod(guidId, fromTime, toTime);
+        getRepository().commit();
+        return eventAmount != null? eventAmount : 0;
     }
 }

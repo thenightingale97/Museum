@@ -11,9 +11,9 @@ import com.museum.service.EventService;
 
 public class EventServiceImpl extends AbstractService<Event, Integer, EventRepository> implements EventService {
 
-	public EventServiceImpl() {
-		super(new EventRepositoryImpl());
-	}
+    public EventServiceImpl() {
+	super(new EventRepositoryImpl());
+    }
 
     @Override
     public List<Event> getByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
@@ -21,5 +21,13 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
         List<Event> events = getRepository().getByPeriod(fromTime, toTime);
         getRepository().commit();
         return events;
+    }
+
+    @Override
+    public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        getRepository().begin();
+        Long amount = getRepository().getAmountByPeriod(fromTime, toTime);
+        getRepository().commit();
+        return amount;
     }
 }
