@@ -5,27 +5,24 @@
        xmlns:tx="http://www.springframework.org/schema/tx"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
  http://www.springframework.org/schema/beans/spring-beans.xsd
-
-
-
-
-
-
  http://www.springframework.org/schema/tx
  http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <tx:annotation-driven transaction-manager="transactionManager"/>
 
-    <bean id="transactionManager" class="org.springframework.orm.hibernate3.HibernateTransactionManager">
-        <property name="sessionFactory" ref="entityManagerFactory"/>
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
     </bean>
 
-    <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
-        <property name="basename" value="classpath:messages"/>
-        <property name="defaultEncoding" value="UTF-8"/>
-    </bean>
+    <!-- <bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+         <property name="basename">
+             <value>classpath*:resourcebundles/messages</value>
+         </property>
+         <property name="defaultEncoding" value="UTF-8"/>
+     </bean>-->
 
-    <bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
+    <bean id="propertyConfigurer"
+          class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"
           p:location="/WEB-INF/jdbc.properties"/>
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource"
@@ -39,13 +36,7 @@
     <bean id="entityManagerFactory" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
         <property name="dataSource" ref="dataSource"/>
         <property name="jpaVendorAdapter" ref="hibernateJpaVendorAdapter"/>
-        <!-- Set JPA properties -->
-        <property name="jpaProperties">
-            <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
-                <prop key="javax.persistence.schema-generation.database.action">update</prop>
-            </props>
-        </property>
+        <property name="persistenceXmlLocation" value="/META-INF/persistance.xml"/>
         <!-- Set base package of your entities -->
         <property name="packagesToScan" value="com.museum.entity"/>
         <!-- Set share cache mode TODO погуглити-->
