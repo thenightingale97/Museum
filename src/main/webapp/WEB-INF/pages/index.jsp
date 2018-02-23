@@ -15,10 +15,7 @@
     <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
-<p>${authorName}</p>
-<p>Hello</p>
-
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default navbar-fixed-top">
     <div class="container">
         <div class="navbar-header">
             <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
