@@ -9,10 +9,10 @@
 <html>
 <head>
     <title>Title</title>
-    <link rel="stylesheet" href="/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/resources/css/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/resources/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
 </head>
 <body>
 <p>${authorName}</p>
@@ -39,11 +39,8 @@
 </nav>
 
 <!-- First Container -->
-<div class="container-fluid bg-1 text-center"
-     style="background-image: url(/resources/images/museum-background.jpg); background-size: 100%">
+<div class="container-fluid bg-1 text-center">
     <h3 class="margin">Хто ми є ?</h3>
-    <img src="images/museum-logo.png" class="img-responsive img-circle margin" style="display:inline" alt="Bird"
-         width="350" height="350">
     <h3>Ми шукачі істини, що намагаються знайти її у минулому</h3>
 </div>
 
