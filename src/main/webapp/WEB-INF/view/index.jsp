@@ -1,34 +1,10 @@
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-    <title>Title</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/bootstrap.min.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="${pageContext.request.contextPath}/resources/js/bootstrap.min.js"></script>
+    <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+    <title>Home</title>
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#"><spring:message code="main"/></a>
-        </div>
-        <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-                <li><a href="#"><spring:message code="excursions"/></a></li>
-                <li><a href="#"><spring:message code="guides"/></a></li>
-                <li><a href="#"><spring:message code="showpieces"/></a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
-
 <!-- First Container -->
 <div class="container-fluid bg-1 text-center">
     <h3 class="margin">Хто ми є ?</h3>
@@ -45,7 +21,6 @@
         <span class="glyphicon glyphicon-search"></span> Search
     </a>
 </div>
-
 <!-- Third Container (Grid) -->
 <div class="container-fluid bg-3 text-center">
     <h3 class="margin">Where To Find Me?</h3><br>
@@ -67,11 +42,8 @@
         </div>
     </div>
 </div>
-
-<!-- Footer -->
-<footer class="container-fluid bg-4 text-center">
-    <p>Bootstrap Theme Made By <a href="https://www.w3schools.com">www.w3schools.com</a></p>
-</footer>
-
 </body>
 </html>
+
+
+
