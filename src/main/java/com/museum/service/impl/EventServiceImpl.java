@@ -40,4 +40,10 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     public Long getAmountByPeriodAndGuide(int guideId, LocalDateTime fromTime, LocalDateTime toTime) {
         return getRepository().getAmountByPeriodAndGuide(guideId, fromTime, toTime);
     }
+
+    @Override
+    public List<Event> findEventOrderedByDate() {
+        return getRepository().findEventOrderedByDate();
+    }
+
 }
