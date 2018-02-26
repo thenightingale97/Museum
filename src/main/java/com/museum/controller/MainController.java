@@ -1,7 +1,6 @@
 package com.museum.controller;
 
 
-import com.museum.service.AuthorService;
 import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,10 +12,15 @@ public class MainController {
     
     @Autowired
     ShowpieceService showpieceService;
-
+    
     @RequestMapping("/")
     public String getRandomShowpieces(Model model) {
         model.addAttribute("imageUrl", showpieceService.find(1).getImageUrl());
         return "index";
+    }
+    
+    @RequestMapping("/excursions")
+    public String excursions(Model model) {
+        return "excursions";
     }
 }

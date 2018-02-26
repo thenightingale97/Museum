@@ -27,6 +27,9 @@ public class Excursion {
     @Column
     private Integer maxVisitorAmount;
     
+    @Column
+    private String description;
+    
     public Excursion() {
 	}
 
@@ -76,5 +79,13 @@ public class Excursion {
     
     public void setMaxVisitorAmount(Integer maxVisitorAmount) {
         this.maxVisitorAmount = maxVisitorAmount;
+    }
+    
+    public String getDescription() {
+        return description;
+    }
+    
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
