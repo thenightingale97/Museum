@@ -17,9 +17,9 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#myPage">HOME</a></li>
-                    <li><a href="#band">BAND</a></li>
-                    <li><a href="#tour">TOUR</a></li>
-                    <li><a href="#contact">CONTACT</a></li>
+                    <li><a href="#band"><spring:message code="excursions"/></a></li>
+                    <li><a href="#tour"><spring:message code="guides"/></a></li>
+                    <li><a href="#contact"><spring:message code="showpieces"/></a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
                             <span class="caret"></span></a>
