@@ -16,12 +16,12 @@ public class Showpiece {
 	private String name;
 	
 	@Column
-        private ShowpieceTechnique technique;
+	private ShowpieceTechnique technique;
     
-        @Column
-        private ShowpieceMaterial material;
+	@Column
+	private ShowpieceMaterial material;
     
-        @ManyToOne
+	@ManyToOne
 	private Author author;
 	
 	@ManyToMany(mappedBy="showpieces")
