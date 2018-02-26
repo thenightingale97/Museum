@@ -19,13 +19,13 @@ public class MainController {
     
     @RequestMapping("/")
     public String main(Model model) {
-        model.addAttribute("showpiece0", showpieceService.getShowpieceRandomList().get(0));
-        model.addAttribute("showpiece1", showpieceService.getShowpieceRandomList().get(1));
-        model.addAttribute("showpiece2", showpieceService.getShowpieceRandomList().get(2));
+        model.addAttribute("showpiece0", showpieceService.getRandomShowpiece());
+        model.addAttribute("showpiece1", showpieceService.getRandomShowpiece());
+        model.addAttribute("showpiece2", showpieceService.getRandomShowpiece());
 
-        model.addAttribute("event0", eventService.findEventOrderedByDate().get(0));
-        model.addAttribute("event1", eventService.findEventOrderedByDate().get(1));
-        model.addAttribute("event2", eventService.findEventOrderedByDate().get(2));
+        model.addAttribute("upcomingEvents", eventService.findUpcomingEventsOrderedByDate());
+//        model.addAttribute("event1", eventService.findUpcomingEventsOrderedByDate().get(1));
+//        model.addAttribute("event2", eventService.findUpcomingEventsOrderedByDate().get(2));
         return "index";
     }
 

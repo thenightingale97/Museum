@@ -6,6 +6,7 @@ import com.museum.entity.ShowpieceTechnique;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public interface ShowpieceService extends Service<Showpiece, Integer> {
     
@@ -19,5 +20,5 @@ public interface ShowpieceService extends Service<Showpiece, Integer> {
     
     Map<ShowpieceMaterial, Long> getStatisticByMaterial();
 
-    List<Showpiece> getShowpieceRandomList();
+    Showpiece getRandomShowpiece();
 }

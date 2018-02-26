@@ -109,4 +109,36 @@ public class Showpiece {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+
+		Showpiece showpiece = (Showpiece) o;
+
+		if (id != showpiece.id) return false;
+		if (name != null ? !name.equals(showpiece.name) : showpiece.name != null) return false;
+		if (technique != showpiece.technique) return false;
+		if (material != showpiece.material) return false;
+		if (author != null ? !author.equals(showpiece.author) : showpiece.author != null) return false;
+		if (excursions != null ? !excursions.equals(showpiece.excursions) : showpiece.excursions != null) return false;
+		if (hall != null ? !hall.equals(showpiece.hall) : showpiece.hall != null) return false;
+		if (imageUrl != null ? !imageUrl.equals(showpiece.imageUrl) : showpiece.imageUrl != null) return false;
+		return description != null ? description.equals(showpiece.description) : showpiece.description == null;
+	}
+
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (technique != null ? technique.hashCode() : 0);
+		result = 31 * result + (material != null ? material.hashCode() : 0);
+		result = 31 * result + (author != null ? author.hashCode() : 0);
+		result = 31 * result + (excursions != null ? excursions.hashCode() : 0);
+		result = 31 * result + (hall != null ? hall.hashCode() : 0);
+		result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
+		result = 31 * result + (description != null ? description.hashCode() : 0);
+		return result;
+	}
 }

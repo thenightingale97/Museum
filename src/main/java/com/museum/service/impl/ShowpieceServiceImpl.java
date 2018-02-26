@@ -9,22 +9,19 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, ShowpieceRepository> implements ShowpieceService {
-    
+
     @Autowired
     private ShowpieceRepository repository;
-    
+
     @Override
     public ShowpieceRepository getRepository() {
         return repository;
     }
-    
+
     @Override
     public List<Showpiece> findByHall(int hallId) {
         return getRepository().findByHall(hallId);
@@ -39,26 +36,22 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     public List<Showpiece> findByGuardian(int guardianId) {
         return getRepository().findByGuardian(guardianId);
     }
-    
+
     @Override
     public Map<ShowpieceTechnique, Long> getStatisticByTechnique() {
         return getRepository().getStatisticByTechnique();
     }
-    
+
     @Override
     public Map<ShowpieceMaterial, Long> getStatisticByMaterial() {
         return getRepository().getStatisticByMaterial();
     }
 
     @Override
-    public List<Showpiece> getShowpieceRandomList() {
+    public Showpiece getRandomShowpiece() {
         Random random = new Random();
-        List<Showpiece> list = new ArrayList<>();
-        int randomShowpieceAmount = 3;
         int maxSize = getRepository().findAll().size() - 1;
-        for (int i = 0; i < randomShowpieceAmount; i++){
-            list.add(getRepository().find(random.nextInt(maxSize) + 1));
-        }
-        return list;
+        Showpiece randomShowpiece = find(random.nextInt(maxSize) + 1);
+        return randomShowpiece ;
     }
 }

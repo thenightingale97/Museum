@@ -63,15 +63,17 @@
 <div id="tour" class="bg-1">
     <div class="container">
         <div class="row text-center">
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="paris.jpg" alt="Paris" width="400" height="300">
-                    <p><strong>${event0.excursion.name}</strong></p>
-                    <p>${event0.startTime}</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+            <c:forEach items="${upcomingEvents}" var="event">
+                <div class="col-sm-4">
+                    <div class="thumbnail">
+                        <img src="paris.jpg" alt="Paris" width="400" height="300">
+                        <p><strong>${event.excursion.name}</strong></p>
+                        <p>${event.startTime}</p>
+                        <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
+                    </div>
                 </div>
-            </div>
-            <div class="col-sm-4">
+            </c:forEach>
+            <%--<div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="newyork.jpg" alt="New York" width="400" height="300">
                     <p><strong>${event1.excursion.name}</strong></p>
@@ -86,7 +88,7 @@
                     <p>${event2.startTime}</p>
                     <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
                 </div>
-            </div>
+            </div>--%>
         </div>
     </div>
 
