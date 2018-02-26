@@ -18,4 +18,6 @@ public interface ShowpieceService extends Service<Showpiece, Integer> {
     Map<ShowpieceTechnique, Long> getStatisticByTechnique();
     
     Map<ShowpieceMaterial, Long> getStatisticByMaterial();
+
+    List<Showpiece> getShowpieceRandomList();
 }

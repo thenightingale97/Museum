@@ -1,5 +1,6 @@
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ taglib prefix="tiles" uri="http://tiles.apache.org/tags-tiles" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -15,7 +16,7 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="ny.jpg" alt="New York" width="1200" height="700">
+            <img src="/resources/images/showpieces/${imageUrl}" alt="New York" width="1200" height="700">
             <div class="carousel-caption">
                 <h3>New York</h3>
                 <p>The atmosphere in New York is lorem ipsum.</p>
@@ -56,41 +57,6 @@
     <p><em>Ми любимо щось там</em></p>
     <p>Текст про наш музей</p>
     <br>
-    <div class="row">
-        <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
-            <a href="#demo" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-            </a>
-            <div id="demo" class="collapse">
-                <p>Guitarist and Lead Vocalist</p>
-                <p>Loves long walks on the beach</p>
-                <p>Member since 1988</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
-            <a href="#demo2" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-            </a>
-            <div id="demo2" class="collapse">
-                <p>Drummer</p>
-                <p>Loves drummin'</p>
-                <p>Member since 1988</p>
-            </div>
-        </div>
-        <div class="col-sm-4">
-            <p class="text-center"><strong>Name</strong></p><br>
-            <a href="#demo3" data-toggle="collapse">
-                <img src="bandmember.jpg" class="img-circle person" alt="Random Name" width="255" height="255">
-            </a>
-            <div id="demo3" class="collapse">
-                <p>Bass player</p>
-                <p>Loves math</p>
-                <p>Member since 2005</p>
-            </div>
-        </div>
-    </div>
 </div>
 
 <!-- Container (TOUR Section) -->

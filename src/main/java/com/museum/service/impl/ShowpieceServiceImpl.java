@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 @Service
 public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, ShowpieceRepository> implements ShowpieceService {
@@ -46,5 +47,17 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     @Override
     public Map<ShowpieceMaterial, Long> getStatisticByMaterial() {
         return getRepository().getStatisticByMaterial();
+    }
+
+    @Override
+    public List<Showpiece> getShowpieceRandomList() {
+        Random random = new Random();
+        List<Showpiece> list;
+        int randomShopieceAmount = 3;
+        int maxSize = getRepository().findAll().size();
+        for (int i = 0; i < randomShopieceAmount; i++){
+
+        }
+        return null;
     }
 }

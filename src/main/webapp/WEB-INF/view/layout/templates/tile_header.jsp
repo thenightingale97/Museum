@@ -16,17 +16,16 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#myPage">HOME</a></li>
-                    <li><a href="#band"><spring:message code="excursions"/></a></li>
-                    <li><a href="#tour"><spring:message code="guides"/></a></li>
-                    <li><a href="#contact"><spring:message code="showpieces"/></a></li>
+                    <li><a href="#"><spring:message code="main"/></a></li>
+                    <li><a href="#"><spring:message code="excursions"/></a></li>
+                    <li><a href="#"><spring:message code="guides"/></a></li>
+                    <li><a href="#"><spring:message code="showpieces"/></a></li>
                     <li class="dropdown">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="#">MORE
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="more"/>
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Merchandise</a></li>
-                            <li><a href="#">Extras</a></li>
-                            <li><a href="#">Media</a></li>
+                            <li><a href="#"><spring:message code="registration"/></a></li>
+                            <li><a href="#"><spring:message code="login"/></a></li>
                         </ul>
                     </li>
                     <li><a href="#"><span class="glyphicon glyphicon-search"></span></a></li>
