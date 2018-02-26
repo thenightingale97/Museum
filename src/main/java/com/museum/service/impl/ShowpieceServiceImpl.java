@@ -9,6 +9,7 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -52,12 +53,12 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     @Override
     public List<Showpiece> getShowpieceRandomList() {
         Random random = new Random();
-        List<Showpiece> list;
-        int randomShopieceAmount = 3;
-        int maxSize = getRepository().findAll().size();
-        for (int i = 0; i < randomShopieceAmount; i++){
-
+        List<Showpiece> list = new ArrayList<>();
+        int randomShowpieceAmount = 3;
+        int maxSize = getRepository().findAll().size() - 1;
+        for (int i = 0; i < randomShowpieceAmount; i++){
+            list.add(getRepository().find(random.nextInt(maxSize) + 1));
         }
-        return null;
+        return list;
     }
 }
