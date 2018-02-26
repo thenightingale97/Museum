@@ -1,9 +1,8 @@
 package com.museum.entity;
 
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
-
-import javax.persistence.*;
 
 @Entity
 @Table(name="event")
@@ -71,6 +70,5 @@ public class Event {
 	public void setFinishTime(LocalDateTime finishTime) {
 		this.finishTime = finishTime;
 	}
-	
 	
 }
