@@ -14,4 +14,8 @@
     <definition name="excursions" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/excursions.jsp"/>
     </definition>
+
+    <definition name="showpiece" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/showpiece.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -23,4 +23,9 @@ public class MainController {
     public String excursions(Model model) {
         return "excursions";
     }
+    
+    @RequestMapping("/showpiece")
+    public String showpiece(Model model) {
+        return "showpiece";
+    }
 }
