@@ -16,26 +16,26 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="/resources/images/showpieces/${imageUrl}" alt="New York" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece0.imageUrl}" alt="New York" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>New York</h3>
-                <p>The atmosphere in New York is lorem ipsum.</p>
+                <h3>${showpiece0.name}</h3>
+                <p>${showpiece0.author.firstName} ${showpiece0.author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="chicago.jpg" alt="Chicago" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece1.imageUrl}" alt="Chicago" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>Chicago</h3>
-                <p>Thank you, Chicago - A night we won't forget.</p>
+                <h3>${showpiece1.name}</h3>
+                <p>${showpiece1.author.firstName} ${showpiece1.author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="la.jpg" alt="Los Angeles" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece2.imageUrl}" alt="Los Angeles" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>LA</h3>
-                <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                <h3>${showpiece2.name}</h3>
+                <p>${showpiece2.author.firstName} ${showpiece2.author.lastName}</p>
             </div>
         </div>
     </div>
@@ -66,24 +66,24 @@
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="paris.jpg" alt="Paris" width="400" height="300">
-                    <p><strong>Paris</strong></p>
-                    <p>Friday 27 November 2015</p>
+                    <p><strong>${event0.excursion.name}</strong></p>
+                    <p>${event0.startTime}</p>
                     <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="newyork.jpg" alt="New York" width="400" height="300">
-                    <p><strong>New York</strong></p>
-                    <p>Saturday 28 November 2015</p>
+                    <p><strong>${event1.excursion.name}</strong></p>
+                    <p>${event1.startTime}</p>
                     <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
                 </div>
             </div>
             <div class="col-sm-4">
                 <div class="thumbnail">
                     <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                    <p><strong>San Francisco</strong></p>
-                    <p>Sunday 29 November 2015</p>
+                    <p><strong>${event2.excursion.name}</strong></p>
+                    <p>${event2.startTime}</p>
                     <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
                 </div>
             </div>
@@ -131,7 +131,7 @@
 <div id="googleMap"></div>
 <script>
     function myMap() {
-        var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+        var myCenter = new google.maps.LatLng(49.832748, 23.996945);
         var mapProp = {
             center: myCenter,
             zoom: 12,
@@ -144,7 +144,7 @@
         marker.setMap(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVlNcZK3Rae0GTCA_QyCEiN7IM3YsHQn8&callback=myMap"></script>
 <!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
