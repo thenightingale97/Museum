@@ -24,7 +24,7 @@ public class Visitor {
     private String password;
 
     @Column
-    private VisitorAccessLevel accessLevel;
+    private VisitorRole accessLevel;
 
     @ManyToMany(mappedBy = "visitors")
     private List<Event> events;
@@ -80,12 +80,12 @@ public class Visitor {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
-
-    public VisitorAccessLevel getAccessLevel() {
+    
+    public VisitorRole getAccessLevel() {
         return accessLevel;
     }
-
-    public void setAccessLevel(VisitorAccessLevel accessLevel) {
+    
+    public void setAccessLevel(VisitorRole accessLevel) {
         this.accessLevel = accessLevel;
     }
 }
