@@ -10,8 +10,7 @@ public class Showpiece {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private int id;
-
-	    
+	
 	@Column
 	private String name;
 	
@@ -32,6 +31,9 @@ public class Showpiece {
 
 	@Column
 	private String imageUrl;
+	
+	@Column
+	private String description;
 	
 	public Showpiece() {
 	}
@@ -99,4 +101,12 @@ public class Showpiece {
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
     }
+	
+	public String getDescription() {
+		return description;
+	}
+	
+	public void setDescription(String description) {
+		this.description = description;
+	}
 }
