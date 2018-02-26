@@ -131,7 +131,7 @@
 <div id="googleMap"></div>
 <script>
     function myMap() {
-        var myCenter = new google.maps.LatLng(41.878114, -87.629798);
+        var myCenter = new google.maps.LatLng(49.832748, 23.996945);
         var mapProp = {
             center: myCenter,
             zoom: 12,
@@ -144,7 +144,7 @@
         marker.setMap(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBu-916DdpKAjTmJNIgngS6HL_kDIKU0aU&callback=myMap"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAVlNcZK3Rae0GTCA_QyCEiN7IM3YsHQn8&callback=myMap"></script>
 <!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp

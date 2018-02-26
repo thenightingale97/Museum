@@ -26,10 +26,10 @@ public class MainController {
         model.addAttribute("event0", eventService.findEventOrderedByDate().get(0));
         model.addAttribute("event1", eventService.findEventOrderedByDate().get(1));
         model.addAttribute("event2", eventService.findEventOrderedByDate().get(2));
-
         return "index";
     }
-    
+
+
     @RequestMapping("/excursions")
     public String excursions(Model model) {
         return "excursions";
