@@ -16,26 +16,26 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="/resources/images/showpieces/${imageUrl}" alt="New York" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece0.imageUrl}" alt="New York" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>New York</h3>
-                <p>The atmosphere in New York is lorem ipsum.</p>
+                <h3>${showpiece0.name}</h3>
+                <p>${showpiece0.author.firstName} ${showpiece0.author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="chicago.jpg" alt="Chicago" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece1.imageUrl}" alt="Chicago" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>Chicago</h3>
-                <p>Thank you, Chicago - A night we won't forget.</p>
+                <h3>${showpiece1.name}</h3>
+                <p>${showpiece1.author.firstName} ${showpiece1.author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="la.jpg" alt="Los Angeles" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpiece2.imageUrl}" alt="Los Angeles" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>LA</h3>
-                <p>Even though the traffic was a mess, we had the best time playing at Venice Beach!</p>
+                <h3>${showpiece2.name}</h3>
+                <p>${showpiece2.author.firstName} ${showpiece2.author.lastName}</p>
             </div>
         </div>
     </div>
