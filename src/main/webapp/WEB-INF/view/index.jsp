@@ -52,15 +52,9 @@
 
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
-    <h3>THE BAND</h3>
-    <p><em>We love music!</em></p>
-    <p>We have created a fictional band website. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-        cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui
-        officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-        labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-        aliquip ex ea commodo consequat.</p>
+    <h3>Музей</h3>
+    <p><em>Ми любимо щось там</em></p>
+    <p>Текст про наш музей</p>
     <br>
     <div class="row">
         <div class="col-sm-4">
@@ -102,14 +96,6 @@
 <!-- Container (TOUR Section) -->
 <div id="tour" class="bg-1">
     <div class="container">
-        <h3 class="text-center">TOUR DATES</h3>
-        <p class="text-center">Lorem ipsum we'll play you some music.<br> Remember to book your tickets!</p>
-        <ul class="list-group">
-            <li class="list-group-item">September <span class="label label-danger">Sold Out!</span></li>
-            <li class="list-group-item">October <span class="label label-danger">Sold Out!</span></li>
-            <li class="list-group-item">November <span class="badge">3</span></li>
-        </ul>
-
         <div class="row text-center">
             <div class="col-sm-4">
                 <div class="thumbnail">
