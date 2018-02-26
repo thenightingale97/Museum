@@ -10,4 +10,8 @@
     <definition name="index" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/index.jsp"/>
     </definition>
+
+    <definition name="excursions" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/excursions.jsp"/>
+    </definition>
 </tiles-definitions>
