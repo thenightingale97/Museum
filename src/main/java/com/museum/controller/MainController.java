@@ -15,8 +15,10 @@ public class MainController {
     ShowpieceService showpieceService;
 
     @RequestMapping("/")
-    public String getRandomShowpieces(Model model) {
-        model.addAttribute("imageUrl", showpieceService.find(1).getImageUrl());
+    public String main(Model model) {
+        model.addAttribute("showpiece0", showpieceService.getShowpieceRandomList().get(0));
+        model.addAttribute("showpiece1", showpieceService.getShowpieceRandomList().get(1));
+        model.addAttribute("showpiece2", showpieceService.getShowpieceRandomList().get(2));
         return "index";
     }
 }
