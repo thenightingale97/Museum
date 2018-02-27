@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-sm-4 filters">
             <div class="row"><h3>Оберіть дату цікавої для вас події!</h3></div>
-            <form:form action="/excursions/lol" method="GET" >
+            <form:form action="/excursions" method="GET" >
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker6'>
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="btn btn-default">Пошук</button>
+                <button type="submit" class="btn btn-default">Пошук</button>
             </form:form>
         </div>
         <div class="col-sm-8 showpieceContext">
@@ -45,9 +45,12 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker6').datetimepicker({
+            format: "YYYY-MM-DD HH:mm"
+        });
         $('#datetimepicker7').datetimepicker({
-            useCurrent: false //Important! See issue #1075
+            format: "YYYY-MM-DD HH:mm",
+            useCurrent: false//Important! See issue #1075
         });
         $("#datetimepicker6").on("dp.change", function (e) {
             $('#datetimepicker7').data("DateTimePicker").minDate(e.date);

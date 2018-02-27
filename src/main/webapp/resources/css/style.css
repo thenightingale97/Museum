@@ -196,6 +196,7 @@ textarea {
 
 .showpiece_font {
     font-size: 24px;
+}
 .filters h3 {
     text-align: center;
     color: white;
@@ -204,6 +205,22 @@ textarea {
 .col-sm-8 {
     margin-top: 60px;
 }
+.showpieceColumn {
+    background-color: #999999;
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid;
+    height: auto;
+}
+
+.showpieceImg {
+    float: left;
+}
+
+.showpieceColumnText {
+    color: white;
+}
+
 
 #table_showpiece {
     margin-top: 100px;
