@@ -18,4 +18,8 @@
     <definition name="showpiece" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/showpiece.jsp"/>
     </definition>
+    
+    <definition name="admin" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin.jsp"/>
+    </definition>
 </tiles-definitions>
