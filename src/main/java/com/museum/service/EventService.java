@@ -11,6 +11,10 @@ public interface EventService extends Service<Event, Integer> {
     
     List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
+    List<Event> findAllByFromTime(LocalDateTime fromTime);
+    
+    List<Event> findAllByToTime(LocalDateTime toTime);
+    
     Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
     Long getAmountByGuide(Guide guide);
