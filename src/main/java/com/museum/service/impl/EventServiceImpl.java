@@ -22,8 +22,8 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     }
 
     @Override
-    public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        return getRepository().findByPeriod(fromTime, toTime);
+    public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        return getRepository().findAllByPeriod(fromTime, toTime);
     }
     
     @Override
