@@ -7,11 +7,11 @@
     <div class="row">
         <div class="col-sm-4 filters">
             <div class="row"><h3>Оберіть дату цікавої для вас події!</h3></div>
-            <form:form action="/excursions" method="GET" >
+            <form:form action="/excursions" method="GET" modelAttribute="periodRequest" >
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker6'>
-                            <input name="fromDate" type='text' class="form-control" />
+                            <form:input path="fromDateTime" type='text' class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -21,7 +21,7 @@
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker7'>
-                            <input name="toDate" type='text' class="form-control" />
+                            <form:input path="toDateTime" type='text' class="form-control" />
                             <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
