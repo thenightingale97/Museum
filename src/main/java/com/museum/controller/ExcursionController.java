@@ -21,11 +21,14 @@ public class ExcursionController {
     
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
     
-
+    
     @Autowired
     EventService eventService;
     
     private static LocalDateTime parseDateTimeNullable(String dateTime) {
+        if (dateTime == null) {
+            return null;
+        }
         try {
             return LocalDateTime.parse(dateTime, DATE_TIME_FORMATTER);
         } catch (DateTimeParseException ex) {
@@ -52,5 +55,5 @@ public class ExcursionController {
         model.addAttribute("events", events);
         return "excursions";
     }
-
+    
 }
