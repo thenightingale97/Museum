@@ -20,6 +20,10 @@
     </definition>
     
     <definition name="admin" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/view/admin.jsp"/>
+        <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
+    </definition>
+
+    <definition name="admin-author" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/author.jsp"/>
     </definition>
 </tiles-definitions>
