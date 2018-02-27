@@ -16,7 +16,7 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="/index"><spring:message code="main"/></a></li>
+                    <li><a href="/"><spring:message code="main"/></a></li>
                     <li><a href="/excursions"><spring:message code="excursions"/></a></li>
                     <li><a href="#"><spring:message code="guides"/></a></li>
                     <li><a href="#"><spring:message code="showpieces"/></a></li>

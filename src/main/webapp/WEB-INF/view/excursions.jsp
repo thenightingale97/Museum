@@ -2,30 +2,37 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body>
-<div class="container-fluid clearfix">
+<div class="container-fluid">
     <div class="row">
-        <div class="col-sm-3 filters">
-            <h3>Фільтри</h3>
-            <div class="row">
-                <div class="col-xs-12">
-                    <h3>DateTimePicker #1</h3>
-                    <div class="form-group">
-                        <div class="input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control"/>
-                            <span class="input-group-addon">
-                                <span class="glyphicon-calendar glyphicon"></span>
-                            </span>
-                        </div>
+        <div class="col-sm-4 filters">
+            <div class="row"><h3>Оберіть дату цікавої для вас події!</h3></div>
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker6'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+            </div>
+            <div class='col-sm-6'>
+                <div class="form-group">
+                    <div class='input-group date' id='datetimepicker7'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="col-sm-9 showpieceContext">
+        <div class="col-sm-8 showpieceContext">
             <c:forEach items="${events}" var="event">
                 <div class="col-sm-5 showpieceColumn">
                     <img class="showpieceImg" src="" height="60px" width="60px" alt="lol">
                     <div class="row"><span class="showpieceColumnText">${event.excursion.name}</span></div>
-                    <div class="row">${event.startTime} - ${event.finishTime}</div>
+                    <div class="row"><span class="showpieceColumnText">${event.startTime} - ${event.finishTime}</span></div>
                 </div>
             </c:forEach>
         </div>
@@ -34,15 +41,15 @@
 
 <script type="text/javascript">
     $(function () {
-        $('#datetimepicker1').datetimepicker({
-            locale: 'ru',
-            stepping: 10,
-            format: 'DD.MM.YYYY',
-            defaultDate: moment('01.11.2017').format('DD.MM.YYYY'),
-            daysOfWeekDisabled: [0, 6]
+        $('#datetimepicker6').datetimepicker();
+        $('#datetimepicker7').datetimepicker({
+            useCurrent: false //Important! See issue #1075
         });
-        $('#datetimepicker2').datetimepicker({
-            locale: 'ru'
+        $("#datetimepicker6").on("dp.change", function (e) {
+            $('#datetimepicker7').data("DateTimePicker").minDate(e.date);
+        });
+        $("#datetimepicker7").on("dp.change", function (e) {
+            $('#datetimepicker6').data("DateTimePicker").maxDate(e.date);
         });
     });
 </script>

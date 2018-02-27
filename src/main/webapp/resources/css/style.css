@@ -188,11 +188,17 @@ textarea {
 /* Excursions */
 .filters {
     background-color: #8c8c8c;
-    min-height: auto;
+    min-height: 700px;
     padding-top: 60px;
+    margin-top: 50px;
 }
 
-.col-sm-9 {
+.filters h3 {
+    text-align: center;
+    color: white;
+}
+
+.col-sm-8 {
     margin-top: 60px;
 }
 
