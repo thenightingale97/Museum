@@ -36,9 +36,20 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
     @Override
     public List<E> findAll() {
         String entityName = getEntityClass().getName();
+        String sql = "SELECT entity FROM " + entityName + " entity";
         return entityManager
-                .createQuery("SELECT entity FROM " + entityName + " entity", getEntityClass())
+                .createQuery(sql, getEntityClass())
                 .getResultList();
+    }
+    
+    @Override
+    public int count() {
+        String entityName = getEntityClass().getName();
+        String sql = "SELECT COUNT(entity) FROM " + entityName + " entity";
+        return entityManager
+                .createQuery(sql, Long.class)
+                .getSingleResult()
+                .intValue();
     }
     
     protected EntityManager getEntityManager() {

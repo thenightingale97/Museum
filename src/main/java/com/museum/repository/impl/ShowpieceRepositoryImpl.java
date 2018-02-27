@@ -20,7 +20,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 2.
      */
     @Override
-    public List<Showpiece> findByAuthor(int authorId) {
+    public List<Showpiece> findAllByAuthor(int authorId) {
         String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.author.id = ?1";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
         query.setParameter(1, authorId);
@@ -31,7 +31,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 3.
      */
     @Override
-    public List<Showpiece> findByGuardian(int guardianId) {
+    public List<Showpiece> findAllByGuardian(int guardianId) {
         String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.guardian.id = ?1";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
         query.setParameter(1, guardianId);
@@ -42,7 +42,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 4.
      */
     @Override
-    public List<Showpiece> findByHall(int hallId) {
+    public List<Showpiece> findAllByHall(int hallId) {
         String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.id = ?1";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
         query.setParameter(1, hallId);
@@ -75,5 +75,13 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
             result.put((ShowpieceMaterial) objects[0], (Long) objects[1]);
         }
         return result;
+    }
+    
+    @Override
+    public List<Showpiece> findAllByIds(List<Integer> showpieceIds) {
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE (showpiece.id IN (:showpieceIds))";
+        TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
+        query.setParameter("showpieceIds", showpieceIds);
+        return query.getResultList();
     }
 }

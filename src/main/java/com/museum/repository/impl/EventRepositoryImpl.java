@@ -67,11 +67,10 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
     }
 
     @Override
-    public List<Event> findUpcomingEventsOrderedByDate() {
+    public List<Event> findAllUpcomingOrderedByDate(int limit) {
         String sql = "SELECT event FROM Event event ORDER BY event.startTime";
-        int upcomigEventsAmount = 3;
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
-        return query.setFirstResult(0).setMaxResults(upcomigEventsAmount).getResultList();
+        query.setMaxResults(limit);
+        return query.getResultList();
     }
-
 }

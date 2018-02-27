@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 
+import java.util.List;
+
 @Controller
 public class MainController {
     
@@ -24,19 +26,16 @@ public class MainController {
     
     @RequestMapping("/")
     public String main(Model model) {
-        model.addAttribute("showpiece0", showpieceService.getRandomShowpiece());
-        model.addAttribute("showpiece1", showpieceService.getRandomShowpiece());
-        model.addAttribute("showpiece2", showpieceService.getRandomShowpiece());
-
-        model.addAttribute("upcomingEvents", eventService.findUpcomingEventsOrderedByDate());
-//        model.addAttribute("event1", eventService.findUpcomingEventsOrderedByDate().get(1));
-//        model.addAttribute("event2", eventService.findUpcomingEventsOrderedByDate().get(2));
+        List<Showpiece> allByRandom = showpieceService.findAllByRandom(3);
+        model.addAttribute("showpieces", allByRandom);
+        model.addAttribute("upcomingEvents", eventService.findAllUpcomingOrderedByDate(3));
         return "index";
     }
 
 
     @RequestMapping("/excursions")
     public String excursions(Model model) {
+        model.addAttribute("events", eventService.findAll());
         return "excursions";
     }
     

@@ -14,6 +14,6 @@ public interface EventRepository extends Repository<Event, Integer> {
     Long getAmountByGuide(int guidId);
     
     Long getAmountByPeriodAndGuide(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
-
-    List<Event> findUpcomingEventsOrderedByDate();
+    
+    List<Event> findAllUpcomingOrderedByDate(int limit);
 }

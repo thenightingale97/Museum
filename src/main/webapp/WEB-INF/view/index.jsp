@@ -16,26 +16,27 @@
     <!-- Wrapper for slides -->
     <div class="carousel-inner" role="listbox">
         <div class="item active">
-            <img src="/resources/images/showpieces/${showpiece0.imageUrl}" alt="New York" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpieces[0].imageUrl}" alt="New York" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>${showpiece0.name}</h3>
-                <p>${showpiece0.author.firstName} ${showpiece0.author.lastName}</p>
+                <h3>${showpieces[0].name}</h3>
+                <p>${showpiece[0].author.firstName} ${showpieces[0].author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="/resources/images/showpieces/${showpiece1.imageUrl}" alt="Chicago" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpieces[1].imageUrl}" alt="Chicago" width="1200" height="700">
             <div class="carousel-caption">
-                <h3>${showpiece1.name}</h3>
-                <p>${showpiece1.author.firstName} ${showpiece1.author.lastName}</p>
+                <h3>${showpieces[1].name}</h3>
+                <p>${showpieces[1].author.firstName} ${showpieces[1].author.lastName}</p>
             </div>
         </div>
 
         <div class="item">
-            <img src="/resources/images/showpieces/${showpiece2.imageUrl}" alt="Los Angeles" width="1200" height="700">
+            <img src="/resources/images/showpieces/${showpieces[2].imageUrl}" alt="Los Angeles" width="1200"
+                 height="700">
             <div class="carousel-caption">
-                <h3>${showpiece2.name}</h3>
-                <p>${showpiece2.author.firstName} ${showpiece2.author.lastName}</p>
+                <h3>${showpieces[2].name}</h3>
+                <p>${showpieces[2].author.firstName} ${showpieces[2].author.lastName}</p>
             </div>
         </div>
     </div>
@@ -73,22 +74,6 @@
                     </div>
                 </div>
             </c:forEach>
-            <%--<div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="newyork.jpg" alt="New York" width="400" height="300">
-                    <p><strong>${event1.excursion.name}</strong></p>
-                    <p>${event1.startTime}</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                    <p><strong>${event2.excursion.name}</strong></p>
-                    <p>${event2.startTime}</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
-                </div>
-            </div>--%>
         </div>
     </div>
 
