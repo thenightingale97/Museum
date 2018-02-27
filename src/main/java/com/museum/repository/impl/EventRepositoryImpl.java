@@ -16,7 +16,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      * Task 7.
      */
     @Override
-    public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+    public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " +
                 "AND ?2 >= event.finishTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);

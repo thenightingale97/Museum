@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface EventRepository extends Repository<Event, Integer> {
     
-    List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
+    List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
     Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
