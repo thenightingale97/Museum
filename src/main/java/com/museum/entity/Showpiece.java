@@ -6,11 +6,7 @@ import java.util.List;
 
 @Entity
 @Table(name = "showpiece")
-public class Showpiece {
-    
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Showpiece extends IdentifiableEntity<Integer> {
     
     @Column
     private String name;
@@ -40,14 +36,6 @@ public class Showpiece {
     private LocalDate creationDate;
     
     public Showpiece() {
-    }
-    
-    public int getId() {
-        return id;
-    }
-    
-    public void setId(int id) {
-        this.id = id;
     }
     
     public String getName() {
@@ -125,11 +113,11 @@ public class Showpiece {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Showpiece)) return false;
+        if (!super.equals(o)) return false;
         
         Showpiece showpiece = (Showpiece) o;
         
-        if (id != showpiece.id) return false;
         if (name != null ? !name.equals(showpiece.name) : showpiece.name != null) return false;
         if (technique != showpiece.technique) return false;
         if (material != showpiece.material) return false;
@@ -137,12 +125,14 @@ public class Showpiece {
         if (excursions != null ? !excursions.equals(showpiece.excursions) : showpiece.excursions != null) return false;
         if (hall != null ? !hall.equals(showpiece.hall) : showpiece.hall != null) return false;
         if (imageUrl != null ? !imageUrl.equals(showpiece.imageUrl) : showpiece.imageUrl != null) return false;
-        return description != null ? description.equals(showpiece.description) : showpiece.description == null;
+        if (description != null ? !description.equals(showpiece.description) : showpiece.description != null)
+            return false;
+        return creationDate != null ? creationDate.equals(showpiece.creationDate) : showpiece.creationDate == null;
     }
     
     @Override
     public int hashCode() {
-        int result = id;
+        int result = super.hashCode();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (technique != null ? technique.hashCode() : 0);
         result = 31 * result + (material != null ? material.hashCode() : 0);
@@ -151,6 +141,7 @@ public class Showpiece {
         result = 31 * result + (hall != null ? hall.hashCode() : 0);
         result = 31 * result + (imageUrl != null ? imageUrl.hashCode() : 0);
         result = 31 * result + (description != null ? description.hashCode() : 0);
+        result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         return result;
     }
 }

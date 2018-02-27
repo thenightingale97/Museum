@@ -6,16 +6,12 @@ import java.util.List;
 
 @Entity
 @Table(name="excursion")
-public class Excursion {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	@Column
-	private String name;
-	
-	@ManyToMany
+public class Excursion extends IdentifiableEntity<Integer> {
+    
+    @Column
+    private String name;
+    
+    @ManyToMany
 	private List<Showpiece> showpieces;
 	
 	@OneToMany(mappedBy="excursion")
@@ -31,14 +27,6 @@ public class Excursion {
     private String description;
     
     public Excursion() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -92,11 +80,11 @@ public class Excursion {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Excursion)) return false;
+        if (!super.equals(o)) return false;
         
         Excursion excursion = (Excursion) o;
         
-        if (id != excursion.id) return false;
         if (name != null ? !name.equals(excursion.name) : excursion.name != null) return false;
         if (showpieces != null ? !showpieces.equals(excursion.showpieces) : excursion.showpieces != null) return false;
         if (events != null ? !events.equals(excursion.events) : excursion.events != null) return false;
@@ -108,7 +96,7 @@ public class Excursion {
     
     @Override
     public int hashCode() {
-        int result = id;
+        int result = super.hashCode();
         result = 31 * result + (name != null ? name.hashCode() : 0);
         result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
         result = 31 * result + (events != null ? events.hashCode() : 0);

@@ -1,15 +1,14 @@
 package com.museum.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
 @Table(name="guardian")
-public class Guardian {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Guardian extends IdentifiableEntity<Integer> {
 	
 	@Column
 	private String firstName;
@@ -22,14 +21,6 @@ public class Guardian {
 	
 	public Guardian() {
 		
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -59,11 +50,11 @@ public class Guardian {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (!(o instanceof Guardian)) return false;
+		if (!super.equals(o)) return false;
 		
 		Guardian guardian = (Guardian) o;
 		
-		if (id != guardian.id) return false;
 		if (firstName != null ? !firstName.equals(guardian.firstName) : guardian.firstName != null) return false;
 		if (lastName != null ? !lastName.equals(guardian.lastName) : guardian.lastName != null) return false;
 		return halls != null ? halls.equals(guardian.halls) : guardian.halls == null;
@@ -71,7 +62,7 @@ public class Guardian {
 	
 	@Override
 	public int hashCode() {
-		int result = id;
+		int result = super.hashCode();
 		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
 		result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
 		result = 31 * result + (halls != null ? halls.hashCode() : 0);

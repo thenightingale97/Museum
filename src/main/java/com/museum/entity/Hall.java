@@ -5,11 +5,7 @@ import java.util.List;
 
 @Entity
 @Table(name="hall")
-public class Hall {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
+public class Hall extends IdentifiableEntity<Integer> {
 	
 	@Column
 	private String name;
@@ -22,14 +18,6 @@ public class Hall {
 	
 	public Hall() {
 		
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -51,11 +39,11 @@ public class Hall {
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
-		if (o == null || getClass() != o.getClass()) return false;
+		if (!(o instanceof Hall)) return false;
+		if (!super.equals(o)) return false;
 		
 		Hall hall = (Hall) o;
 		
-		if (id != hall.id) return false;
 		if (name != null ? !name.equals(hall.name) : hall.name != null) return false;
 		if (showpieces != null ? !showpieces.equals(hall.showpieces) : hall.showpieces != null) return false;
 		return guardian != null ? guardian.equals(hall.guardian) : hall.guardian == null;
@@ -63,7 +51,7 @@ public class Hall {
 	
 	@Override
 	public int hashCode() {
-		int result = id;
+		int result = super.hashCode();
 		result = 31 * result + (name != null ? name.hashCode() : 0);
 		result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
 		result = 31 * result + (guardian != null ? guardian.hashCode() : 0);

@@ -1,15 +1,14 @@
 package com.museum.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
 @Table(name = "visitor")
-public class Visitor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Visitor extends IdentifiableEntity<Integer> {
 
     @Column
     private String firstName;
@@ -31,14 +30,6 @@ public class Visitor {
 
     public Visitor() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -92,11 +83,11 @@ public class Visitor {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Visitor)) return false;
+        if (!super.equals(o)) return false;
         
         Visitor visitor = (Visitor) o;
         
-        if (id != visitor.id) return false;
         if (firstName != null ? !firstName.equals(visitor.firstName) : visitor.firstName != null) return false;
         if (lastName != null ? !lastName.equals(visitor.lastName) : visitor.lastName != null) return false;
         if (login != null ? !login.equals(visitor.login) : visitor.login != null) return false;
@@ -107,7 +98,7 @@ public class Visitor {
     
     @Override
     public int hashCode() {
-        int result = id;
+        int result = super.hashCode();
         result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
         result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
         result = 31 * result + (login != null ? login.hashCode() : 0);

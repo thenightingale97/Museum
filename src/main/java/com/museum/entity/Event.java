@@ -6,16 +6,12 @@ import java.util.List;
 
 @Entity
 @Table(name="event")
-public class Event {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	@ManyToOne
-	private Excursion excursion;
-	
-	@ManyToOne
+public class Event extends IdentifiableEntity<Integer> {
+    
+    @ManyToOne
+    private Excursion excursion;
+    
+    @ManyToOne
 	private Guide guide;
 
 	@ManyToMany
@@ -29,14 +25,6 @@ public class Event {
 
 	public Event() {
 		
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public Excursion getExcursion() {
@@ -74,11 +62,11 @@ public class Event {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (!(o instanceof Event)) return false;
+        if (!super.equals(o)) return false;
         
         Event event = (Event) o;
         
-        if (id != event.id) return false;
         if (excursion != null ? !excursion.equals(event.excursion) : event.excursion != null) return false;
         if (guide != null ? !guide.equals(event.guide) : event.guide != null) return false;
         if (visitors != null ? !visitors.equals(event.visitors) : event.visitors != null) return false;
@@ -88,7 +76,7 @@ public class Event {
     
     @Override
     public int hashCode() {
-        int result = id;
+        int result = super.hashCode();
         result = 31 * result + (excursion != null ? excursion.hashCode() : 0);
         result = 31 * result + (guide != null ? guide.hashCode() : 0);
         result = 31 * result + (visitors != null ? visitors.hashCode() : 0);
