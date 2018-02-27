@@ -1,11 +1,13 @@
 package com.museum.service.impl;
 
-import com.museum.entity.Showpiece;
-import com.museum.entity.ShowpieceMaterial;
-import com.museum.entity.ShowpieceTechnique;
+import com.museum.entity.*;
+import com.museum.repository.AuthorRepository;
+import com.museum.repository.GuardianRepository;
+import com.museum.repository.HallRepository;
 import com.museum.repository.ShowpieceRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.ShowpieceService;
+import com.museum.service.impl.util.Validations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +21,15 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
 
     @Autowired
     private ShowpieceRepository repository;
+    
+    @Autowired
+    private HallRepository hallRepository;
+    
+    @Autowired
+    private AuthorRepository authorRepository;
+    
+    @Autowired
+    private GuardianRepository guardianRepository;
 
     @Override
     public ShowpieceRepository getRepository() {
@@ -26,18 +37,21 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     }
 
     @Override
-    public List<Showpiece> findAllByHall(int hallId) {
-        return getRepository().findAllByHall(hallId);
+    public List<Showpiece> findAllByHall(Hall hall) {
+        Validations.entity(hallRepository, hall, "hall");
+        return getRepository().findAllByHall(hall);
     }
 
     @Override
-    public List<Showpiece> findAllByAuthor(int authorId) {
-        return getRepository().findAllByAuthor(authorId);
+    public List<Showpiece> findAllByAuthor(Author author) {
+        Validations.entity(authorRepository, author, "author");
+        return getRepository().findAllByAuthor(author);
     }
 
     @Override
-    public List<Showpiece> findAllByGuardian(int guardianId) {
-        return getRepository().findAllByGuardian(guardianId);
+    public List<Showpiece> findAllByGuardian(Guardian guardian) {
+        Validations.entity(guardianRepository, guardian, "guardian");
+        return getRepository().findAllByGuardian(guardian);
     }
 
     @Override

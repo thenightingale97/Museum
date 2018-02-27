@@ -1,19 +1,17 @@
 package com.museum.repository;
 
-import com.museum.entity.Showpiece;
-import com.museum.entity.ShowpieceMaterial;
-import com.museum.entity.ShowpieceTechnique;
+import com.museum.entity.*;
 
 import java.util.List;
 import java.util.Map;
 
 public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
     
-    List<Showpiece> findAllByHall(int hallId);
+    List<Showpiece> findAllByHall(Hall hall);
     
-    List<Showpiece> findAllByAuthor(int authorId);
+    List<Showpiece> findAllByAuthor(Author author);
     
-    List<Showpiece> findAllByGuardian(int guardianId);
+    List<Showpiece> findAllByGuardian(Guardian guardian);
     
     List<Showpiece> findAllByIds(List<Integer> showpieceIds);
     

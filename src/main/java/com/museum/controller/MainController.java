@@ -8,10 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.servlet.ModelAndView;
-
 
 import java.util.List;
 
@@ -32,6 +28,21 @@ public class MainController {
         return "index";
     }
     
+    @RequestMapping("/excursions")
+    public String excursions(
+            @RequestParam("fromDateTime") String fromDateTimeParam,
+            @RequestParam("toDateTime") String toDateTimeParam,
+            Model model) {
+        try {
+            LocalDateTime fromDateTime = LocalDateTime.parse(fromDateTimeParam);
+            LocalDateTime toDateTime = LocalDateTime.parse(toDateTimeParam);
+            model.addAttribute("events", eventService.findAllByPeriod(fromDateTime, toDateTime));
+        } catch (DateTimeParseException ex) {
+            model.addAttribute("events", eventService.findAll());
+        }
+        return "excursions";
+    }
+    
     //@RequestMapping("/showpiece")
     @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
     public ModelAndView showpiece() {
@@ -45,6 +56,4 @@ public class MainController {
         return modelAndView;
      //   return "showpiece";
     }
-
-
 }

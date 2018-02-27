@@ -2,6 +2,7 @@ package com.museum.repository;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import java.io.Serializable;
 import java.lang.reflect.ParameterizedType;
 import java.util.List;
@@ -46,10 +47,8 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
     public int count() {
         String entityName = getEntityClass().getName();
         String sql = "SELECT COUNT(entity) FROM " + entityName + " entity";
-        return entityManager
-                .createQuery(sql, Long.class)
-                .getSingleResult()
-                .intValue();
+        TypedQuery<Long> query = entityManager.createQuery(sql, Long.class);
+        return query.getSingleResult().intValue();
     }
     
     protected EntityManager getEntityManager() {
@@ -63,5 +62,14 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
                     getClass().getGenericSuperclass()).getActualTypeArguments()[0];
         }
         return entityClass;
+    }
+    
+    @Override
+    public boolean exists(PK id) {
+        String entityName = getEntityClass().getName();
+        String sql = "SELECT COUNT(entity) FROM " + entityName + " entity WHERE entity.id = :id";
+        TypedQuery<Long> query = entityManager.createQuery(sql, Long.class);
+        query.setParameter("id", id);
+        return query.getSingleResult() > 0;
     }
 }

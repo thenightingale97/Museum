@@ -12,7 +12,7 @@ public interface GuideService extends Service<Guide, Integer> {
     
     List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
-    Long getWorkTimeByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
+    Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime);
     
-    Long getWorkTime(int guideId);
+    Long getWorkTime(Guide guide);
 }

@@ -1,9 +1,7 @@
 package com.museum.repository.impl;
 
 
-import com.museum.entity.Showpiece;
-import com.museum.entity.ShowpieceMaterial;
-import com.museum.entity.ShowpieceTechnique;
+import com.museum.entity.*;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
 import org.springframework.stereotype.Repository;
@@ -20,10 +18,10 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 2.
      */
     @Override
-    public List<Showpiece> findAllByAuthor(int authorId) {
-        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.author.id = ?1";
+    public List<Showpiece> findAllByAuthor(Author author) {
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.author.id = :authorId";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
-        query.setParameter(1, authorId);
+        query.setParameter("authorId", author.getId());
         return query.getResultList();
     }
     
@@ -31,10 +29,10 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 3.
      */
     @Override
-    public List<Showpiece> findAllByGuardian(int guardianId) {
-        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.guardian.id = ?1";
+    public List<Showpiece> findAllByGuardian(Guardian guardian) {
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.guardian.id = :guardianId";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
-        query.setParameter(1, guardianId);
+        query.setParameter("guardianId", guardian.getId());
         return query.getResultList();
     }
     
@@ -42,10 +40,10 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
      * Task 4.
      */
     @Override
-    public List<Showpiece> findAllByHall(int hallId) {
-        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.id = ?1";
+    public List<Showpiece> findAllByHall(Hall hall) {
+        String sql = "SELECT showpiece FROM Showpiece showpiece WHERE showpiece.hall.id = :hallId";
         TypedQuery<Showpiece> query = getEntityManager().createQuery(sql, Showpiece.class);
-        query.setParameter(1, hallId);
+        query.setParameter("hallId", hall.getId());
         return query.getResultList();
     }
     

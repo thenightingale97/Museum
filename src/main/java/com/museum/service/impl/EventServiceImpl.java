@@ -1,9 +1,12 @@
 package com.museum.service.impl;
 
 import com.museum.entity.Event;
+import com.museum.entity.Guide;
 import com.museum.repository.EventRepository;
+import com.museum.repository.GuideRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.EventService;
+import com.museum.service.impl.util.Validations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,29 +19,37 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     @Autowired
     private EventRepository repository;
     
+    @Autowired
+    private GuideRepository guideRepository;
+    
     @Override
     public EventRepository getRepository() {
         return repository;
     }
 
     @Override
-    public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        return getRepository().findByPeriod(fromTime, toTime);
+    public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        Validations.period(fromTime, toTime);
+        return getRepository().findAllByPeriod(fromTime, toTime);
     }
     
     @Override
     public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+        Validations.period(fromTime, toTime);
         return getRepository().getAmountByPeriod(fromTime, toTime);
     }
     
     @Override
-    public Long getAmountByGuide(int guideId) {
-        return getRepository().getAmountByGuide(guideId);
+    public Long getAmountByGuide(Guide guide) {
+        Validations.entity(guideRepository, guide, "guide");
+        return getRepository().getAmountByGuide(guide);
     }
     
     @Override
-    public Long getAmountByPeriodAndGuide(int guideId, LocalDateTime fromTime, LocalDateTime toTime) {
-        return getRepository().getAmountByPeriodAndGuide(guideId, fromTime, toTime);
+    public Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
+        Validations.period(fromTime, toTime);
+        Validations.entity(guideRepository, guide, "guide");
+        return getRepository().getAmountByPeriodAndGuide(guide, fromTime, toTime);
     }
 
     @Override

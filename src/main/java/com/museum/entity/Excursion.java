@@ -6,16 +6,12 @@ import java.util.List;
 
 @Entity
 @Table(name="excursion")
-public class Excursion {
-	
-	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
-	private int id;
-	
-	@Column
-	private String name;
-	
-	@ManyToMany
+public class Excursion extends IdentifiableEntity<Integer> {
+    
+    @Column
+    private String name;
+    
+    @ManyToMany
 	private List<Showpiece> showpieces;
 	
 	@OneToMany(mappedBy="excursion")
@@ -31,14 +27,6 @@ public class Excursion {
     private String description;
     
     public Excursion() {
-	}
-
-	public int getId() {
-		return id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
 	}
 
 	public String getName() {
@@ -87,5 +75,34 @@ public class Excursion {
     
     public void setDescription(String description) {
         this.description = description;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Excursion)) return false;
+        if (!super.equals(o)) return false;
+        
+        Excursion excursion = (Excursion) o;
+        
+        if (name != null ? !name.equals(excursion.name) : excursion.name != null) return false;
+        if (showpieces != null ? !showpieces.equals(excursion.showpieces) : excursion.showpieces != null) return false;
+        if (events != null ? !events.equals(excursion.events) : excursion.events != null) return false;
+        if (duration != null ? !duration.equals(excursion.duration) : excursion.duration != null) return false;
+        if (maxVisitorAmount != null ? !maxVisitorAmount.equals(excursion.maxVisitorAmount) : excursion.maxVisitorAmount != null)
+            return false;
+        return description != null ? description.equals(excursion.description) : excursion.description == null;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
+        result = 31 * result + (events != null ? events.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (maxVisitorAmount != null ? maxVisitorAmount.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
     }
 }

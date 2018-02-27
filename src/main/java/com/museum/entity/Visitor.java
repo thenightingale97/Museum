@@ -1,15 +1,14 @@
 package com.museum.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.ManyToMany;
+import javax.persistence.Table;
 import java.util.List;
 
 @Entity
 @Table(name = "visitor")
-public class Visitor {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private int id;
+public class Visitor extends IdentifiableEntity<Integer> {
 
     @Column
     private String firstName;
@@ -31,14 +30,6 @@ public class Visitor {
 
     public Visitor() {
 
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -87,5 +78,33 @@ public class Visitor {
     
     public void setAccessLevel(VisitorRole accessLevel) {
         this.accessLevel = accessLevel;
+    }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Visitor)) return false;
+        if (!super.equals(o)) return false;
+        
+        Visitor visitor = (Visitor) o;
+        
+        if (firstName != null ? !firstName.equals(visitor.firstName) : visitor.firstName != null) return false;
+        if (lastName != null ? !lastName.equals(visitor.lastName) : visitor.lastName != null) return false;
+        if (login != null ? !login.equals(visitor.login) : visitor.login != null) return false;
+        if (password != null ? !password.equals(visitor.password) : visitor.password != null) return false;
+        if (accessLevel != visitor.accessLevel) return false;
+        return events != null ? events.equals(visitor.events) : visitor.events == null;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = super.hashCode();
+        result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+        result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+        result = 31 * result + (login != null ? login.hashCode() : 0);
+        result = 31 * result + (password != null ? password.hashCode() : 0);
+        result = 31 * result + (accessLevel != null ? accessLevel.hashCode() : 0);
+        result = 31 * result + (events != null ? events.hashCode() : 0);
+        return result;
     }
 }

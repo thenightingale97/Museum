@@ -18,13 +18,12 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
     
     /**
      * Task 5.
-     *
      */
     @Override
     public List<Guide> findAllByPosition(GuidePosition position) {
-        String sql = "SELECT guide FROM Guide guide WHERE guide.position = ?1";
+        String sql = "SELECT guide FROM Guide guide WHERE guide.position = :position";
         TypedQuery<Guide> query = getEntityManager().createQuery(sql, Guide.class);
-        query.setParameter(1, position);
+        query.setParameter("position", position);
         return query.getResultList();
     }
     
@@ -35,14 +34,13 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
     public List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT guide FROM Guide guide " +
                 "WHERE guide NOT IN (" +
-                "SELECT guide FROM Guide JOIN guide.events event WHERE " +
-                "(event.startTime <= :fromTime AND event.finishTime > :fromTime)" +
-                "OR (event.startTime < :toTime AND event.finishTime >= :toTime)\n" +
-                "OR (event.startTime >= :fromTime AND event.finishTime <= :toTime))";
+                "SELECT guide FROM Guide JOIN guide.events event " +
+                "WHERE (event.startTime <= :fromTime AND event.finishTime > :fromTime) "
+                + "OR (event.startTime < :toTime AND event.finishTime >= :toTime) "
+                + "OR (event.startTime >= :fromTime AND event.finishTime <= :toTime))";
         TypedQuery<Guide> query = getEntityManager().createQuery(sql, Guide.class);
         query.setParameter("fromTime", fromTime);
         query.setParameter("toTime", toTime);
-        
         return query.getResultList();
     }
     
@@ -50,12 +48,12 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
      * Task 10.3
      */
     @Override
-    public Long getWorkTime(int guideId) {
+    public Long getWorkTime(Guide guide) {
         String sql = "SELECT SUM(TIMESTAMPDIFF(MINUTE, event.startTime, event.finishTime)) " +
                 "FROM guide JOIN event ON guide.id = event.guide_id " +
                 "WHERE guide.id = :guideId";
         Query query = getEntityManager().createNativeQuery(sql);
-        query.setParameter("guideId", guideId);
+        query.setParameter("guideId", guide.getId());
         return ((BigDecimal) query.getSingleResult()).longValue();
     }
     
@@ -64,15 +62,15 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
      * Task 10.4
      */
     @Override
-    public Long getWorkTimeByPeriod(int guideId, LocalDateTime fromTime, LocalDateTime toTime) {
+    public Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT SUM(TIMESTAMPDIFF(MINUTE, event.startTime, event.finishTime)) " +
                 "FROM guide JOIN event ON guide.id = event.guide_id " +
-                "WHERE (event.startTime >= ?1 AND event.finishTime <= ?2) " +
-                "AND (guide.id = ?3)";
+                "WHERE (event.startTime >= :fromTime AND event.finishTime <= :toTime) " +
+                "AND (guide.id = :guideId)";
         Query query = getEntityManager().createNativeQuery(sql);
-        query.setParameter(1, fromTime);
-        query.setParameter(2, toTime);
-        query.setParameter(3, guideId);
+        query.setParameter("fromTime", fromTime);
+        query.setParameter("toTime", toTime);
+        query.setParameter("guideId", guide.getId());
         return ((BigDecimal) query.getSingleResult()).longValue();
     }
 }

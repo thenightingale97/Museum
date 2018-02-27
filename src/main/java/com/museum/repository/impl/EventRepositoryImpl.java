@@ -1,6 +1,7 @@
 package com.museum.repository.impl;
 
 import com.museum.entity.Event;
+import com.museum.entity.Guide;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.EventRepository;
 import org.springframework.stereotype.Repository;
@@ -16,7 +17,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      * Task 7.
      */
     @Override
-    public List<Event> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+    public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " +
                 "AND ?2 >= event.finishTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
@@ -41,12 +42,12 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      * Task 10.1
      */
     @Override
-    public Long getAmountByGuide(int guidId) {
+    public Long getAmountByGuide(Guide guide) {
         String sql = "SELECT COUNT(guide) "
                 + "FROM Guide guide JOIN guide.events event "
-                + "WHERE guide.id = ?1 ";
+                + "WHERE guide.id = :guideId";
         TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
-        query.setParameter(1, guidId);
+        query.setParameter("guideId", guide.getId());
         return query.getSingleResult();
     }
     
@@ -54,15 +55,15 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      * Task 10.2
      */
     @Override
-    public Long getAmountByPeriodAndGuide(int guidId, LocalDateTime fromTime, LocalDateTime toTime) {
+    public Long getAmountByPeriodAndGuide(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT COUNT(guide) "
                 + "FROM Guide guide JOIN guide.events event "
-                + "WHERE (event.startTime >= ?1 AND event.finishTime <= ?2) "
-                + "AND (guide.id = ?3)";
+                + "WHERE (event.startTime >= :fromTime AND event.finishTime <= :toTime) "
+                + "AND (guide.id = :guideId)";
         TypedQuery<Long> query = getEntityManager().createQuery(sql, Long.class);
-        query.setParameter(1, fromTime);
-        query.setParameter(2, toTime);
-        query.setParameter(3, guidId);
+        query.setParameter("fromTime", fromTime);
+        query.setParameter("toTime", toTime);
+        query.setParameter("guideId", guide.getId());
         return query.getSingleResult();
     }
 

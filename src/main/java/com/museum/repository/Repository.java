@@ -15,8 +15,10 @@ public interface Repository<E, PK extends Serializable> {
     void delete(PK id);
 
     E find(PK id);
-
+    
     List<E> findAll();
+    
+    boolean exists(PK id);
     
     int count();
 }
