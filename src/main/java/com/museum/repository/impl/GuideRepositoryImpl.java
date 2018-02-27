@@ -21,8 +21,8 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
      *
      */
     @Override
-    public List<Guide> findByPosition(GuidePosition position) {
-        String sql = "SELECT guide FROM Guide guide WHERE position = ?1";
+    public List<Guide> findAllByPosition(GuidePosition position) {
+        String sql = "SELECT guide FROM Guide guide WHERE guide.position = ?1";
         TypedQuery<Guide> query = getEntityManager().createQuery(sql, Guide.class);
         query.setParameter(1, position);
         return query.getResultList();
@@ -32,7 +32,7 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
      * Task 6.
      */
     @Override
-    public List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
+    public List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT guide FROM Guide guide " +
                 "WHERE guide NOT IN (" +
                 "SELECT guide FROM Guide JOIN guide.events event WHERE " +

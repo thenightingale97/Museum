@@ -9,7 +9,10 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.Random;
+import java.util.stream.Collectors;
 
 @Service
 public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, ShowpieceRepository> implements ShowpieceService {
@@ -23,18 +26,18 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     }
 
     @Override
-    public List<Showpiece> findByHall(int hallId) {
-        return getRepository().findByHall(hallId);
+    public List<Showpiece> findAllByHall(int hallId) {
+        return getRepository().findAllByHall(hallId);
     }
 
     @Override
-    public List<Showpiece> findByAuthor(int authorId) {
-        return getRepository().findByAuthor(authorId);
+    public List<Showpiece> findAllByAuthor(int authorId) {
+        return getRepository().findAllByAuthor(authorId);
     }
 
     @Override
-    public List<Showpiece> findByGuardian(int guardianId) {
-        return getRepository().findByGuardian(guardianId);
+    public List<Showpiece> findAllByGuardian(int guardianId) {
+        return getRepository().findAllByGuardian(guardianId);
     }
 
     @Override
@@ -46,12 +49,15 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     public Map<ShowpieceMaterial, Long> getStatisticByMaterial() {
         return getRepository().getStatisticByMaterial();
     }
-
+    
     @Override
-    public Showpiece getRandomShowpiece() {
+    public List<Showpiece> findAllByRandom(int count) {
+        final int showpieceCount = getRepository().count();
         Random random = new Random();
-        int maxSize = getRepository().findAll().size() - 1;
-        Showpiece randomShowpiece = find(random.nextInt(maxSize) + 1);
-        return randomShowpiece ;
+        List<Integer> showpieceIds = random
+                .ints(count, 1, showpieceCount + 1)
+                .boxed()
+                .collect(Collectors.toList());
+        return getRepository().findAllByIds(showpieceIds);
     }
 }

@@ -15,6 +15,6 @@ public interface EventService extends Service<Event, Integer> {
     Long getAmountByGuide(int guideId);
     
     Long getAmountByPeriodAndGuide(int guideId, LocalDateTime fromTime, LocalDateTime toTime);
-
-    List<Event> findUpcomingEventsOrderedByDate();
+    
+    List<Event> findAllUpcomingOrderedByDate(int limit);
 }

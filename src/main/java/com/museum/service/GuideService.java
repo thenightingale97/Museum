@@ -8,9 +8,9 @@ import java.util.List;
 
 public interface GuideService extends Service<Guide, Integer> {
     
-    List<Guide> getGuideByPosition(GuidePosition position);
+    List<Guide> findAllByPosition(GuidePosition position);
     
-    List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
+    List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
     Long getWorkTimeByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime);
     

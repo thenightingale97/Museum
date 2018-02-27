@@ -7,10 +7,10 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface GuideRepository extends Repository<Guide, Integer> {
-  
-    List<Guide> findByPosition(GuidePosition position);
     
-    List<Guide> findByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
+    List<Guide> findAllByPosition(GuidePosition position);
+    
+    List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
     Long getWorkTime(int guideId);
     

@@ -42,8 +42,7 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     }
 
     @Override
-    public List<Event> findUpcomingEventsOrderedByDate() {
-        return getRepository().findUpcomingEventsOrderedByDate();
+    public List<Event> findAllUpcomingOrderedByDate(int limit) {
+        return getRepository().findAllUpcomingOrderedByDate(limit);
     }
-
 }
