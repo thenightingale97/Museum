@@ -57,5 +57,25 @@ public class Author {
 		this.showpieces = showpieces;
 	}
 	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		
+		Author author = (Author) o;
+		
+		if (id != author.id) return false;
+		if (firstName != null ? !firstName.equals(author.firstName) : author.firstName != null) return false;
+		if (lastName != null ? !lastName.equals(author.lastName) : author.lastName != null) return false;
+		return showpieces != null ? showpieces.equals(author.showpieces) : author.showpieces == null;
+	}
 	
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + (firstName != null ? firstName.hashCode() : 0);
+		result = 31 * result + (lastName != null ? lastName.hashCode() : 0);
+		result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
+		return result;
+	}
 }

@@ -70,5 +70,30 @@ public class Event {
 	public void setFinishTime(LocalDateTime finishTime) {
 		this.finishTime = finishTime;
 	}
-	
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        Event event = (Event) o;
+        
+        if (id != event.id) return false;
+        if (excursion != null ? !excursion.equals(event.excursion) : event.excursion != null) return false;
+        if (guide != null ? !guide.equals(event.guide) : event.guide != null) return false;
+        if (visitors != null ? !visitors.equals(event.visitors) : event.visitors != null) return false;
+        if (startTime != null ? !startTime.equals(event.startTime) : event.startTime != null) return false;
+        return finishTime != null ? finishTime.equals(event.finishTime) : event.finishTime == null;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (excursion != null ? excursion.hashCode() : 0);
+        result = 31 * result + (guide != null ? guide.hashCode() : 0);
+        result = 31 * result + (visitors != null ? visitors.hashCode() : 0);
+        result = 31 * result + (startTime != null ? startTime.hashCode() : 0);
+        result = 31 * result + (finishTime != null ? finishTime.hashCode() : 0);
+        return result;
+    }
 }

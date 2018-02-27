@@ -1,15 +1,7 @@
 package com.museum.entity;
 
+import javax.persistence.*;
 import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
 
 @Entity
 @Table(name="hall")
@@ -54,5 +46,27 @@ public class Hall {
 
 	public void setShowpieces(List<Showpiece> showpieces) {
 		this.showpieces = showpieces;
+	}
+	
+	@Override
+	public boolean equals(Object o) {
+		if (this == o) return true;
+		if (o == null || getClass() != o.getClass()) return false;
+		
+		Hall hall = (Hall) o;
+		
+		if (id != hall.id) return false;
+		if (name != null ? !name.equals(hall.name) : hall.name != null) return false;
+		if (showpieces != null ? !showpieces.equals(hall.showpieces) : hall.showpieces != null) return false;
+		return guardian != null ? guardian.equals(hall.guardian) : hall.guardian == null;
+	}
+	
+	@Override
+	public int hashCode() {
+		int result = id;
+		result = 31 * result + (name != null ? name.hashCode() : 0);
+		result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
+		result = 31 * result + (guardian != null ? guardian.hashCode() : 0);
+		return result;
 	}
 }

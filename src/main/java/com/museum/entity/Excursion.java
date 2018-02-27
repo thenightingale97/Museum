@@ -88,4 +88,33 @@ public class Excursion {
     public void setDescription(String description) {
         this.description = description;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        
+        Excursion excursion = (Excursion) o;
+        
+        if (id != excursion.id) return false;
+        if (name != null ? !name.equals(excursion.name) : excursion.name != null) return false;
+        if (showpieces != null ? !showpieces.equals(excursion.showpieces) : excursion.showpieces != null) return false;
+        if (events != null ? !events.equals(excursion.events) : excursion.events != null) return false;
+        if (duration != null ? !duration.equals(excursion.duration) : excursion.duration != null) return false;
+        if (maxVisitorAmount != null ? !maxVisitorAmount.equals(excursion.maxVisitorAmount) : excursion.maxVisitorAmount != null)
+            return false;
+        return description != null ? description.equals(excursion.description) : excursion.description == null;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = id;
+        result = 31 * result + (name != null ? name.hashCode() : 0);
+        result = 31 * result + (showpieces != null ? showpieces.hashCode() : 0);
+        result = 31 * result + (events != null ? events.hashCode() : 0);
+        result = 31 * result + (duration != null ? duration.hashCode() : 0);
+        result = 31 * result + (maxVisitorAmount != null ? maxVisitorAmount.hashCode() : 0);
+        result = 31 * result + (description != null ? description.hashCode() : 0);
+        return result;
+    }
 }
