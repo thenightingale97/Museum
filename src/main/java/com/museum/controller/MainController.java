@@ -31,13 +31,6 @@ public class MainController {
         model.addAttribute("upcomingEvents", eventService.findAllUpcomingOrderedByDate(3));
         return "index";
     }
-
-
-    @RequestMapping("/excursions")
-    public String excursions(Model model) {
-        model.addAttribute("events", eventService.findAll());
-        return "excursions";
-    }
     
     //@RequestMapping("/showpiece")
     @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
