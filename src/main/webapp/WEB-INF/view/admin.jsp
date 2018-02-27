@@ -28,7 +28,7 @@
     <div class="col-md-7 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <form:form class="form-horizontal" action="/admin" method="POST" modelAttribute="authorRequest">
+                <form:form class="form-horizontal" action="/admin" method="POST" modelAttribute="authorView">
                     <%--<div class="form-group">
                         <label for="name" style="color:red;text-align:left;" class="col-sm-10 col-sm-offset-2 control-label"><form:errors path="name"/></label>
                     </div>--%>
@@ -60,8 +60,8 @@
         <c:forEach items="${authors}" var="author">
             <div class="row">
                 <div class="col-md-4 col-xs-4">${author.firstName}</div>
-                <%--<div class="col-md-4 col-xs-4"><a class="btn btn-warning" href="admin/update/${author.id}">update</a></div>--%>
-                <%--<div class="col-md-4 col-xs-4"><a class="btn btn-danger" href="admin/delete/${author.id}">delete</a></div>--%>
+                <div class="col-md-4 col-xs-4"><a class="btn btn-warning" href="admin/update/${author.id}">update</a></div>
+                <div class="col-md-4 col-xs-4"><a class="btn btn-danger" href="admin/delete/${author.id}">delete</a></div>
             </div>
         </c:forEach>
 
