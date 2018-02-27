@@ -18,11 +18,10 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
      */
     @Override
     public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        String sql = "SELECT event FROM Event event WHERE ?1 <= event.startTime " +
-                "AND ?2 >= event.finishTime";
+        String sql = "SELECT event FROM Event event WHERE event.startTime >= :fromTime AND event.startTime <= :toTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
-        query.setParameter(1, fromTime);
-        query.setParameter(2, toTime);
+        query.setParameter("fromTime", fromTime);
+        query.setParameter("toTime", toTime);
         return query.getResultList();
     }
     
@@ -72,6 +71,22 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         String sql = "SELECT event FROM Event event ORDER BY event.startTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
         query.setMaxResults(limit);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Event> findAllByFromTime(LocalDateTime fromTime) {
+        String sql = "SELECT event FROM Event event WHERE event.startTime >= :fromTime";
+        TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
+        query.setParameter("fromTime", fromTime);
+        return query.getResultList();
+    }
+    
+    @Override
+    public List<Event> findAllByToTime(LocalDateTime toTime) {
+        String sql = "SELECT event FROM Event event WHERE event.startTime <= :toTime";
+        TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
+        query.setParameter("toTime", toTime);
         return query.getResultList();
     }
 }
