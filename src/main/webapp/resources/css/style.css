@@ -191,3 +191,34 @@ textarea {
     min-height: 300px;
     padding-top: 60px;
 }
+
+#table_showpiece {
+    background-color: white;
+    margin-top: 100px;
+    margin-bottom: 100px;
+    border-color :black;
+
+  }
+
+#table_showpiece table {
+    border-color:black;
+    width: 65%;
+    text-align:center;
+
+
+
+
+}
+
+#table_showpiece table td {
+    border-color:black;
+    color: #2d2d30;;
+
+}
+
+.showpiece_font {
+    font-size: 30px;
+}
+
+
+
