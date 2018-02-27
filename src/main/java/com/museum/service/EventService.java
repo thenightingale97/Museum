@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import com.museum.entity.Event;
+import com.museum.entity.Guide;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,9 +13,9 @@ public interface EventService extends Service<Event, Integer> {
     
     Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
     
-    Long getAmountByGuide(int guideId);
+    Long getAmountByGuide(Guide guide);
     
-    Long getAmountByPeriodAndGuide(int guideId, LocalDateTime fromTime, LocalDateTime toTime);
+    Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime);
     
     List<Event> findAllUpcomingOrderedByDate(int limit);
 }

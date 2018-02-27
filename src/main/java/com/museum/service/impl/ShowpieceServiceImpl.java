@@ -1,8 +1,6 @@
 package com.museum.service.impl;
 
-import com.museum.entity.Showpiece;
-import com.museum.entity.ShowpieceMaterial;
-import com.museum.entity.ShowpieceTechnique;
+import com.museum.entity.*;
 import com.museum.repository.ShowpieceRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.ShowpieceService;
@@ -26,18 +24,18 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     }
 
     @Override
-    public List<Showpiece> findAllByHall(int hallId) {
-        return getRepository().findAllByHall(hallId);
+    public List<Showpiece> findAllByHall(Hall hall) {
+        return getRepository().findAllByHall(hall);
     }
 
     @Override
-    public List<Showpiece> findAllByAuthor(int authorId) {
-        return getRepository().findAllByAuthor(authorId);
+    public List<Showpiece> findAllByAuthor(Author author) {
+        return getRepository().findAllByAuthor(author);
     }
 
     @Override
-    public List<Showpiece> findAllByGuardian(int guardianId) {
-        return getRepository().findAllByGuardian(guardianId);
+    public List<Showpiece> findAllByGuardian(Guardian guardian) {
+        return getRepository().findAllByGuardian(guardian);
     }
 
     @Override

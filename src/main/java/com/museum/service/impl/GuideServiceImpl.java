@@ -5,6 +5,7 @@ import com.museum.entity.GuidePosition;
 import com.museum.repository.GuideRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.GuideService;
+import com.museum.service.impl.util.Validations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,15 +24,6 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
         return repository;
     }
     
-    private static void checkPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        Objects.requireNonNull(fromTime, "fromTime");
-        Objects.requireNonNull(toTime, "toTime");
-        if (fromTime.isAfter(toTime)) {
-            throw new IllegalArgumentException(
-                    "Parameter 'fromTime' can`t be greater than 'toTime'.");
-        }
-    }
-    
     @Override
     public List<Guide> findAllByPosition(GuidePosition position) {
         Objects.requireNonNull(position, "position");
@@ -40,18 +32,18 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
     
     @Override
     public List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        checkPeriod(fromTime, toTime);
+        Validations.period(fromTime, toTime);
         return getRepository().findAllByPeriod(fromTime, toTime);
     }
 
     @Override
-    public Long getWorkTime(int guideId) {
-        return getRepository().getWorkTime(guideId);
+    public Long getWorkTime(Guide guide) {
+        return getRepository().getWorkTime(guide);
     }
     
     @Override
-    public Long getWorkTimeByPeriod(int guidId, LocalDateTime fromTime, LocalDateTime toTime) {
-        checkPeriod(fromTime, toTime);
-        return getRepository().getWorkTimeByPeriod(guidId, fromTime, toTime);
+    public Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
+        Validations.period(fromTime, toTime);
+        return getRepository().getWorkTimeByPeriod(guide, fromTime, toTime);
     }
 }
