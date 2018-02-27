@@ -31,6 +31,7 @@ public class MainController {
 
     @RequestMapping("/excursions")
     public String excursions(Model model) {
+        model.addAttribute("events", eventService.findAll());
         return "excursions";
     }
     
