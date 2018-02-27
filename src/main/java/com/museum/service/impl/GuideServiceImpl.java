@@ -44,6 +44,7 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
     @Override
     public Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
+        Validations.entity(repository, guide, "guide");
         return getRepository().getWorkTimeByPeriod(guide, fromTime, toTime);
     }
 }

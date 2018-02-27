@@ -3,6 +3,7 @@ package com.museum.service.impl;
 import com.museum.entity.Event;
 import com.museum.entity.Guide;
 import com.museum.repository.EventRepository;
+import com.museum.repository.GuideRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.EventService;
 import com.museum.service.impl.util.Validations;
@@ -17,6 +18,9 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     
     @Autowired
     private EventRepository repository;
+    
+    @Autowired
+    private GuideRepository guideRepository;
     
     @Override
     public EventRepository getRepository() {
@@ -37,12 +41,14 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     
     @Override
     public Long getAmountByGuide(Guide guide) {
+        Validations.entity(guideRepository, guide, "guide");
         return getRepository().getAmountByGuide(guide);
     }
     
     @Override
     public Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
+        Validations.entity(guideRepository, guide, "guide");
         return getRepository().getAmountByPeriodAndGuide(guide, fromTime, toTime);
     }
 
