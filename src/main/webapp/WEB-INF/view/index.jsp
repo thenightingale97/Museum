@@ -74,22 +74,6 @@
                     </div>
                 </div>
             </c:forEach>
-            <%--<div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="newyork.jpg" alt="New York" width="400" height="300">
-                    <p><strong>${event1.excursion.name}</strong></p>
-                    <p>${event1.startTime}</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
-                </div>
-            </div>
-            <div class="col-sm-4">
-                <div class="thumbnail">
-                    <img src="sanfran.jpg" alt="San Francisco" width="400" height="300">
-                    <p><strong>${event2.excursion.name}</strong></p>
-                    <p>${event2.startTime}</p>
-                    <button class="btn" data-toggle="modal" data-target="#myModal">Buy Tickets</button>
-                </div>
-            </div>--%>
         </div>
     </div>
 

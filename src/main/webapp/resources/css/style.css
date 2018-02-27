@@ -187,7 +187,27 @@ textarea {
 
 /* Excursions */
 .filters {
-    background-color: brown;
-    min-height: 300px;
+    background-color: #8c8c8c;
+    min-height: auto;
     padding-top: 60px;
+}
+
+.col-sm-9 {
+    margin-top: 60px;
+}
+
+.showpieceColumn {
+    background-color: #999999;
+    margin: 15px;
+    padding: 20px;
+    border: 1px solid;
+    height: auto;
+}
+
+.showpieceImg {
+    float: left;
+}
+
+.showpieceColumnText {
+    color: white;
 }
