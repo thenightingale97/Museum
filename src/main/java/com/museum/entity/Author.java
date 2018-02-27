@@ -9,7 +9,9 @@ import java.util.List;
 @Entity
 @Table(name="author")
 public class Author extends IdentifiableEntity<Integer> {
-    
+
+
+
     @Column
     private String firstName;
     
