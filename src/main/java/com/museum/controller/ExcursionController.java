@@ -6,49 +6,48 @@ import com.museum.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
-import java.time.DateTimeException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.time.format.DateTimeFormatterBuilder;
 import java.time.format.DateTimeParseException;
-import java.time.temporal.ChronoField;
-import java.time.temporal.WeekFields;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.List;
 
 @Controller
 @RequestMapping("/excursions")
 public class ExcursionController {
+    
+    private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    
 
     @Autowired
     EventService eventService;
-
+    
+    private static LocalDateTime parseDateTimeNullable(String dateTime) {
+        try {
+            return LocalDateTime.parse(dateTime, DATE_TIME_FORMATTER);
+        } catch (DateTimeParseException ex) {
+            return null;
+        }
+    }
+    
     @GetMapping
     public String excursions(Model model,
                              @ModelAttribute PeriodRequest periodRequest) {
-        String fromDateTimeParam = periodRequest.getFromDateTime();
-        String toDateTimeParam = periodRequest.getToDateTime();
-        List<Event> events = Collections.emptyList();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-        if (fromDateTimeParam == null || toDateTimeParam == null || (fromDateTimeParam.isEmpty() && toDateTimeParam.isEmpty())) {
-            model.addAttribute("events", eventService.findAll());
+        LocalDateTime fromDateTime = parseDateTimeNullable(periodRequest.getFromDateTime());
+        LocalDateTime toDateTime = parseDateTimeNullable(periodRequest.getToDateTime());
+    
+        List<Event> events;
+        if (fromDateTime == null && toDateTime == null) {
+            events = eventService.findAll();
+        } else if (fromDateTime == null) {
+            events = eventService.findAllByToTime(toDateTime);
+        } else if (toDateTime == null) {
+            events = eventService.findAllByFromTime(fromDateTime);
         } else {
-            try {
-                LocalDateTime fromDateTime = LocalDateTime.parse(fromDateTimeParam, formatter);
-                LocalDateTime toDateTime = LocalDateTime.parse(toDateTimeParam, formatter);
-                if (fromDateTimeParam.isEmpty()) {
-                    events = eventService.findAllByToTime(toDateTime);
-                } else if (toDateTimeParam.isEmpty()) {
-                    events = eventService.findAllByFromTime(fromDateTime);
-                } else {
-                    events = eventService.findAllByPeriod(fromDateTime, toDateTime);
-                }
-            } catch (DateTimeParseException e) {
-                events = Collections.emptyList();
-            }
+            events = eventService.findAllByPeriod(fromDateTime, toDateTime);
         }
         model.addAttribute("events", events);
         return "excursions";
