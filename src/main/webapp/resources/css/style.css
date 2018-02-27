@@ -187,7 +187,22 @@ textarea {
 
 /* Excursions */
 .filters {
-    background-color: brown;
-    min-height: 300px;
+    background-color: #8c8c8c;
     padding-top: 60px;
+}
+
+.showpiece_font {
+    font-size: 24px;
+}
+
+#table_showpiece {
+    margin-top: 100px;
+    margin-bottom: 100px;
+
+}
+
+#table_showpiece table{
+
+    width:75%;
+    color: #2d2d30;;
 }
