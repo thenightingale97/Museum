@@ -7,7 +7,7 @@
     <div class="row">
         <div class="col-sm-4 filters">
             <div class="row"><h3>Оберіть дату цікавої для вас події!</h3></div>
-            <form:form action="/excursions" method="GET" modelAttribute="periodRequest" >
+            <form:form action="/excursions" method="GET" modelAttribute="excursionsFilterRequest" >
                 <div class='col-sm-6'>
                     <div class="form-group">
                         <div class='input-group date' id='datetimepicker6'>
