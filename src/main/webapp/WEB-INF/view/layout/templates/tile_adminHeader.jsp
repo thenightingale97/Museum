@@ -14,6 +14,7 @@
                     <li><a href="/admin/guardian">Guardian</a></li>
                     <li><a href="/admin/hall">Hall</a></li>
                     <li><a href="/admin/excursion">Excursion</a></li>
+                    <li><a href="/admin/showpiece">Showpiece</a></li>
                 </ul>
             </div>
         </div>

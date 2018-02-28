@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import com.museum.entity.*;
+import com.museum.model.view.ShowpieceView;
 
 import java.util.List;
 import java.util.Map;
@@ -18,4 +19,6 @@ public interface ShowpieceService extends Service<Showpiece, Integer> {
     Map<ShowpieceMaterial, Long> getStatisticByMaterial();
     
     List<Showpiece> findAllByRandom(int count);
+
+    void update(ShowpieceView showpiece);
 }

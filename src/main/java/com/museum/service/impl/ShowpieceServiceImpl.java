@@ -1,6 +1,7 @@
 package com.museum.service.impl;
 
 import com.museum.entity.*;
+import com.museum.model.view.ShowpieceView;
 import com.museum.repository.AuthorRepository;
 import com.museum.repository.GuardianRepository;
 import com.museum.repository.HallRepository;
@@ -11,6 +12,7 @@ import com.museum.service.impl.util.Validations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -73,5 +75,20 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
                 .boxed()
                 .collect(Collectors.toList());
         return getRepository().findAllByIds(showpieceIds);
+    }
+
+    @Override
+    @Transactional
+    public void update(ShowpieceView showpieceView) {
+        Showpiece showpiece = new Showpiece();
+        showpiece.setAuthor(authorRepository.find(showpieceView.getAuthor()));
+        showpiece.setHall(hallRepository.find(showpieceView.getHall()));
+        showpiece.setDescription(showpieceView.getDescription());
+        showpiece.setImageUrl(showpieceView.getImageUrl());
+        showpiece.setTechnique(showpieceView.getTechnique());
+        showpiece.setMaterial(showpieceView.getMaterial());
+        showpiece.setName(showpieceView.getName());
+        showpiece.setId(showpieceView.getId());
+        repository.update(showpiece);
     }
 }
