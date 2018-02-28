@@ -43,16 +43,19 @@
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="event" items="${eventItemViews}">
-                <div class="col-sm-1 showpiece-item">
-                    <div class="row">
-                        <img class="showpiece-image" src="/resources/images/excursions/test1.jpg" alt="lol">
+                <a href="/excursion/${event.id}">
+                    <div class="col-sm-1 showpiece-item">
+                        <div class="row">
+                            <img class="showpiece-image" src="/resources/images/excursions/test1.jpg" alt="lol">
+                        </div>
+                        <div class="row"><span class="showpiece-item-name">${event.name}</span></div>
+                        <div class="row"><span class="showpiece-item-value">${event.startDate}</span></div>
+                        <div class="row"><span
+                                class="showpiece-item-value">${event.startTime} - ${event.finishTime}</span>
+                        </div>
+                        <div class="row"><span class="showpiece-item-value">${event.duration}</span></div>
                     </div>
-                    <div class="row"><span class="showpiece-item-name">${event.name}</span></div>
-                    <div class="row"><span class="showpiece-item-value">${event.startDate}</span></div>
-                    <div class="row"><span class="showpiece-item-value">${event.startTime} - ${event.finishTime}</span>
-                    </div>
-                    <div class="row"><span class="showpiece-item-value">${event.duration}</span></div>
-                </div>
+                </a>
             </c:forEach>
         </div>
     </div>

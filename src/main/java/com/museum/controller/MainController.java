@@ -1,7 +1,6 @@
 package com.museum.controller;
 
 
-import com.museum.entity.Guide;
 import com.museum.entity.Showpiece;
 import com.museum.service.EventService;
 import com.museum.service.GuideService;
@@ -14,14 +13,12 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeParseException;
 import java.util.List;
 import java.util.Map;
 
 @Controller
 public class MainController {
-    
+
     @Autowired
     ShowpieceService showpieceService;
 
@@ -30,28 +27,13 @@ public class MainController {
 
     @Autowired
     GuideService guideService;
-    
+
     @RequestMapping("/")
     public String main(Model model) {
         List<Showpiece> allByRandom = showpieceService.findAllByRandom(3);
         model.addAttribute("showpieces", allByRandom);
         model.addAttribute("upcomingEvents", eventService.findAllUpcomingOrderedByDate(3));
-        return "index";
-    }
-    
-    @RequestMapping("/excursions")
-    public String excursions(
-            @RequestParam("fromDateTime") String fromDateTimeParam,
-            @RequestParam("toDateTime") String toDateTimeParam,
-            Model model) {
-        try {
-            LocalDateTime fromDateTime = LocalDateTime.parse(fromDateTimeParam);
-            LocalDateTime toDateTime = LocalDateTime.parse(toDateTimeParam);
-            model.addAttribute("events", eventService.findAllByPeriod(fromDateTime, toDateTime));
-        } catch (DateTimeParseException ex) {
-            model.addAttribute("events", eventService.findAll());
-        }
-        return "excursions";
+        return "excursion";
     }
 
 
@@ -62,9 +44,7 @@ public class MainController {
         modelAndView.addObject("showpiece", showpiece);
         modelAndView.setViewName("showpiece");
         return modelAndView;
-       }
-
-
+    }
 
 
     @RequestMapping(value = "/showpieces", method = RequestMethod.GET)
@@ -76,9 +56,9 @@ public class MainController {
 
     @RequestMapping(value = "/guides", method = RequestMethod.GET)
     public String showGuides(Map<String, Object> model) {
-         model.put("guides", guideService.findAll());
+        model.put("guides", guideService.findAll());
         return "guides";
     }
-    
+
 
 }

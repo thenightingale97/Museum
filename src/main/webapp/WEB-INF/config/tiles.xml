@@ -16,6 +16,10 @@
         <put-attribute name="body" value="/WEB-INF/view/index.jsp"/>
     </definition>
 
+    <definition name="excursion" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/excursion.jsp"/>
+    </definition>
+
     <definition name="excursions" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/excursions.jsp"/>
     </definition>

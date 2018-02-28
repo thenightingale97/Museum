@@ -21,6 +21,7 @@
         <script src="/resources/js/bootstrap-datetimepicker.min.js"></script>
 
         <link rel="stylesheet" href="/resources/css/style.css"/>
+        <link rel="stylesheet" href="/resources/css/main.css"/>
     </head>
 
     <body>
