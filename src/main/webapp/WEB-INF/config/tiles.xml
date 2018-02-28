@@ -52,7 +52,15 @@
         <put-attribute name="body" value="/WEB-INF/view/admin/guardian.jsp"/>
     </definition>
 
+    <definition name="admin-excursion" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/excursion.jsp"/>
+    </definition>
+
     <definition name="admin-hall" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/hall.jsp"/>
+    </definition>
+
+    <definition name="admin-showpiece" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/showpiece.jsp"/>
     </definition>
 </tiles-definitions>

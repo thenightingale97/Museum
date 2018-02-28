@@ -20,4 +20,5 @@ public interface Service<E, PK extends Serializable> {
     int count();
 
     Repository<E, PK> getRepository();
+
 }

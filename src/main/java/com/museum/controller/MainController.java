@@ -33,7 +33,7 @@ public class MainController {
         List<Showpiece> allByRandom = showpieceService.findAllByRandom(3);
         model.addAttribute("showpieces", allByRandom);
         model.addAttribute("upcomingEvents", eventService.findAllUpcomingOrderedByDate(3));
-        return "excursion";
+        return "index";
     }
 
 

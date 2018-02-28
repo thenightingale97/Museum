@@ -13,6 +13,7 @@
                     <li><a href="/admin/guide">Guides</a></li>
                     <li><a href="/admin/guardian">Guardian</a></li>
                     <li><a href="/admin/hall">Hall</a></li>
+                    <li><a href="/admin/excursion">Excursion</a></li>
                 </ul>
             </div>
         </div>
