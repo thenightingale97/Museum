@@ -144,4 +144,19 @@ public class Showpiece extends IdentifiableEntity<Integer> {
         result = 31 * result + (creationDate != null ? creationDate.hashCode() : 0);
         return result;
     }
+
+    /*@Override
+    public String toString() {
+        return "Showpiece{" +
+                "name='" + name + '\'' +
+                ", technique=" + technique +
+                ", material=" + material +
+                ", author=" + author +
+                ", excursions=" + excursions +
+                ", hall=" + hall +
+                ", imageUrl='" + imageUrl + '\'' +
+                ", description='" + description + '\'' +
+                ", creationDate=" + creationDate +
+                '}';
+    }*/
 }

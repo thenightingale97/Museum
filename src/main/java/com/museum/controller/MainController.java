@@ -15,6 +15,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class MainController {
@@ -47,18 +48,26 @@ public class MainController {
         }
         return "excursions";
     }
-    
-    //@RequestMapping("/showpiece")
-    @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
-    public ModelAndView showpiece() {
-    //public String showpiece(Model model) {
-        ModelAndView modelAndView = new ModelAndView();
-        Showpiece showpiece = showpieceService.find(1);
 
+
+    @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
+    public ModelAndView showpiece(@RequestParam("showpieceId") int id) {
+        ModelAndView modelAndView = new ModelAndView();
+        Showpiece showpiece = showpieceService.find(id);
         modelAndView.addObject("showpiece", showpiece);
         modelAndView.setViewName("showpiece");
-
         return modelAndView;
-     //   return "showpiece";
+       }
+
+
+
+
+    @RequestMapping(value = "/showpieces", method = RequestMethod.GET)
+    public String dishes(Map<String, Object> model) {
+           List<Showpiece> list =  showpieceService.findAll();
+                model.put("showpieces", showpieceService.findAll());
+        return "showpieces";
     }
+    
+
 }

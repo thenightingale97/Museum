@@ -22,17 +22,43 @@
         </tr>
 
         <tr align="center">
-            <td rowspan="5"width="65%" >
-                <img src="/resources/images/showpieces/${showpiece.imageUrl}" alt="Mona Liza" width="500" height="700">
+            <td rowspan="8"width="65%" >
+                <img src="/resources/images/showpieces/${showpiece.imageUrl}" alt="Mona Liza" width="800" height="800">
                  </td>
             <tr class="showpiece_font">
             <td >
            <p>Автор</p>
             </td>
             <td >
-             <p> <b>${showpiece.getAuthor().getFirstName()}</b> <b>${showpiece.getAuthor().getLastName()}</b></p>
+             <p> <b>${showpiece.author.firstName}</b> <b>${showpiece.author.lastName}</b></p>
             </td>
             </tr>
+        <tr class="showpiece_font">
+            <td >
+                <p>Зал</p>
+            </td>
+            <td >
+                <p>${showpiece.hall.name}</p>
+            </td>
+        </tr>
+        <tr class="showpiece_font">
+            <td >
+                <p>Матеріал</p>
+            </td>
+            <td >
+                <p>${showpiece.material}</p>
+            </td>
+        </tr>
+
+        technique
+        <tr class="showpiece_font">
+            <td >
+                <p>Техніка</p>
+            </td>
+            <td >
+                <p>${showpiece.technique}</p>
+            </td>
+        </tr>
              <tr class="showpiece_font">
                  <td >
                      <p>Дата</p>
