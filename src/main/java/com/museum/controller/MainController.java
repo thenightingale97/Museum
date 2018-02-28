@@ -1,8 +1,10 @@
 package com.museum.controller;
 
 
+import com.museum.entity.Guide;
 import com.museum.entity.Showpiece;
 import com.museum.service.EventService;
+import com.museum.service.GuideService;
 import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,6 +27,9 @@ public class MainController {
 
     @Autowired
     EventService eventService;
+
+    @Autowired
+    GuideService guideService;
     
     @RequestMapping("/")
     public String main(Model model) {
@@ -63,10 +68,16 @@ public class MainController {
 
 
     @RequestMapping(value = "/showpieces", method = RequestMethod.GET)
-    public String dishes(Map<String, Object> model) {
-           List<Showpiece> list =  showpieceService.findAll();
-                model.put("showpieces", showpieceService.findAll());
+    public String showPieces(Map<String, Object> model) {
+        model.put("showpieces", showpieceService.findAll());
         return "showpieces";
+    }
+
+
+    @RequestMapping(value = "/guides", method = RequestMethod.GET)
+    public String showGuides(Map<String, Object> model) {
+         model.put("guides", guideService.findAll());
+        return "guides";
     }
     
 

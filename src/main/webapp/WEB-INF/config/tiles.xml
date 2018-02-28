@@ -27,6 +27,10 @@
     <definition name="showpiece" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/showpiece.jsp"/>
     </definition>
+
+    <definition name="guides" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/guides.jsp"/>
+    </definition>
     
     <definition name="admin" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
