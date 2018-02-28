@@ -85,7 +85,7 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal">×</button>
-                    <h4><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
+                    <h4 class="h4-index"><span class="glyphicon glyphicon-lock"></span> Tickets</h4>
                 </div>
                 <div class="modal-body">
                     <form role="form">

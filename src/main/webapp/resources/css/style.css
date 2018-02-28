@@ -77,23 +77,27 @@ h3, h4 {
     color: #555;
 }
 
-/*
+
 .btn {
-    padding: 10px 20px;
-    background-color: #333;
-    color: #f1f1f1;
-    border-radius: 0;
+    background-color: #eee;
+    color: #000;
     transition: .2s;
 }
 
 .btn:hover, .btn:focus {
-    border: 1px solid #333;
     background-color: #fff;
+    border-color: #bbb;
     color: #000;
 }
-*/
 
-.modal-header, h4, .close {
+.modal-header, .close {
+    background-color: #333;
+    color: #fff !important;
+    text-align: center;
+    font-size: 30px;
+}
+
+.h4-index {
     background-color: #333;
     color: #fff !important;
     text-align: center;
@@ -189,42 +193,68 @@ textarea {
 
 /* Excursions */
 .filters {
-    background-color: #8c8c8c;
-    min-height: 700px;
+    background-color: #efefef;
     padding-top: 60px;
+    height: 100%;
 }
 
 .showpiece_font {
     font-size: 24px;
 }
-.filters h3 {
-    text-align: center;
-    color: white;
+
+.item-label {
+    text-align: right;
+    color: #555555;
 }
 
-.col-sm-8 {
+.category-label {
+    font-weight: bold;
+    text-align: left;
+    color: #555555;
+    padding-bottom: 10px;
+}
+
+.filter-submit {
+    width: 100%;
+}
+
+.showpiece-item {
+    background-color: #efefef;
+    padding-left: 15px;
+    margin: 10px;
+    width: 300px;
+}
+
+.showpiece-image {
+    height: 170px;
+    width: 300px;
+}
+
+.showpiece-column-image {
+}
+
+.showpiece-column-data {
+    padding: 10px;
+}
+
+.showpiece-container {
     margin-top: 60px;
 }
-.showpieceColumn {
-    background-color: #999999;
-    margin: 15px;
-    padding: 20px;
-    border: 1px solid;
-    height: auto;
+
+.showpiece-item-value {
+    text-align: right;
+    color: #555555;
 }
 
-.showpieceImg {
-    float: left;
+.showpiece-item-key {
+    text-align: right;
+    color: #555555;
 }
 
-.showpieceColumnText {
-    color: white;
+.showpiece-item-name {
+    font-size: 32px;
+    color: #555555;
 }
-
-.adminPanel {
-    margin-top: 60px;
-}
-
 
 #table_showpiece {
     margin-top: 100px;

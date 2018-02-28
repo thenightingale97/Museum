@@ -1,6 +1,6 @@
 package com.museum.model.request;
 
-public class ExcursionsFilterRequest {
+public class EventFilterRequest {
     
     private String fromDateTime;
     

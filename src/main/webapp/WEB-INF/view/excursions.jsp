@@ -5,38 +5,53 @@
 <body>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-4 filters">
-            <div class="row"><h3>Оберіть дату цікавої для вас події!</h3></div>
-            <form:form action="/excursions" method="GET" modelAttribute="periodRequest" >
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker6'>
-                            <form:input path="fromDateTime" type='text' class="form-control" />
-                            <span class="input-group-addon">
+        <div class="col-sm-3 filters">
+            <div class="row">
+                <div class="col-sm-12">
+                    <h5 class="category-label">Оберіть період:</h5>
+                </div>
+            </div>
+            <form:form id="filterForm" action="/excursions" method="GET" modelAttribute="eventsFilterRequest">
+                <div class="row">
+                    <div class="col-sm-2"><h5 class="item-label">Від:</h5></div>
+                    <div class='col-sm-10'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker6'>
+                                <form:input path="fromDateTime" type='text' class="form-control"/>
+                                <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class='col-sm-6'>
-                    <div class="form-group">
-                        <div class='input-group date' id='datetimepicker7'>
-                            <form:input path="toDateTime" type='text' class="form-control" />
-                            <span class="input-group-addon">
+                <div class="row">
+                    <div class="col-sm-2"><h5 class="item-label">До:</h5></div>
+                    <div class='col-sm-10'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker7'>
+                                <form:input path="toDateTime" type='text' class="form-control"/>
+                                <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default">Пошук</button>
+                <button type="submit" class="btn btn-default filter-submit">Пошук</button>
             </form:form>
         </div>
-        <div class="col-sm-8 showpieceContext">
-            <c:forEach items="${events}" var="event">
-                <div class="col-sm-5 showpieceColumn">
-                    <img class="showpieceImg" src="" height="60px" width="60px" alt="lol">
-                    <div class="row"><span class="showpieceColumnText">${event.excursion.name}</span></div>
-                    <div class="row"><span class="showpieceColumnText">${event.startTime} - ${event.finishTime}</span></div>
+        <div class="col-sm-9 showpiece-container">
+            <c:forEach var="event" items="${eventItemViews}">
+                <div class="col-sm-1 showpiece-item">
+                    <div class="row">
+                        <img class="showpiece-image" src="/resources/images/excursions/test1.jpg" alt="lol">
+                    </div>
+                    <div class="row"><span class="showpiece-item-name">${event.name}</span></div>
+                    <div class="row"><span class="showpiece-item-value">${event.startDate}</span></div>
+                    <div class="row"><span class="showpiece-item-value">${event.startTime} - ${event.finishTime}</span>
+                    </div>
+                    <div class="row"><span class="showpiece-item-value">${event.duration}</span></div>
                 </div>
             </c:forEach>
         </div>
