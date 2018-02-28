@@ -33,7 +33,7 @@ public class AuthorController {
     }
 
     @RequestMapping("/updating/{id}")
-    public String update(@PathVariable int id, Model model){
+    public String updating(@PathVariable int id, Model model){
         model.addAttribute("author", authorService.find(id));
         return "admin-author";
     }

@@ -12,6 +12,7 @@
                     <li><a href="/admin/author">Authors</a></li>
                     <li><a href="/admin/guide">Guides</a></li>
                     <li><a href="/admin/guardian">Guardian</a></li>
+                    <li><a href="/admin/hall">Hall</a></li>
                 </ul>
             </div>
         </div>
