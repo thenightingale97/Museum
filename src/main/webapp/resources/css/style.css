@@ -267,3 +267,11 @@ textarea {
     width:75%;
     color: #2d2d30;;
 }
+
+.col-md-7 {
+    margin-top: 20px;
+}
+
+.col-md-10 {
+    margin-top: 20px;
+}

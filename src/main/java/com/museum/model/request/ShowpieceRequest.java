@@ -23,6 +23,14 @@ public class ShowpieceRequest {
 
     private String description;
 
+    public String getCreationDate() {
+        return creationDate;
+    }
+
+    public void setCreationDate(String creationDate) {
+        this.creationDate = creationDate;
+    }
+
     public Integer getId() {
         return id;
     }

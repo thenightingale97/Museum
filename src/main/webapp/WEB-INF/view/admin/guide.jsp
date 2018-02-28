@@ -49,17 +49,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-xs-4"><h3>Guide name</h3></div>
-            <div class="col-md-2 col-xs-4"><h3></h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Update</h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Delete</h3></div>
+            <div class="col-md-3 col-xs-3"><h3>Guide name</h3></div>
+            <div class="col-md-2 col-xs-2"><h3>Position</h3></div>
+            <div class="col-md-2 col-xs-2"><h3>Phone number</h3></div>
+            <div class="col-md-2 col-xs-1"><h3>Update</h3></div>
+            <div class="col-md-2 col-xs-1"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${guides}" var="guide">
             <div class="row">
-                <div class="col-md-2 col-xs-4">${guide.firstName}</div>
-                <div class="col-md-2 col-xs-2">${guide.lastName}</div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-warning" href="guide/updating/${guide.id}">update</a></div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-danger" href="guide/delete/${guide.id}">delete</a></div>
+                <div class="col-md-3 col-xs-3">${guide.firstName} ${guide.lastName}</div>
+                <div class="col-md-2 col-xs-2">${guide.position}</div>
+                <div class="col-md-2 col-xs-2">${guide.phoneNumber}</div>
+                <div class="col-md-2 col-xs-1"><a class="btn btn-warning" href="guide/updating/${guide.id}">update</a></div>
+                <div class="col-md-2 col-xs-1"><a class="btn btn-danger" href="guide/delete/${guide.id}">delete</a></div>
             </div>
         </c:forEach>
 

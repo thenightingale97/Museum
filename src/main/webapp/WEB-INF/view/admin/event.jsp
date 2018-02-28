@@ -58,17 +58,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-xs-4"><h3>Hall name</h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Guardian</h3></div>
-            <div class="col-md-3 col-xs-3"><h3>Update</h3></div>
-            <div class="col-md-3 col-xs-3"><h3>Delete</h3></div>
+            <div class="col-md-3 col-xs-4"><h3>Event name</h3></div>
+            <div class="col-md-4 col-xs-4"><h3>Event time</h3></div>
+            <div class="col-md-3 col-xs-4"><h3>Event guide</h3></div>
+            <div class="col-md-1 col-xs-3"><h3>Update</h3></div>
+            <div class="col-md-1 col-xs-3"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${events}" var="event">
             <div class="row">
-                <div class="col-md-2 col-xs-4">${event.excursion.name}</div>
-                <div class="col-md-4 col-xs-4">${event.startTime} ${event.finishTime}</div>
-                <div class="col-md-3 col-xs-3"><a class="btn btn-warning" href="event/updating/${event.id}">update</a></div>
-                <div class="col-md-3 col-xs-3"><a class="btn btn-danger" href="event/delete/${event.id}">delete</a></div>
+                <div class="col-md-3 col-xs-4">${event.excursion.name}</div>
+                <div class="col-md-4 col-xs-4">${event.startTime} - ${event.finishTime}</div>
+                <div class="col-md-3 col-xs-4">${event.guide.firstName} ${event.guide.lastName}</div>
+                <div class="col-md-1 col-xs-3"><a class="btn btn-warning" href="event/updating/${event.id}">update</a></div>
+                <div class="col-md-1 col-xs-3"><a class="btn btn-danger" href="event/delete/${event.id}">delete</a></div>
             </div>
         </c:forEach>
 

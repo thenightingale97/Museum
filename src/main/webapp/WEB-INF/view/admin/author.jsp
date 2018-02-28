@@ -33,15 +33,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-4 col-xs-4"><h3>Author name</h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Update</h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Delete</h3></div>
+            <div class="col-md-3 col-xs-4"><h3>Author name</h3></div>
+            <div class="col-md-1 col-xs-4"><h3>Update</h3></div>
+            <div class="col-md-1 col-xs-4"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${authors}" var="author">
             <div class="row">
-                <div class="col-md-4 col-xs-4">${author.firstName} ${author.lastName}</div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-warning" href="author/updating/${author.id}">update</a></div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-danger" href="author/delete/${author.id}">delete</a></div>
+                <div class="col-md-3 col-xs-4">${author.firstName} ${author.lastName}</div>
+                <div class="col-md-1 col-xs-4"><a class="btn btn-warning" href="author/updating/${author.id}">update</a></div>
+                <div class="col-md-1 col-xs-4"><a class="btn btn-danger" href="author/delete/${author.id}">delete</a></div>
             </div>
         </c:forEach>
 

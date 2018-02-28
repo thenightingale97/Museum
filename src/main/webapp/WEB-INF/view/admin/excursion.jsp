@@ -43,17 +43,19 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-3 col-xs-3"><h3>Excursion name</h3></div>
-            <div class="col-md-3 col-xs-3"><h3>Excursion duration</h3></div>
-            <div class="col-md-2 col-xs-2"><h3>Update</h3></div>
-            <div class="col-md-2 col-xs-2"><h3>Delete</h3></div>
+            <div class="col-md-2 col-xs-3"><h3>Excursion name</h3></div>
+            <div class="col-md-2 col-xs-3"><h3>Excursion duration</h3></div>
+            <div class="col-md-2 col-xs-3"><h3>Visitor max amount</h3></div>
+            <div class="col-md-1 col-xs-2"><h3>Update</h3></div>
+            <div class="col-md-1 col-xs-2"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${excursions}" var="excursion">
             <div class="row">
-                <div class="col-md-3 col-xs-3">${excursion.name}</div>
-                <div class="col-md-3 col-xs-3">${excursion.duration}</div>
-                <div class="col-md-2 col-xs-2"><a class="btn btn-warning" href="excursion/updating/${excursion.id}">update</a></div>
-                <div class="col-md-2 col-xs-2"><a class="btn btn-danger" href="excursion/delete/${excursion.id}">delete</a></div>
+                <div class="col-md-2 col-xs-3">${excursion.name}</div>
+                <div class="col-md-2 col-xs-3">${excursion.duration}</div>
+                <div class="col-md-2 col-xs-3">${excursion.maxVisitorAmount}</div>
+                <div class="col-md-1 col-xs-2"><a class="btn btn-warning" href="excursion/updating/${excursion.id}">update</a></div>
+                <div class="col-md-1 col-xs-2"><a class="btn btn-danger" href="excursion/delete/${excursion.id}">delete</a></div>
             </div>
         </c:forEach>
 

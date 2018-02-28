@@ -13,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
@@ -89,6 +91,7 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
         showpiece.setMaterial(showpieceView.getMaterial());
         showpiece.setName(showpieceView.getName());
         showpiece.setId(showpieceView.getId());
+        showpiece.setCreationDate(LocalDate.parse(showpieceView.getCreationDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         repository.update(showpiece);
     }
 }

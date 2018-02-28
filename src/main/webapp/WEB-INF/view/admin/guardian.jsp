@@ -32,17 +32,15 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-2 col-xs-4"><h3>Guardian name</h3></div>
-            <div class="col-md-2 col-xs-4"><h3></h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Update</h3></div>
-            <div class="col-md-4 col-xs-4"><h3>Delete</h3></div>
+            <div class="col-md-3 col-xs-3"><h3>Guardian name</h3></div>
+            <div class="col-md-1 col-xs-1"><h3>Update</h3></div>
+            <div class="col-md-1 col-xs-1"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${guardians}" var="guardian">
             <div class="row">
-                <div class="col-md-2 col-xs-4">${guardian.firstName}</div>
-                <div class="col-md-2 col-xs-2">${guardian.lastName}</div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-warning" href="guardian/updating/${guardian.id}">update</a></div>
-                <div class="col-md-4 col-xs-4"><a class="btn btn-danger" href="guardian/delete/${guardian.id}">delete</a></div>
+                <div class="col-md-3 col-xs-4">${guardian.firstName} ${guardian.lastName}</div>
+                <div class="col-md-1 col-xs-4"><a class="btn btn-warning" href="guardian/updating/${guardian.id}">update</a></div>
+                <div class="col-md-1 col-xs-4"><a class="btn btn-danger" href="guardian/delete/${guardian.id}">delete</a></div>
             </div>
         </c:forEach>
 

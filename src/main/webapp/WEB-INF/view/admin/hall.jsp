@@ -34,15 +34,15 @@
         <div class="row">
             <div class="col-md-2 col-xs-4"><h3>Hall name</h3></div>
             <div class="col-md-4 col-xs-4"><h3>Guardian</h3></div>
-            <div class="col-md-3 col-xs-3"><h3>Update</h3></div>
-            <div class="col-md-3 col-xs-3"><h3>Delete</h3></div>
+            <div class="col-md-1 col-xs-3"><h3>Update</h3></div>
+            <div class="col-md-1 col-xs-3"><h3>Delete</h3></div>
         </div>
         <c:forEach items="${halls}" var="hall">
             <div class="row">
                 <div class="col-md-2 col-xs-4">${hall.name}</div>
                 <div class="col-md-4 col-xs-4">${hall.guardian.firstName} ${hall.guardian.lastName}</div>
-                <div class="col-md-3 col-xs-3"><a class="btn btn-warning" href="hall/updating/${hall.id}">update</a></div>
-                <div class="col-md-3 col-xs-3"><a class="btn btn-danger" href="hall/delete/${hall.id}">delete</a></div>
+                <div class="col-md-1 col-xs-1"><a class="btn btn-warning" href="hall/updating/${hall.id}">update</a></div>
+                <div class="col-md-1 col-xs-1"><a class="btn btn-danger" href="hall/delete/${hall.id}">delete</a></div>
             </div>
         </c:forEach>
 
