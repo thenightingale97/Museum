@@ -1,7 +1,7 @@
 package com.museum.controller;
 
 import com.museum.entity.Event;
-import com.museum.model.request.PeriodRequest;
+import com.museum.model.request.ExcursionsFilterRequest;
 import com.museum.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -38,7 +38,7 @@ public class ExcursionController {
     
     @GetMapping
     public String excursions(Model model,
-                             @ModelAttribute PeriodRequest periodRequest) {
+                             @ModelAttribute ExcursionsFilterRequest periodRequest) {
         LocalDateTime fromDateTime = parseDateTimeNullable(periodRequest.getFromDateTime());
         LocalDateTime toDateTime = parseDateTimeNullable(periodRequest.getToDateTime());
     
@@ -56,4 +56,8 @@ public class ExcursionController {
         return "excursions";
     }
     
+    @ModelAttribute("excursionsFilterRequest")
+    public ExcursionsFilterRequest getExcursionsFilterRequest() {
+        return new ExcursionsFilterRequest();
+    }
 }
