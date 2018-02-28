@@ -1,8 +1,8 @@
 package com.museum.service;
 
 import com.museum.entity.Hall;
-import com.museum.model.view.HallView;
+import com.museum.model.request.HallRequest;
 
 public interface HallService extends Service<Hall, Integer> {
-    void update(HallView hallView);
+    void update(HallRequest hallView);
 }

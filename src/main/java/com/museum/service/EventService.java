@@ -2,6 +2,7 @@ package com.museum.service;
 
 import com.museum.entity.Event;
 import com.museum.entity.Guide;
+import com.museum.model.request.EventRequest;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,4 +23,6 @@ public interface EventService extends Service<Event, Integer> {
     Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime);
     
     List<Event> findAllUpcomingOrderedByDate(int limit);
+
+    void update(EventRequest event);
 }

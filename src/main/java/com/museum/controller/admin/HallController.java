@@ -1,6 +1,6 @@
 package com.museum.controller.admin;
 
-import com.museum.model.view.HallView;
+import com.museum.model.request.HallRequest;
 import com.museum.service.GuardianService;
 import com.museum.service.HallService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,7 @@ public class HallController {
     private GuardianService guardianService;
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("hall") HallView hall){
+    public String update(@ModelAttribute("hall") HallRequest hall){
         hallService.update(hall);
         return "redirect:/admin/hall";
     }
@@ -45,8 +45,8 @@ public class HallController {
     }
 
     @ModelAttribute("hall")
-    public HallView getForm(){
-        return new HallView();
+    public HallRequest getForm(){
+        return new HallRequest();
     }
 
 }

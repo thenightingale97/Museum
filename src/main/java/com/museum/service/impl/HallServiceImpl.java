@@ -1,7 +1,7 @@
 package com.museum.service.impl;
 
 import com.museum.entity.Hall;
-import com.museum.model.view.HallView;
+import com.museum.model.request.HallRequest;
 import com.museum.repository.GuardianRepository;
 import com.museum.repository.HallRepository;
 import com.museum.service.AbstractService;
@@ -27,7 +27,7 @@ public class HallServiceImpl extends AbstractService<Hall, Integer, HallReposito
 
     @Override
     @Transactional
-    public void update(HallView hallView) {
+    public void update(HallRequest hallView) {
         Hall hall = new Hall();
         hall.setId(hallView.getId());
         hall.setGuardian(guardianRepository.find(hallView.getGuardian()));

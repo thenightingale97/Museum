@@ -63,4 +63,8 @@
     <definition name="admin-showpiece" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/showpiece.jsp"/>
     </definition>
+
+    <definition name="admin-event" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/event.jsp"/>
+    </definition>
 </tiles-definitions>

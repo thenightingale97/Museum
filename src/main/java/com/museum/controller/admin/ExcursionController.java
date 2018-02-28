@@ -1,6 +1,6 @@
 package com.museum.controller.admin;
 
-import com.museum.model.view.ExcursionView;
+import com.museum.model.request.ExcursionRequest;
 import com.museum.service.ExcursionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +21,7 @@ public class ExcursionController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("excursion") ExcursionView excursion){
+    public String update(@ModelAttribute("excursion") ExcursionRequest excursion){
         excursionService.update(excursion);
         return "redirect:/admin/excursion";
     }
@@ -39,8 +39,8 @@ public class ExcursionController {
     }
 
     @ModelAttribute("excursion")
-    public ExcursionView getForm(){
-        return new ExcursionView();
+    public ExcursionRequest getForm(){
+        return new ExcursionRequest();
     }
 
 

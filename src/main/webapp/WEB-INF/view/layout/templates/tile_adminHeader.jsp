@@ -15,6 +15,7 @@
                     <li><a href="/admin/hall">Hall</a></li>
                     <li><a href="/admin/excursion">Excursion</a></li>
                     <li><a href="/admin/showpiece">Showpiece</a></li>
+                    <li><a href="/admin/event">Event</a></li>
                 </ul>
             </div>
         </div>

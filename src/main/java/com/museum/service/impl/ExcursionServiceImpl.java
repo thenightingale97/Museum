@@ -1,7 +1,7 @@
 package com.museum.service.impl;
 
 import com.museum.entity.Excursion;
-import com.museum.model.view.ExcursionView;
+import com.museum.model.request.ExcursionRequest;
 import com.museum.repository.ExcursionRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.ExcursionService;
@@ -24,7 +24,7 @@ public class ExcursionServiceImpl extends AbstractService<Excursion, Integer, Ex
 
 	@Override
 	@Transactional
-	public void update(ExcursionView excursionView) {
+	public void update(ExcursionRequest excursionView) {
 		Excursion excursion = new Excursion();
 		excursion.setDescription(excursionView.getDescription());
 		excursion.setName(excursionView.getName());

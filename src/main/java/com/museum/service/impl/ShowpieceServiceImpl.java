@@ -1,7 +1,7 @@
 package com.museum.service.impl;
 
 import com.museum.entity.*;
-import com.museum.model.view.ShowpieceView;
+import com.museum.model.request.ShowpieceRequest;
 import com.museum.repository.AuthorRepository;
 import com.museum.repository.GuardianRepository;
 import com.museum.repository.HallRepository;
@@ -79,7 +79,7 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
 
     @Override
     @Transactional
-    public void update(ShowpieceView showpieceView) {
+    public void update(ShowpieceRequest showpieceView) {
         Showpiece showpiece = new Showpiece();
         showpiece.setAuthor(authorRepository.find(showpieceView.getAuthor()));
         showpiece.setHall(hallRepository.find(showpieceView.getHall()));

@@ -1,6 +1,6 @@
 package com.museum.controller.admin;
 
-import com.museum.model.view.ShowpieceView;
+import com.museum.model.request.ShowpieceRequest;
 import com.museum.service.AuthorService;
 import com.museum.service.HallService;
 import com.museum.service.ShowpieceService;
@@ -31,7 +31,7 @@ public class ShowpieceController {
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("showpiece") ShowpieceView showpiece) {
+    public String update(@ModelAttribute("showpiece") ShowpieceRequest showpiece) {
         showpieceService.update(showpiece);
         return "redirect:/admin/showpiece";
     }
@@ -51,8 +51,8 @@ public class ShowpieceController {
     }
 
     @ModelAttribute("showpiece")
-    public ShowpieceView getForm() {
-        return new ShowpieceView();
+    public ShowpieceRequest getForm() {
+        return new ShowpieceRequest();
     }
 
 }
