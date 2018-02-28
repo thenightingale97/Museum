@@ -27,8 +27,12 @@
     <definition name="showpiece" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/showpiece.jsp"/>
     </definition>
-    
-    <definition name="admin" extends="baseLayout">
+
+    <definition name="guides" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/guides.jsp"/>
+    </definition>
+
+    <definition name="admin" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
     </definition>
 
@@ -36,4 +40,15 @@
         <put-attribute name="body" value="/WEB-INF/view/admin/author.jsp"/>
     </definition>
 
+    <definition name="admin-guide" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/guide.jsp"/>
+    </definition>
+
+    <definition name="admin-guardian" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/guardian.jsp"/>
+    </definition>
+
+    <definition name="admin-hall" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/hall.jsp"/>
+    </definition>
 </tiles-definitions>

@@ -1,7 +1,6 @@
 package com.museum.controller.admin;
 
 import com.museum.entity.Author;
-import com.museum.model.view.AuthorView;
 import com.museum.service.AuthorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,26 +20,27 @@ public class AuthorController {
         return "admin-author";
     }
 
-    @PostMapping
-    public String addAuthor(@ModelAttribute("authorView") Author authorView) {
-        authorService.save(authorView);
+    @PostMapping("/update")
+    public String update(@ModelAttribute("author") Author author) {
+        authorService.update(author);
         return "redirect:/admin/author";
     }
 
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable int id){
         authorService.delete(id);
-        return "redirect:/admin/author";
+        return "redirect:/admin/guardian";
     }
 
-    @RequestMapping("/update/{id}")
-    public String update(@PathVariable int id, Model model){
-        model.addAttribute("authorView", authorService.find(id));
+    @RequestMapping("/updating/{id}")
+    public String updating(@PathVariable int id, Model model){
+        model.addAttribute("author", authorService.find(id));
         return "admin-author";
     }
 
-    @ModelAttribute("authorView")
+    @ModelAttribute("author")
     public Author getForm() {
         return new Author();
     }
+
 }
