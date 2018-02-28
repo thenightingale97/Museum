@@ -32,7 +32,7 @@
         <put-attribute name="body" value="/WEB-INF/view/guides.jsp"/>
     </definition>
 
-    <definition name="admin" extends="baseLayout">
+    <definition name="admin" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
     </definition>
 
@@ -44,4 +44,7 @@
         <put-attribute name="body" value="/WEB-INF/view/admin/guide.jsp"/>
     </definition>
 
+    <definition name="admin-guardian" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/admin/guardian.jsp"/>
+    </definition>
 </tiles-definitions>
