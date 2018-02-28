@@ -50,7 +50,6 @@
             </td>
         </tr>
 
-        technique
         <tr class="showpiece_font">
             <td >
                 <p>Техніка</p>
