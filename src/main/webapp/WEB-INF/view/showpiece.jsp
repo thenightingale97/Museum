@@ -60,10 +60,10 @@
         </tr>
              <tr class="showpiece_font">
                  <td >
-                     <p>Дата</p>
+                     <p>Дата створення</p>
                  </td>
                  <td >
-                     <p>????</p>
+                     <p>${showpiece.creationDate}</p>
                  </td>
             </tr>
         <tr class="showpiece_font">

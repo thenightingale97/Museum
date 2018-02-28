@@ -33,7 +33,7 @@
                    <div class="row"> ${showpiece.name}</div>
                    <div class="row"> <img src="/resources/images/showpieces/${showpiece.imageUrl}"alt="showpiece image" width="85"    height="70"></div>
                    <div class="row"> ${showpiece.description}</div>
-                   <div class="row"> ${showpiece.creationDate}</div>
+                   <div class="row"> Дата створення: ${showpiece.creationDate}</div>
                    </div>
 
               </c:forEach>
