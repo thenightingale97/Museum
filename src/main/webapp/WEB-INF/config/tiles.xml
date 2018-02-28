@@ -7,6 +7,11 @@
         <put-attribute name="footer" value="/WEB-INF/view/layout/templates/tile_footer.jsp"/>
     </definition>
 
+    <definition name="baseAdminLayout" template="/WEB-INF/view/layout/adminLayout_default.jsp">
+        <put-attribute name="header" value="/WEB-INF/view/layout/templates/tile_adminHeader.jsp"/>
+        <put-attribute name="body" value=""/>
+    </definition>
+
     <definition name="index" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/index.jsp"/>
     </definition>
@@ -23,7 +28,8 @@
         <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
     </definition>
 
-    <definition name="admin-author" extends="baseLayout">
+    <definition name="admin-author" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/author.jsp"/>
     </definition>
+
 </tiles-definitions>

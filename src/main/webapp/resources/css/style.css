@@ -221,6 +221,10 @@ textarea {
     color: white;
 }
 
+.adminPanel {
+    margin-top: 60px;
+}
+
 
 #table_showpiece {
     margin-top: 100px;
