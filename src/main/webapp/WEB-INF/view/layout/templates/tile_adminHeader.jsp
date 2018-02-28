@@ -9,7 +9,8 @@
             </button>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="/admin/author">Authors</a></li>
+                    <li><a href="/admin/author">Authors</a></li>
+                    <li><a href="/admin/guide">Guides</a></li>
                 </ul>
             </div>
         </div>
