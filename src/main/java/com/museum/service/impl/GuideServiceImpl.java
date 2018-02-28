@@ -15,21 +15,21 @@ import java.util.Objects;
 
 @Service
 public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepository> implements GuideService {
-    
+
     @Autowired
     private GuideRepository repository;
-    
+
     @Override
     public GuideRepository getRepository() {
         return repository;
     }
-    
+
     @Override
     public List<Guide> findAllByPosition(GuidePosition position) {
         Objects.requireNonNull(position, "position");
         return getRepository().findAllByPosition(position);
     }
-    
+
     @Override
     public List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
@@ -40,7 +40,7 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
     public Long getWorkTime(Guide guide) {
         return getRepository().getWorkTime(guide);
     }
-    
+
     @Override
     public Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);

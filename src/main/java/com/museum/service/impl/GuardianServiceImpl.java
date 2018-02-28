@@ -9,10 +9,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class GuardianServiceImpl extends AbstractService<Guardian, Integer, GuardianRepository> implements GuardianService {
-    
+
     @Autowired
     private GuardianRepository repository;
-    
+
     @Override
     public GuardianRepository getRepository() {
         return repository;

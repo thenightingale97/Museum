@@ -8,10 +8,10 @@ import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 public abstract class AbstractRepository<E, PK extends Serializable> implements Repository<E, PK> {
-    
+
     @PersistenceContext
     private EntityManager entityManager;
-    
+
     private Class<E> entityClass;
 
     @Override
@@ -42,7 +42,7 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
                 .createQuery(sql, getEntityClass())
                 .getResultList();
     }
-    
+
     @Override
     public int count() {
         String entityName = getEntityClass().getName();
@@ -50,7 +50,7 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
         TypedQuery<Long> query = entityManager.createQuery(sql, Long.class);
         return query.getSingleResult().intValue();
     }
-    
+
     protected EntityManager getEntityManager() {
         return entityManager;
     }
@@ -63,7 +63,7 @@ public abstract class AbstractRepository<E, PK extends Serializable> implements 
         }
         return entityClass;
     }
-    
+
     @Override
     public boolean exists(PK id) {
         String entityName = getEntityClass().getName();

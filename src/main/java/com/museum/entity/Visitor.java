@@ -71,23 +71,23 @@ public class Visitor extends IdentifiableEntity<Integer> {
     public void setEvents(List<Event> events) {
         this.events = events;
     }
-    
+
     public VisitorRole getAccessLevel() {
         return accessLevel;
     }
-    
+
     public void setAccessLevel(VisitorRole accessLevel) {
         this.accessLevel = accessLevel;
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Visitor)) return false;
         if (!super.equals(o)) return false;
-        
+
         Visitor visitor = (Visitor) o;
-        
+
         if (firstName != null ? !firstName.equals(visitor.firstName) : visitor.firstName != null) return false;
         if (lastName != null ? !lastName.equals(visitor.lastName) : visitor.lastName != null) return false;
         if (login != null ? !login.equals(visitor.login) : visitor.login != null) return false;
@@ -95,7 +95,7 @@ public class Visitor extends IdentifiableEntity<Integer> {
         if (accessLevel != visitor.accessLevel) return false;
         return events != null ? events.equals(visitor.events) : visitor.events == null;
     }
-    
+
     @Override
     public int hashCode() {
         int result = super.hashCode();

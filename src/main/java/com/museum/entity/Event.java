@@ -5,75 +5,75 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
-@Table(name="event")
+@Table(name = "event")
 public class Event extends IdentifiableEntity<Integer> {
-    
+
     @ManyToOne
     private Excursion excursion;
-    
+
     @ManyToOne
-	private Guide guide;
+    private Guide guide;
 
-	@ManyToMany
-	private List<Visitor> visitors;
-	
-	@Column
-	private LocalDateTime startTime;
-	
-	@Column
-	private LocalDateTime finishTime;
+    @ManyToMany
+    private List<Visitor> visitors;
 
-	public Event() {
-		
-	}
+    @Column
+    private LocalDateTime startTime;
 
-	public Excursion getExcursion() {
-		return excursion;
-	}
+    @Column
+    private LocalDateTime finishTime;
 
-	public void setExcursion(Excursion excursion) {
-		this.excursion = excursion;
-	}
+    public Event() {
 
-	public Guide getGuide() {
-		return guide;
-	}
+    }
 
-	public void setGuide(Guide guide) {
-		this.guide = guide;
-	}
+    public Excursion getExcursion() {
+        return excursion;
+    }
 
-	public LocalDateTime getStartTime() {
-		return startTime;
-	}
+    public void setExcursion(Excursion excursion) {
+        this.excursion = excursion;
+    }
 
-	public void setStartTime(LocalDateTime startTime) {
-		this.startTime = startTime;
-	}
+    public Guide getGuide() {
+        return guide;
+    }
 
-	public LocalDateTime getFinishTime() {
-		return finishTime;
-	}
+    public void setGuide(Guide guide) {
+        this.guide = guide;
+    }
 
-	public void setFinishTime(LocalDateTime finishTime) {
-		this.finishTime = finishTime;
-	}
-    
+    public LocalDateTime getStartTime() {
+        return startTime;
+    }
+
+    public void setStartTime(LocalDateTime startTime) {
+        this.startTime = startTime;
+    }
+
+    public LocalDateTime getFinishTime() {
+        return finishTime;
+    }
+
+    public void setFinishTime(LocalDateTime finishTime) {
+        this.finishTime = finishTime;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Event)) return false;
         if (!super.equals(o)) return false;
-        
+
         Event event = (Event) o;
-        
+
         if (excursion != null ? !excursion.equals(event.excursion) : event.excursion != null) return false;
         if (guide != null ? !guide.equals(event.guide) : event.guide != null) return false;
         if (visitors != null ? !visitors.equals(event.visitors) : event.visitors != null) return false;
         if (startTime != null ? !startTime.equals(event.startTime) : event.startTime != null) return false;
         return finishTime != null ? finishTime.equals(event.finishTime) : event.finishTime == null;
     }
-    
+
     @Override
     public int hashCode() {
         int result = super.hashCode();

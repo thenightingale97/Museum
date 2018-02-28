@@ -7,4 +7,5 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class VisitorRepositoryImpl extends AbstractRepository<Visitor, Integer> implements VisitorRepository {
+
 }

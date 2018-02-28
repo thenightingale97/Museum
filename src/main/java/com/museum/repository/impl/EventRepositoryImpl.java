@@ -12,7 +12,7 @@ import java.util.List;
 
 @Repository
 public class EventRepositoryImpl extends AbstractRepository<Event, Integer> implements EventRepository {
-    
+
     /**
      * Task 7.
      */
@@ -25,7 +25,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter("toTime", toTime);
         return query.getResultList();
     }
-    
+
     /**
      * Task 9.
      */
@@ -37,7 +37,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter(2, toTime);
         return query.getSingleResult();
     }
-    
+
     /**
      * Task 10.1
      */
@@ -50,7 +50,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter("guideId", guide.getId());
         return query.getSingleResult();
     }
-    
+
     /**
      * Task 10.2
      */
@@ -74,7 +74,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setMaxResults(limit);
         return query.getResultList();
     }
-    
+
     @Override
     public List<Event> findAllByFromTime(LocalDateTime fromTime) {
         String sql = "SELECT event FROM Event event WHERE event.startTime >= :fromTime " +
@@ -83,7 +83,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         query.setParameter("fromTime", fromTime);
         return query.getResultList();
     }
-    
+
     @Override
     public List<Event> findAllByToTime(LocalDateTime toTime) {
         String sql = "SELECT event FROM Event event WHERE event.startTime <= :toTime " +

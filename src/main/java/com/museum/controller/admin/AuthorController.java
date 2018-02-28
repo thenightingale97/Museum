@@ -27,13 +27,13 @@ public class AuthorController {
     }
 
     @RequestMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable int id) {
         authorService.delete(id);
         return "redirect:/admin/guardian";
     }
 
     @RequestMapping("/updating/{id}")
-    public String updating(@PathVariable int id, Model model){
+    public String updating(@PathVariable int id, Model model) {
         model.addAttribute("author", authorService.find(id));
         return "admin-author";
     }

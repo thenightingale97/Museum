@@ -7,18 +7,18 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface EventRepository extends Repository<Event, Integer> {
-    
+
     List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
-    
+
     List<Event> findAllByFromTime(LocalDateTime fromTime);
-    
+
     List<Event> findAllByToTime(LocalDateTime toTime);
-    
+
     Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
-    
+
     Long getAmountByGuide(Guide guide);
-    
+
     Long getAmountByPeriodAndGuide(Guide guide, LocalDateTime fromTime, LocalDateTime toTime);
-    
+
     List<Event> findAllUpcomingOrderedByDate(int limit);
 }

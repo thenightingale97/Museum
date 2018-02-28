@@ -13,7 +13,7 @@ import javax.transaction.Transactional;
 
 @Service
 public class HallServiceImpl extends AbstractService<Hall, Integer, HallRepository> implements HallService {
-    
+
     @Autowired
     private HallRepository repository;
 

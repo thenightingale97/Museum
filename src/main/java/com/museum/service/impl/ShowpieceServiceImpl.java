@@ -25,13 +25,13 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
 
     @Autowired
     private ShowpieceRepository repository;
-    
+
     @Autowired
     private HallRepository hallRepository;
-    
+
     @Autowired
     private AuthorRepository authorRepository;
-    
+
     @Autowired
     private GuardianRepository guardianRepository;
 
@@ -67,7 +67,7 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
     public Map<ShowpieceMaterial, Long> getStatisticByMaterial() {
         return getRepository().getStatisticByMaterial();
     }
-    
+
     @Override
     public List<Showpiece> findAllByRandom(int count) {
         final int showpieceCount = getRepository().count();

@@ -37,13 +37,13 @@ public class EventControllerAdmin {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete (@PathVariable Integer id){
+    public String delete(@PathVariable Integer id) {
         eventService.delete(id);
         return "redirect:/admin/event";
     }
 
     @GetMapping("/updating/{id}")
-    public String updating(@PathVariable Integer id, Model model){
+    public String updating(@PathVariable Integer id, Model model) {
         model.addAttribute("event", eventService.find(id));
         model.addAttribute("guides", guideService.findAll());
         model.addAttribute("excursions", excursionService.findAll());

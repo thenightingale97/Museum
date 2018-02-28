@@ -13,24 +13,24 @@ import java.time.Duration;
 
 @Service
 public class ExcursionServiceImpl extends AbstractService<Excursion, Integer, ExcursionRepository> implements ExcursionService {
-	
-	@Autowired
-	private ExcursionRepository repository;
-	
-	@Override
-	public ExcursionRepository getRepository() {
-		return repository;
-	}
 
-	@Override
-	@Transactional
-	public void update(ExcursionRequest excursionView) {
-		Excursion excursion = new Excursion();
-		excursion.setDescription(excursionView.getDescription());
-		excursion.setName(excursionView.getName());
-		excursion.setId(excursionView.getId());
-		excursion.setDuration(Duration.ofMinutes(excursionView.getDuration()));
-		excursion.setMaxVisitorAmount(excursionView.getMaxVisitorAmount());
-		repository.update(excursion);
-	}
+    @Autowired
+    private ExcursionRepository repository;
+
+    @Override
+    public ExcursionRepository getRepository() {
+        return repository;
+    }
+
+    @Override
+    @Transactional
+    public void update(ExcursionRequest excursionView) {
+        Excursion excursion = new Excursion();
+        excursion.setDescription(excursionView.getDescription());
+        excursion.setName(excursionView.getName());
+        excursion.setId(excursionView.getId());
+        excursion.setDuration(Duration.ofMinutes(excursionView.getDuration()));
+        excursion.setMaxVisitorAmount(excursionView.getMaxVisitorAmount());
+        repository.update(excursion);
+    }
 }

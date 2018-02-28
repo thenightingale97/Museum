@@ -19,16 +19,16 @@ import java.util.List;
 
 @Service
 public class EventServiceImpl extends AbstractService<Event, Integer, EventRepository> implements EventService {
-    
+
     @Autowired
     private EventRepository repository;
-    
+
     @Autowired
     private GuideRepository guideRepository;
 
     @Autowired
     private ExcursionRepository excursionRepository;
-    
+
     @Override
     public EventRepository getRepository() {
         return repository;
@@ -39,19 +39,19 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
         Validations.period(fromTime, toTime);
         return getRepository().findAllByPeriod(fromTime, toTime);
     }
-    
+
     @Override
     public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
         return getRepository().getAmountByPeriod(fromTime, toTime);
     }
-    
+
     @Override
     public Long getAmountByGuide(Guide guide) {
         Validations.entity(guideRepository, guide, "guide");
         return getRepository().getAmountByGuide(guide);
     }
-    
+
     @Override
     public Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
@@ -80,7 +80,7 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     public List<Event> findAllByFromTime(LocalDateTime fromTime) {
         return getRepository().findAllByFromTime(fromTime);
     }
-    
+
     @Override
     public List<Event> findAllByToTime(LocalDateTime toTime) {
         return getRepository().findAllByToTime(toTime);

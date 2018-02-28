@@ -16,7 +16,7 @@ public interface Service<E, PK extends Serializable> {
     E find(PK primaryKey);
 
     List<E> findAll();
-    
+
     int count();
 
     Repository<E, PK> getRepository();

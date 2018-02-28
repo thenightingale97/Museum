@@ -15,31 +15,31 @@ public class ExcursionController {
     private ExcursionService excursionService;
 
     @GetMapping
-    public String excursion(Model model){
+    public String excursion(Model model) {
         model.addAttribute("excursions", excursionService.findAll());
         return "admin-excursion";
     }
 
     @PostMapping("/update")
-    public String update(@ModelAttribute("excursion") ExcursionRequest excursion){
+    public String update(@ModelAttribute("excursion") ExcursionRequest excursion) {
         excursionService.update(excursion);
         return "redirect:/admin/excursion";
     }
 
     @GetMapping("/updating/{id}")
-    public String updating(@PathVariable Integer id, Model model){
+    public String updating(@PathVariable Integer id, Model model) {
         model.addAttribute("excursion", excursionService.find(id));
         return "admin-excursion";
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable int id){
+    public String delete(@PathVariable int id) {
         excursionService.delete(id);
         return "redirect:/admin/excursion";
     }
 
     @ModelAttribute("excursion")
-    public ExcursionRequest getForm(){
+    public ExcursionRequest getForm() {
         return new ExcursionRequest();
     }
 

@@ -22,7 +22,7 @@ public class GuideController {
 
     @PostMapping("/update")
     public String update(@ModelAttribute("guide") Guide guide) {
-            guideService.update(guide);
+        guideService.update(guide);
         return "redirect:/admin/guide";
     }
 

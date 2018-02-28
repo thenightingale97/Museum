@@ -37,7 +37,7 @@ public class ShowpieceController {
     }
 
     @GetMapping("/updating/{id}")
-    public String updating(@PathVariable Integer id, Model model){
+    public String updating(@PathVariable Integer id, Model model) {
         model.addAttribute("showpiece", showpieceService.find(id));
         model.addAttribute("halls", hallService.findAll());
         model.addAttribute("authors", authorService.findAll());
@@ -45,7 +45,7 @@ public class ShowpieceController {
     }
 
     @GetMapping("/delete/{id}")
-    public String delete(@PathVariable Integer id){
+    public String delete(@PathVariable Integer id) {
         showpieceService.delete(id);
         return "redirect:/admin/showpiece";
     }

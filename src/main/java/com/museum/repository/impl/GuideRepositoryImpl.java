@@ -15,7 +15,7 @@ import java.util.List;
 
 @Repository
 public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> implements GuideRepository {
-    
+
     /**
      * Task 5.
      */
@@ -26,7 +26,7 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         query.setParameter("position", position);
         return query.getResultList();
     }
-    
+
     /**
      * Task 6.
      */
@@ -43,7 +43,7 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         query.setParameter("toTime", toTime);
         return query.getResultList();
     }
-    
+
     /**
      * Task 10.3
      */
@@ -56,8 +56,8 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         query.setParameter("guideId", guide.getId());
         return ((BigDecimal) query.getSingleResult()).longValue();
     }
-    
-    
+
+
     /**
      * Task 10.4
      */

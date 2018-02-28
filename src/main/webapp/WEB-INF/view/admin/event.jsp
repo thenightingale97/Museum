@@ -14,13 +14,15 @@
                     <div class="form-group">
                         <label for="guide" class="col-sm-2 control-label">Guides</label>
                         <div class="col-sm-10">
-                            <form:select class="form-control" path="guide" items="${guides}" itemValue="id" itemLabel="lastName"/>
+                            <form:select class="form-control" path="guide" items="${guides}" itemValue="id"
+                                         itemLabel="lastName"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="excursion" class="col-sm-2 control-label">Excursion</label>
                         <div class="col-sm-10">
-                            <form:select class="form-control" path="excursion" items="${excursions}" itemValue="id" itemLabel="name"/>
+                            <form:select class="form-control" path="excursion" items="${excursions}" itemValue="id"
+                                         itemLabel="name"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -69,8 +71,10 @@
                 <div class="col-md-3 col-xs-4">${event.excursion.name}</div>
                 <div class="col-md-4 col-xs-4">${event.startTime} - ${event.finishTime}</div>
                 <div class="col-md-3 col-xs-4">${event.guide.firstName} ${event.guide.lastName}</div>
-                <div class="col-md-1 col-xs-3"><a class="btn btn-warning" href="event/updating/${event.id}">update</a></div>
-                <div class="col-md-1 col-xs-3"><a class="btn btn-danger" href="event/delete/${event.id}">delete</a></div>
+                <div class="col-md-1 col-xs-3"><a class="btn btn-warning" href="event/updating/${event.id}">update</a>
+                </div>
+                <div class="col-md-1 col-xs-3"><a class="btn btn-danger" href="event/delete/${event.id}">delete</a>
+                </div>
             </div>
         </c:forEach>
 

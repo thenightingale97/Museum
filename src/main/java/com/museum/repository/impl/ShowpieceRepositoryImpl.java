@@ -13,7 +13,7 @@ import java.util.Map;
 
 @Repository
 public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integer> implements ShowpieceRepository {
-    
+
     /**
      * Task 2.
      */
@@ -24,7 +24,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         query.setParameter("authorId", author.getId());
         return query.getResultList();
     }
-    
+
     /**
      * Task 3.
      */
@@ -35,7 +35,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         query.setParameter("guardianId", guardian.getId());
         return query.getResultList();
     }
-    
+
     /**
      * Task 4.
      */
@@ -46,7 +46,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         query.setParameter("hallId", hall.getId());
         return query.getResultList();
     }
-    
+
     /**
      * Task 8.1
      */
@@ -60,7 +60,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         }
         return result;
     }
-    
+
     /**
      * Task 8.2
      */
@@ -74,7 +74,7 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
         }
         return result;
     }
-    
+
     @Override
     public List<Showpiece> findAllByIds(List<Integer> showpieceIds) {
         String sql = "SELECT showpiece FROM Showpiece showpiece WHERE (showpiece.id IN (:showpieceIds))";
