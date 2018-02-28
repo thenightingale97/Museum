@@ -1,6 +1,6 @@
-package com.museum.model.view;
+package com.museum.model.request;
 
-public class ExcursionView {
+public class ExcursionRequest {
 
     private Integer id;
 

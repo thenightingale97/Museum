@@ -1,6 +1,6 @@
-package com.museum.model.view;
+package com.museum.model.request;
 
-public class HallView {
+public class HallRequest {
 
     private Integer id;
 
