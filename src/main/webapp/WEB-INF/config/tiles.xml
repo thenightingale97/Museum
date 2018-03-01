@@ -38,7 +38,21 @@
 
     <definition name="statistic" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/statistic.jsp"/>
+
+    <definition name="statisticByShowpieces" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/statisticByShowpieces.jsp"/>
     </definition>
+
+
+    <definition name="authors" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/authors.jsp"/>
+    </definition>
+
+    <definition name="author" extends="baseAdminLayout">
+        <put-attribute name="body" value="/WEB-INF/view/author.jsp"/>
+    </definition>
+
+
 
     <definition name="admin" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/admin/admin.jsp"/>
