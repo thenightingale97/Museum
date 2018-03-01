@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="row">
@@ -21,22 +22,18 @@
                         <label for="name" class="col-sm-2 control-label">Technique</label>
                         <div class="col-sm-10">
                             <form:select path="technique" class="form-control">
-                                <option>SCULPTURE</option>
-                                <option>OIL_PAINTING</option>
-                                <option>WATERCOLOR</option>
-                                <option>ENGRAVING</option>
+                                <c:forEach var="technique" items="${showpieceTechniques}">
+                                    <form:option value="${technique}"><spring:message code="${technique}"/></form:option>
+                                </c:forEach>
                             </form:select>
                         </div>
                     </div><div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Material</label>
                         <div class="col-sm-10">
                             <form:select path="material" class="form-control">
-                                <option>COOPER</option>
-                                <option>WOOD</option>
-                                <option>CERAMIC</option>
-                                <option>IRON</option>
-                                <option>GLASS</option>
-                                <option>CANVAS</option>
+                                <c:forEach var="material" items="${showpieceMaterials}">
+                                    <form:option value="${material}"><spring:message code="${material}"/></form:option>
+                                </c:forEach>
                             </form:select>
                         </div>
                     </div>

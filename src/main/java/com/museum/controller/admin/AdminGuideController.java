@@ -1,6 +1,7 @@
 package com.museum.controller.admin;
 
 import com.museum.entity.Guide;
+import com.museum.entity.GuidePosition;
 import com.museum.service.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,6 +18,7 @@ public class AdminGuideController {
     @GetMapping
     public String guide(Model model) {
         model.addAttribute("guides", guideService.findAll());
+        model.addAttribute("guidePositions", GuidePosition.values());
         return "admin-guide";
     }
 

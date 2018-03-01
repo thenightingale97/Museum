@@ -1,5 +1,7 @@
 package com.museum.controller.admin;
 
+import com.museum.entity.ShowpieceMaterial;
+import com.museum.entity.ShowpieceTechnique;
 import com.museum.model.request.ShowpieceRequest;
 import com.museum.service.AuthorService;
 import com.museum.service.HallService;
@@ -27,6 +29,8 @@ public class AdminShowpieceController {
         model.addAttribute("showpieces", showpieceService.findAll());
         model.addAttribute("halls", hallService.findAll());
         model.addAttribute("authors", authorService.findAll());
+        model.addAttribute("showpieceMaterials", ShowpieceMaterial.values());
+        model.addAttribute("showpieceTechniques", ShowpieceTechnique.values());
         return "admin-showpiece";
     }
 

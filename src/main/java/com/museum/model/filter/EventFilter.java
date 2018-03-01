@@ -21,7 +21,7 @@ public class EventFilter {
 
     public static EventFilter of(EventFilterRequest request) {
         return new EventFilter(
-                FilterUtil.parseExcursionId(request.getExcursionId()),
+                FilterUtil.parseInteger(request.getExcursionId()),
                 FilterUtil.parseDateTime(request.getFromDateTime()),
                 FilterUtil.parseDateTime(request.getToDateTime()));
     }

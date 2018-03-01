@@ -33,10 +33,7 @@
                         <label for="name" class="col-sm-2 control-label">Position</label>
                         <div class="col-sm-10">
                             <form:select path="position" class="form-control">
-                                <option>JUNIOR</option>
-                                <option>MIDDLE</option>
-                                <option>SENIOR</option>
-                                <option>ADVANCED</option>
+                               <form:options items="${guidePositions}" value="guide"/>
                             </form:select>
                         </div>
                     </div>
