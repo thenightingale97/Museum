@@ -5,7 +5,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 filters">
-           <%-- <form:form id="filterForm" action="/showpieces" method="GET" >--%>
+            <form:form id="filterForm" action="/showpieces" method="GET" modelAttribute="showpieceFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">
                         <h5 class="category-label">Оберіть екскурсію:</h5>
@@ -14,15 +14,26 @@
                 <div class="row">
                     <div class='col-sm-12'>
                         <div class="form-group">
-                            <%--<form:select class="form-control" path="excursionId">
+                            <label>По автору: </label>
+                            <form:select class="form-control" path="authorId">
                                 <form:option value="" label="Всі"/>
-                                <form:options items="${excursions}" itemValue="id" itemLabel="name"/>
-                            </form:select>--%>
+                                <form:options items="${authors}" itemValue="id" itemLabel="lastName"/>
+                            </form:select>
+                            <label>По співробітнику: </label>
+                            <form:select class="form-control" path="guardianId">
+                                <form:option value="" label="Всі"/>
+                                <form:options items="${guardians}" itemValue="id" itemLabel="lastName"/>
+                            </form:select>
+                            <label>По залу: </label>
+                            <form:select class="form-control" path="hallId">
+                                <form:option value="" label="Всі"/>
+                                <form:options items="${halls}" itemValue="id" itemLabel="name"/>
+                            </form:select>
                         </div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-default filter-submit">Пошук</button>
-           <%-- </form:form>--%>
+            </form:form>
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="showpiece" items="${showpieces}">

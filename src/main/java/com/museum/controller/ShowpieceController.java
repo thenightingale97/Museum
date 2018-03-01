@@ -4,6 +4,7 @@ import com.museum.entity.Showpiece;
 import com.museum.model.filter.ShowpieceFilter;
 import com.museum.model.request.ShowpieceFilterRequest;
 import com.museum.service.AuthorService;
+import com.museum.service.GuardianService;
 import com.museum.service.HallService;
 import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,11 @@ public class ShowpieceController {
     @Autowired
     private HallService hallService;
 
+    @Autowired
+    private GuardianService guardianService;
+
     @GetMapping("/showpiece")
-    public String showpiece(Model model, @RequestParam("id") int id) {
+    public String showpiece(Model model, @RequestParam("showpieceId") int id) {
         model.addAttribute("showpiece", showpieceService.find(id));
         return "showpiece";
     }
@@ -40,6 +44,7 @@ public class ShowpieceController {
         model.addAttribute("showpieces", showpieces);
         model.addAttribute("authors", authorService.findAll());
         model.addAttribute("halls", hallService.findAll());
+        model.addAttribute("guardians", guardianService.findAll());
         return "showpieces";
     }
 
