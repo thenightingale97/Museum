@@ -10,7 +10,7 @@ import com.museum.repository.ExcursionRepository;
 import com.museum.repository.GuideRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.EventService;
-import com.museum.service.impl.util.Validations;
+import com.museum.service.impl.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -38,32 +38,32 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
 
     @Override
     public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        Validations.period(fromTime, toTime);
+        ValidationUtil.period(fromTime, toTime);
         return getRepository().findAllByPeriod(fromTime, toTime);
     }
 
     @Override
     public List<Event> findAllByExcursion(Excursion excursion) {
-        Validations.entity(excursionRepository, excursion, "excursion");
+        ValidationUtil.entity(excursionRepository, excursion, "excursion");
         return getRepository().findAllByExcursion(excursion);
     }
 
     @Override
     public Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
-        Validations.period(fromTime, toTime);
+        ValidationUtil.period(fromTime, toTime);
         return getRepository().getAmountByPeriod(fromTime, toTime);
     }
 
     @Override
     public Long getAmountByGuide(Guide guide) {
-        Validations.entity(guideRepository, guide, "guide");
+        ValidationUtil.entity(guideRepository, guide, "guide");
         return getRepository().getAmountByGuide(guide);
     }
 
     @Override
     public Long getAmountByGuideAndPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
-        Validations.period(fromTime, toTime);
-        Validations.entity(guideRepository, guide, "guide");
+        ValidationUtil.period(fromTime, toTime);
+        ValidationUtil.entity(guideRepository, guide, "guide");
         return getRepository().getAmountByPeriodAndGuide(guide, fromTime, toTime);
     }
 

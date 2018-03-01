@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Objects;
 
-public class Validations {
+public class ValidationUtil {
 
     public static void period(LocalDateTime fromTime, LocalDateTime toTime) {
         Objects.requireNonNull(fromTime, "fromTime");
