@@ -3,10 +3,8 @@ package com.museum.repository.impl;
 
 import com.museum.entity.*;
 import com.museum.model.filter.ShowpieceFilter;
-import com.museum.model.request.ShowpieceFilterRequest;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
-import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
@@ -87,17 +85,20 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
     public List<Showpiece> findAllByFilter(ShowpieceFilter request) {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Showpiece> criteria = builder.createQuery(Showpiece.class);
-        Root<Showpiece> entity = criteria.from(Showpiece.class);
-        criteria.select(entity);
+        Root<Showpiece> showpiece = criteria.from(Showpiece.class);
+        criteria.select(showpiece);
         List<Predicate> predicates = new ArrayList<>();
         if (request.getAuthorId() != null) {
-            predicates.add(builder.and(builder.equal(entity.get("author").get("id"), request.getAuthorId())));
+            predicates.add(builder.and(builder.equal(
+                    showpiece.get(Showpiece_.author).get(Author_.id), request.getAuthorId())));
         }
         if (request.getHallId() != null) {
-            predicates.add(builder.and(builder.equal(entity.get("hall").get("id"), request.getHallId())));
+            predicates.add(builder.and(builder.equal(
+                    showpiece.get(Showpiece_.hall).get(Hall_.id), request.getHallId())));
         }
         if (request.getGuardianId() != null) {
-            predicates.add((builder.and(builder.equal(entity.get("hall").get("guardian").get("id"), request.getGuardianId()))));
+            predicates.add((builder.and(builder.equal(
+                    showpiece.get(Showpiece_.hall).get(Hall_.guardian).get(Guardian_.id), request.getGuardianId()))));
         }
         criteria.where(predicates.toArray(new Predicate[predicates.size()]));
 

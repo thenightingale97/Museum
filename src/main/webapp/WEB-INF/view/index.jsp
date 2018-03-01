@@ -44,17 +44,17 @@
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only"><spring:message code="previous"/></span>
     </a>
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only"><spring:message code="next"/></span>
     </a>
 </div>
 
 <!-- Container (The Band Section) -->
 <div id="band" class="container text-center">
-    <h3>Музей</h3>
+    <h3><spring:message code="museum"/></h3>
     <p><em>Ми любимо заглядувати у минуле</em></p>
     <p><em>У нашому музеї ви зможете знайти вироби виготовлені за допомогою різноманітних матеріалів,
         а також ряд виробів виготовлених найдивовижнішими техніками, ознайомитися з якими ви можете за
@@ -74,66 +74,66 @@
                         <img src="/resources/images/excursions/${event.excursion.imageUrl}" alt="Paris" width="400" height="500">
                         <p><strong>${event.excursion.name}</strong></p>
                         <p>${event.startTime}</p>
-                        <a href="/excursion/${event.excursion.id}">
-                            <button class="btn">Відвідати</button>
-                        </a>
+                        <a href="/excursion/${event.excursion.id}"><button class="btn"><spring:message code="visit"/></button></a>
                     </div>
                 </div>
             </c:forEach>
         </div>
     </div>
 
-    <!-- Add Google Maps -->
-    <div id="googleMap"></div>
-    <script>
-        function myMap() {
-            var myCenter = new google.maps.LatLng(49.832748, 23.996945);
-            var mapProp = {
-                center: myCenter,
-                zoom: 12,
-                scrollwheel: false,
-                draggable: false,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            };
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-            var marker = new google.maps.Marker({position: myCenter});
-            marker.setMap(map);
-        }
-    </script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=EiN7IM3YsHAIzaSyAVlNcZK3Rae0GTCA_QyCQn8&callback=myMap"></script>
-    <!--
-    To use this code on your website, get a free API key from Google.
-    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-    -->
+<!-- Add Google Maps -->
+<div id="googleMap"></div>
+<script>
+    function myMap() {
+        var myCenter = new google.maps.LatLng(49.832748, 23.996945);
+        var mapProp = {
+            center: myCenter,
+            zoom: 12,
+            scrollwheel: false,
+            draggable: false,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        };
+        var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        var marker = new google.maps.Marker({position: myCenter});
+        marker.setMap(map);
+    }
+</script>
+<script src="https://maps.googleapis.com/maps/api/js?key=EiN7IM3YsHAIzaSyAVlNcZK3Rae0GTCA_QyCQn8&callback=myMap"></script>
+<!--
+To use this code on your website, get a free API key from Google.
+Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+-->
 
-    <script>
-        $(document).ready(function () {
-            // Initialize Tooltip
-            $('[data-toggle="tooltip"]').tooltip();
+<script>
+    $(document).ready(function () {
+        // Initialize Tooltip
+        $('[data-toggle="tooltip"]').tooltip();
 
-            // Add smooth scrolling to all links in navbar + footer link
-            $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
+        // Add smooth scrolling to all links in navbar + footer link
+        $(".navbar a, footer a[href='#myPage']").on('click', function (event) {
 
-                // Make sure this.hash has a value before overriding default behavior
-                if (this.hash !== "") {
+            // Make sure this.hash has a value before overriding default behavior
+            if (this.hash !== "") {
 
-                    // Prevent default anchor click behavior
-                    event.preventDefault();
+                // Prevent default anchor click behavior
+                event.preventDefault();
 
-                    // Store hash
-                    var hash = this.hash;
+                // Store hash
+                var hash = this.hash;
 
-                    // Using jQuery's animate() method to add smooth page scroll
-                    // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
-                    $('html, body').animate({
-                        scrollTop: $(hash).offset().top
-                    }, 900, function () {
+                // Using jQuery's animate() method to add smooth page scroll
+                // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+                $('html, body').animate({
+                    scrollTop: $(hash).offset().top
+                }, 900, function () {
 
-                        // Add hash (#) to URL when done scrolling (default click behavior)
-                        window.location.hash = hash;
-                    });
-                } // End if
-            });
-        })
-    </script>
+                    // Add hash (#) to URL when done scrolling (default click behavior)
+                    window.location.hash = hash;
+                });
+            } // End if
+        });
+    })
+</script>
 
+</body>
+</html>
