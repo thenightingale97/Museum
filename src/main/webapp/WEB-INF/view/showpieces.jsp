@@ -52,27 +52,3 @@
     </div>
 </div>
 
-<%--
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-8 showpieceContext">
-
-
-               <c:forEach items="${showpieces}" var="showpiece">
-                   <div class="col-sm-5 showpieceColumn">
-                   <div class="row"> <a href="/showpiece?showpieceId=${showpiece.id}">Детальна інформація про експонат</a></div>
-                   <div class="row"> ${showpiece.name}</div>
-                   <div class="row"> <img src="/resources/images/showpieces/${showpiece.imageUrl}"alt="showpiece image" width="85"    height="70"></div>
-                   <div class="row"> ${showpiece.description}</div>
-                   <div class="row"> Дата створення: ${showpiece.creationDate}</div>
-                   </div>
-
-              </c:forEach>
-
-        </div>
-    </div>
-</div>
-
-
-</body>
-</html>--%>

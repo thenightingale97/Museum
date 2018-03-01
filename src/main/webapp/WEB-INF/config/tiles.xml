@@ -36,13 +36,8 @@
         <put-attribute name="body" value="/WEB-INF/view/guides.jsp"/>
     </definition>
 
-
-    <definition name="statisticByShowpieces" extends="baseAdminLayout">
-        <put-attribute name="body" value="/WEB-INF/view/statisticByShowpieces.jsp"/>
-    </definition>
-
-    <definition name="statisticByExcursion" extends="baseAdminLayout">
-        <put-attribute name="body" value="/WEB-INF/view/statisticByExcursion.jsp"/>
+    <definition name="statistic" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/statistic.jsp"/>
     </definition>
 
     <definition name="admin" extends="baseAdminLayout">

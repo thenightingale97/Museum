@@ -6,7 +6,8 @@
     <div class="col-md-7 col-xs-12">
         <div class="row">
             <div class="col-md-12 col-xs-12">
-                <form:form class="form-horizontal" action="/admin/excursion/update" method="POST" modelAttribute="excursion">
+                <form:form class="form-horizontal" action="/admin/excursion/update" method="POST"
+                           modelAttribute="excursion">
                     <%--<div class="form-group">
                         <label for="name" style="color:red;text-align:left;" class="col-sm-10 col-sm-offset-2 control-label"><form:errors path="name"/></label>
                     </div>--%>
@@ -23,15 +24,22 @@
                         <div class="col-sm-10">
                             <form:input class="form-control" path="duration" id="name"/>
                         </div>
-                    </div><div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Max vistor amount</label>
                         <div class="col-sm-10">
                             <form:input class="form-control" path="maxVisitorAmount" id="name"/>
                         </div>
-                    </div><div class="form-group">
+                    </div>
+                    <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Description</label>
                         <div class="col-sm-10">
                             <form:input class="form-control" path="description" id="name"/>
+                        </div>
+                    </div><div class="form-group">
+                        <label for="name" class="col-sm-2 control-label">Picture URL</label>
+                        <div class="col-sm-10">
+                            <form:input class="form-control" path="imageUrl" id="name"/>
                         </div>
                     </div>
                     <div class="form-group">
@@ -54,8 +62,10 @@
                 <div class="col-md-2 col-xs-3">${excursion.name}</div>
                 <div class="col-md-2 col-xs-3">${excursion.duration}</div>
                 <div class="col-md-2 col-xs-3">${excursion.maxVisitorAmount}</div>
-                <div class="col-md-1 col-xs-2"><a class="btn btn-warning" href="excursion/updating/${excursion.id}">update</a></div>
-                <div class="col-md-1 col-xs-2"><a class="btn btn-danger" href="excursion/delete/${excursion.id}">delete</a></div>
+                <div class="col-md-1 col-xs-2"><a class="btn btn-warning" href="excursion/updating/${excursion.id}">update</a>
+                </div>
+                <div class="col-md-1 col-xs-2"><a class="btn btn-danger"
+                                                  href="excursion/delete/${excursion.id}">delete</a></div>
             </div>
         </c:forEach>
 

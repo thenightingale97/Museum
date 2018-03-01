@@ -31,6 +31,7 @@ public class ExcursionServiceImpl extends AbstractService<Excursion, Integer, Ex
         excursion.setId(excursionView.getId());
         excursion.setDuration(Duration.ofMinutes(excursionView.getDuration()));
         excursion.setMaxVisitorAmount(excursionView.getMaxVisitorAmount());
+        excursion.setImageUrl(excursion.getImageUrl());
         repository.update(excursion);
     }
 }

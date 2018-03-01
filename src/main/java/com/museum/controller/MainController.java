@@ -9,11 +9,10 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
-import java.util.Map;
 
 @Controller
 public class MainController {
@@ -38,19 +37,12 @@ public class MainController {
         return "index";
     }
 
-//    @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
-//    public ModelAndView showpiece(@RequestParam("showpieceId") int id) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        Showpiece showpiece = showpieceService.find(id);
-//        modelAndView.addObject("showpiece", showpiece);
-//        modelAndView.setViewName("showpiece");
-//        return modelAndView;
-//    }
-
-
-
-
-
+    @GetMapping("/statistic")
+    public String statistic(Model model){
+        model.addAttribute("statisticByMaterials", showpieceService.getStatisticByMaterial());
+        model.addAttribute("statisticByTechnique", showpieceService.getStatisticByTechnique());
+        return "statistic";
+    }
 
 
 }

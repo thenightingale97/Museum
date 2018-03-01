@@ -28,6 +28,7 @@ public class Excursion extends IdentifiableEntity<Integer> {
 
     @Column
     private String imageUrl;
+
     public Excursion() {
     }
 
