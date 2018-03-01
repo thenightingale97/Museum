@@ -1,6 +1,7 @@
 package com.museum.repository.impl;
 
 import com.museum.entity.Event;
+import com.museum.entity.Event_;
 import com.museum.entity.Excursion;
 import com.museum.entity.Guide;
 import com.museum.model.filter.EventFilter;
@@ -112,22 +113,22 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
         CriteriaQuery<Event> criteria = builder.createQuery(Event.class);
 
         // From
-        Root<Event> entity = criteria.from(Event.class);
+        Root<Event> event = criteria.from(Event.class);
         // Select
-        criteria.select(entity);
+        criteria.select(event);
         // Where
         List<Predicate> predicates = new ArrayList<>();
-        if (filter.getFromDateTime() != null) {
+        if (filter.hasFromDateTime()) {
             predicates.add(builder.and(
-                    builder.greaterThanOrEqualTo(entity.get("startTime"), filter.getFromDateTime())));
+                    builder.greaterThanOrEqualTo(event.get(Event_.startTime), filter.getFromDateTime())));
         }
-        if (filter.getToDateTime() != null) {
+        if (filter.hasToDateTime()) {
             predicates.add(builder.and(
-                    builder.lessThanOrEqualTo(entity.get("startTime"), filter.getToDateTime())));
+                    builder.lessThanOrEqualTo(event.get(Event_.startTime), filter.getToDateTime())));
         }
-        if (filter.getId() != null) {
+        if (filter.hasExcursionId()) {
             predicates.add(builder.and(
-                    builder.equal(entity.get("excursion").get("id"), filter.getId())));
+                    builder.equal(event.get(Event_.excursion).get(Event_.id), filter.getExcurtionId())));
         }
         criteria.where(predicates.toArray(new Predicate[predicates.size()]));
         //Run
