@@ -79,43 +79,33 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
         CriteriaQuery<Guide> query = builder.createQuery(Guide.class);
 
-        // From
         Root<Guide> guide = query.from(Guide.class);
-        // Select
         query.select(guide);
-        // Where (event.startTime < :toTime AND event.finishTime > :fromTime)
+
         List<Predicate> predicates = new ArrayList<>();
         if (filter.hasFreeFromOrToDateTime()) {
             Subquery<Guide> subQuery = query.subquery(Guide.class);
-            Root<Guide> subGuide = subQuery.from(Guide.class);
+            subQuery.select(subQuery.from(Guide.class));
             Join<Guide, Event> event = guide.join(Guide_.events);
-            subQuery.select(subGuide);
 
             if (filter.hasFreeToDateTime()) {
-                subQuery.where(builder.and(
-                        builder.lessThan(event.get(Event_.startTime), filter.getFreeToDateTime())));
+                subQuery.where(builder.lessThan(event.get(Event_.startTime), filter.getFreeToDateTime()));
             }
             if (filter.hasFreeFromDateTime()) {
-                subQuery.where(builder.and(
-                        builder.greaterThan(event.get(Event_.finishTime), filter.getFreeFromDateTime())));
+                subQuery.where(builder.greaterThan(event.get(Event_.finishTime), filter.getFreeFromDateTime()));
             }
-
             predicates.add(builder.in(guide).value(subQuery).not());
         }
         if (filter.hasPosition()) {
-            predicates.add(builder.and(
-                    builder.equal(guide.get(Guide_.position), filter.getPosition())));
+            predicates.add(builder.equal(guide.get(Guide_.position), filter.getPosition()));
         }
         if (filter.hasFirstName()) {
-            predicates.add(builder.and(
-                    builder.equal(guide.get(Guide_.firstName), filter.getFirstName())));
+            predicates.add(builder.like(guide.get(Guide_.firstName), "%" + filter.getFirstName() + "%"));
         }
         if (filter.hasLastName()) {
-            predicates.add(builder.and(
-                    builder.equal(guide.get(Guide_.lastName), filter.getLastName())));
+            predicates.add(builder.like(guide.get(Guide_.lastName), "%" + filter.getLastName() + "%"));
         }
         query.where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
-        //Run
         return getEntityManager().createQuery(query).getResultList();
     }
 }
