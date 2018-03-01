@@ -2,11 +2,19 @@ package com.museum.repository.impl;
 
 
 import com.museum.entity.*;
+import com.museum.model.filter.ShowpieceFilter;
+import com.museum.model.request.ShowpieceFilterRequest;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.ShowpieceRepository;
+import org.hibernate.Criteria;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +81,27 @@ public class ShowpieceRepositoryImpl extends AbstractRepository<Showpiece, Integ
             result.put((ShowpieceMaterial) objects[0], (Long) objects[1]);
         }
         return result;
+    }
+
+    @Override
+    public List<Showpiece> findAllByFilter(ShowpieceFilter request) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Showpiece> criteria = builder.createQuery(Showpiece.class);
+        Root<Showpiece> entity = criteria.from(Showpiece.class);
+        criteria.select(entity);
+        List<Predicate> predicates = new ArrayList<>();
+        if (request.getAuthorId() != null) {
+            predicates.add(builder.and(builder.equal(entity.get("author").get("id"), request.getAuthorId())));
+        }
+        if (request.getHallId() != null) {
+            predicates.add(builder.and(builder.equal(entity.get("hall").get("id"), request.getHallId())));
+        }
+        if (request.getGuardianId() != null) {
+            predicates.add((builder.and(builder.equal(entity.get("hall").get("guardian").get("id"), request.getGuardianId()))));
+        }
+        criteria.where(predicates.toArray(new Predicate[predicates.size()]));
+
+        return getEntityManager().createQuery(criteria).getResultList();
     }
 
     @Override

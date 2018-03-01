@@ -27,8 +27,13 @@ public class EventController {
     public String events(Model model, @ModelAttribute EventFilterRequest eventFilterRequest) {
         List<Event> events = eventService.findAllByFilter(EventFilter.of(eventFilterRequest));
         List<EventView> eventViews = EventView.ofAll(events);
+
+        model.addAttribute("startTime","початкова дата");
+        model.addAttribute("endTime", "кінцева дата");
+        model.addAttribute("number", eventViews.size() );
         model.addAttribute("eventViews", eventViews);
         model.addAttribute("excursions", excursionService.findAll());
+       // eventViews
         return "events";
     }
 
