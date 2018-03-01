@@ -1,16 +1,18 @@
 package com.museum.repository.impl;
 
 
-import com.museum.entity.Guide;
-import com.museum.entity.GuidePosition;
+import com.museum.entity.*;
+import com.museum.model.filter.GuideFilter;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.GuideRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -35,9 +37,7 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         String sql = "SELECT guide FROM Guide guide " +
                 "WHERE guide NOT IN (" +
                 "SELECT guide FROM Guide JOIN guide.events event " +
-                "WHERE (event.startTime <= :fromTime AND event.finishTime > :fromTime) "
-                + "OR (event.startTime < :toTime AND event.finishTime >= :toTime) "
-                + "OR (event.startTime >= :fromTime AND event.finishTime <= :toTime))";
+                "WHERE (event.startTime < :toTime AND event.finishTime > :fromTime))";
         TypedQuery<Guide> query = getEntityManager().createQuery(sql, Guide.class);
         query.setParameter("fromTime", fromTime);
         query.setParameter("toTime", toTime);
@@ -72,5 +72,50 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         query.setParameter("toTime", toTime);
         query.setParameter("guideId", guide.getId());
         return ((BigDecimal) query.getSingleResult()).longValue();
+    }
+
+    @Override
+    public List<Guide> findAllByFilter(GuideFilter filter) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Guide> query = builder.createQuery(Guide.class);
+
+        // From
+        Root<Guide> guide = query.from(Guide.class);
+        // Select
+        query.select(guide);
+        // Where (event.startTime < :toTime AND event.finishTime > :fromTime)
+        List<Predicate> predicates = new ArrayList<>();
+        if (filter.hasFreeFromOrToDateTime()) {
+            Subquery<Guide> subQuery = query.subquery(Guide.class);
+            Root<Guide> subGuide = subQuery.from(Guide.class);
+            Join<Guide, Event> event = guide.join(Guide_.events);
+            subQuery.select(subGuide);
+
+            if (filter.hasFreeToDateTime()) {
+                subQuery.where(builder.and(
+                        builder.lessThan(event.get(Event_.startTime), filter.getFreeToDateTime())));
+            }
+            if (filter.hasFreeFromDateTime()) {
+                subQuery.where(builder.and(
+                        builder.greaterThan(event.get(Event_.finishTime), filter.getFreeFromDateTime())));
+            }
+
+            predicates.add(builder.in(guide).value(subQuery).not());
+        }
+        if (filter.hasPosition()) {
+            predicates.add(builder.and(
+                    builder.equal(guide.get(Guide_.position), filter.getPosition())));
+        }
+        if (filter.hasFirstName()) {
+            predicates.add(builder.and(
+                    builder.equal(guide.get(Guide_.firstName), filter.getFirstName())));
+        }
+        if (filter.hasLastName()) {
+            predicates.add(builder.and(
+                    builder.equal(guide.get(Guide_.lastName), filter.getLastName())));
+        }
+        query.where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
+        //Run
+        return getEntityManager().createQuery(query).getResultList();
     }
 }
