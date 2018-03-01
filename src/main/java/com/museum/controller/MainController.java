@@ -2,7 +2,9 @@ package com.museum.controller;
 
 
 import com.museum.entity.Showpiece;
+import com.museum.entity.ShowpieceMaterial;
 import com.museum.service.EventService;
+import com.museum.service.ExcursionService;
 import com.museum.service.GuideService;
 import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -25,6 +28,9 @@ public class MainController {
 
     @Autowired
     GuideService guideService;
+
+    @Autowired
+    ExcursionService excursionService;
 
     @RequestMapping("/")
     public String main(Model model) {
@@ -48,6 +54,22 @@ public class MainController {
     public String showPieces(Map<String, Object> model) {
         model.put("showpieces", showpieceService.findAll());
         return "showpieces";
+    }
+
+
+    @RequestMapping(value = "/statisticByShowpieces", method = RequestMethod.GET)
+    public String statisticByShowpieces(Map<String, Object> model) {
+
+        model.put("statisticByMaterials", showpieceService.getStatisticByMaterial());
+        model.put("statisticByTechique", showpieceService.getStatisticByTechnique());
+            return "statisticByShowpieces";
+    }
+
+
+    @RequestMapping(value = "/statisticByExcursion", method = RequestMethod.GET)
+    public String statisticByExcursion(Map<String, Object> model) {
+       /*  model.put("ExcursionStatistic", excursionService. );*/
+          return "statisticByExcursion";
     }
 
 }
