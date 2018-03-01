@@ -1,7 +1,9 @@
 package com.museum.service.impl;
 
 import com.museum.entity.Event;
+import com.museum.entity.Excursion;
 import com.museum.entity.Guide;
+import com.museum.model.filter.EventFilter;
 import com.museum.model.request.EventRequest;
 import com.museum.repository.EventRepository;
 import com.museum.repository.ExcursionRepository;
@@ -38,6 +40,12 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     public List<Event> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         Validations.period(fromTime, toTime);
         return getRepository().findAllByPeriod(fromTime, toTime);
+    }
+
+    @Override
+    public List<Event> findAllByExcursion(Excursion excursion) {
+        Validations.entity(excursionRepository, excursion, "excursion");
+        return getRepository().findAllByExcursion(excursion);
     }
 
     @Override
@@ -84,5 +92,10 @@ public class EventServiceImpl extends AbstractService<Event, Integer, EventRepos
     @Override
     public List<Event> findAllByToTime(LocalDateTime toTime) {
         return getRepository().findAllByToTime(toTime);
+    }
+
+    @Override
+    public List<Event> findAllByFilter(EventFilter filter) {
+        return getRepository().findAllByFilter(filter);
     }
 }

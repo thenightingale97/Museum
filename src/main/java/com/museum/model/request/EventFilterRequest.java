@@ -2,6 +2,8 @@ package com.museum.model.request;
 
 public class EventFilterRequest {
 
+    private String excursionId;
+
     private String fromDateTime;
 
     private String toDateTime;
@@ -20,5 +22,13 @@ public class EventFilterRequest {
 
     public void setToDateTime(String toDateTime) {
         this.toDateTime = toDateTime;
+    }
+
+    public String getExcursionId() {
+        return excursionId;
+    }
+
+    public void setExcursionId(String excursionId) {
+        this.excursionId = excursionId;
     }
 }

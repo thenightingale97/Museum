@@ -1,7 +1,9 @@
 package com.museum.service;
 
 import com.museum.entity.Event;
+import com.museum.entity.Excursion;
 import com.museum.entity.Guide;
+import com.museum.model.filter.EventFilter;
 import com.museum.model.request.EventRequest;
 
 import java.time.LocalDateTime;
@@ -16,6 +18,8 @@ public interface EventService extends Service<Event, Integer> {
 
     List<Event> findAllByToTime(LocalDateTime toTime);
 
+    List<Event> findAllByExcursion(Excursion excursion);
+
     Long getAmountByPeriod(LocalDateTime fromTime, LocalDateTime toTime);
 
     Long getAmountByGuide(Guide guide);
@@ -25,4 +29,6 @@ public interface EventService extends Service<Event, Integer> {
     List<Event> findAllUpcomingOrderedByDate(int limit);
 
     void update(EventRequest event);
+
+    List<Event> findAllByFilter(EventFilter filter);
 }

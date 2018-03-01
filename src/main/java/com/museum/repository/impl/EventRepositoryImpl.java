@@ -1,13 +1,20 @@
 package com.museum.repository.impl;
 
 import com.museum.entity.Event;
+import com.museum.entity.Excursion;
 import com.museum.entity.Guide;
+import com.museum.model.filter.EventFilter;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.EventRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Repository
@@ -77,8 +84,7 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
 
     @Override
     public List<Event> findAllByFromTime(LocalDateTime fromTime) {
-        String sql = "SELECT event FROM Event event WHERE event.startTime >= :fromTime " +
-                "ORDER BY event.startTime";
+        String sql = "SELECT event FROM Event event WHERE event.startTime >= :fromTime ORDER BY event.startTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
         query.setParameter("fromTime", fromTime);
         return query.getResultList();
@@ -86,10 +92,45 @@ public class EventRepositoryImpl extends AbstractRepository<Event, Integer> impl
 
     @Override
     public List<Event> findAllByToTime(LocalDateTime toTime) {
-        String sql = "SELECT event FROM Event event WHERE event.startTime <= :toTime " +
-                "ORDER BY event.startTime";
+        String sql = "SELECT event FROM Event event WHERE event.startTime <= :toTime ORDER BY event.startTime";
         TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
         query.setParameter("toTime", toTime);
         return query.getResultList();
+    }
+
+    @Override
+    public List<Event> findAllByExcursion(Excursion excursion) {
+        String sql = "SELECT event FROM Event event WHERE event.excursion = :excursion ORDER BY event.startTime";
+        TypedQuery<Event> query = getEntityManager().createQuery(sql, Event.class);
+        query.setParameter("excursion", excursion);
+        return query.getResultList();
+    }
+
+    @Override
+    public List<Event> findAllByFilter(EventFilter filter) {
+        CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
+        CriteriaQuery<Event> criteria = builder.createQuery(Event.class);
+
+        // From
+        Root<Event> entity = criteria.from(Event.class);
+        // Select
+        criteria.select(entity);
+        // Where
+        List<Predicate> predicates = new ArrayList<>();
+        if (filter.getFromDateTime() != null) {
+            predicates.add(builder.and(
+                    builder.greaterThanOrEqualTo(entity.get("startTime"), filter.getFromDateTime())));
+        }
+        if (filter.getToDateTime() != null) {
+            predicates.add(builder.and(
+                    builder.lessThanOrEqualTo(entity.get("startTime"), filter.getToDateTime())));
+        }
+        if (filter.getId() != null) {
+            predicates.add(builder.and(
+                    builder.equal(entity.get("excursion").get("id"), filter.getId())));
+        }
+        criteria.where(predicates.toArray(new Predicate[predicates.size()]));
+        //Run
+        return getEntityManager().createQuery(criteria).getResultList();
     }
 }
