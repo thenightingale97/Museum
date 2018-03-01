@@ -20,8 +20,8 @@
         <put-attribute name="body" value="/WEB-INF/view/excursion.jsp"/>
     </definition>
 
-    <definition name="excursions" extends="baseLayout">
-        <put-attribute name="body" value="/WEB-INF/view/excursions.jsp"/>
+    <definition name="events" extends="baseLayout">
+        <put-attribute name="body" value="/WEB-INF/view/events.jsp"/>
     </definition>
 
     <definition name="showpieces" extends="baseLayout">

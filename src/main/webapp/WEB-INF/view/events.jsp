@@ -6,12 +6,27 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 filters">
-            <div class="row">
-                <div class="col-sm-12">
-                    <h5 class="category-label">Оберіть період:</h5>
+            <form:form id="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="category-label">Оберіть екскурсію:</h5>
+                    </div>
                 </div>
-            </div>
-            <form:form id="filterForm" action="/excursions" method="GET" modelAttribute="eventsFilterRequest">
+                <div class="row">
+                    <div class='col-sm-12'>
+                        <div class="form-group">
+                            <form:select class="form-control" path="excursionId">
+                                <form:option value="" label="Всі"/>
+                                <form:options items="${excursions}" itemValue="id" itemLabel="name"/>
+                            </form:select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="category-label">Оберіть період:</h5>
+                    </div>
+                </div>
                 <div class="row">
                     <div class="col-sm-2"><h5 class="item-label">Від:</h5></div>
                     <div class='col-sm-10'>
@@ -46,7 +61,7 @@
                 <a href="/excursion/${event.id}">
                     <div class="col-sm-1 showpiece-item">
                         <div class="row">
-                            <img class="showpiece-image" src="/resources/images/excursions/test1.jpg" alt="lol">
+                            <img class="showpiece-image" src="/resources/images/excursions/${event.imageUrl}">
                         </div>
                         <div class="row"><span class="showpiece-item-name">${event.name}</span></div>
                         <div class="row"><span class="showpiece-item-value">${event.startDate}</span></div>

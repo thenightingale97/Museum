@@ -26,7 +26,17 @@ public class Excursion extends IdentifiableEntity<Integer> {
     @Column
     private String description;
 
+    @Column
+    private String imageUrl;
     public Excursion() {
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getName() {

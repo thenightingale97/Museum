@@ -36,7 +36,6 @@ public class MainController {
         return "index";
     }
 
-
     @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
     public ModelAndView showpiece(@RequestParam("showpieceId") int id) {
         ModelAndView modelAndView = new ModelAndView();
@@ -59,6 +58,4 @@ public class MainController {
         model.put("guides", guideService.findAll());
         return "guides";
     }
-
-
 }

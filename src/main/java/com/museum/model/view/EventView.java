@@ -28,6 +28,10 @@ public class EventView {
 
     private String duration;
 
+    private String imageUrl;
+
+    private String description;
+
     public EventView(Event event) {
         this.id = event.getId();
         this.guideFullName = event.getGuide().getFirstName() + " " + event.getGuide().getLastName();
@@ -35,25 +39,39 @@ public class EventView {
         this.startDate = DATE_FORMATTER.format(event.getStartTime().toLocalDate());
         this.startTime = TIME_FORMATTER.format(event.getStartTime().toLocalTime());
         this.finishTime = TIME_FORMATTER.format(event.getFinishTime().toLocalTime());
+        this.imageUrl = event.getExcursion().getImageUrl();
+        this.description = event.getExcursion().getDescription();
 
         Duration duration = event.getExcursion().getDuration();
         if (duration != null) {
-            this.duration = DurationFormatUtils.formatDuration(
-                    duration.getSeconds(), "**H:mm:ss**", true);
+            this.duration = DurationFormatUtils.formatDuration(duration.toMillis(), "H:mm", true);
         } else {
             this.duration = "";
         }
     }
 
-    public EventView(String name, String startTime, String finishTime, String duration) {
-        this.name = name;
-        this.startTime = startTime;
-        this.finishTime = finishTime;
-        this.duration = duration;
-    }
-
     public static List<EventView> ofAll(List<Event> events) {
         return events.stream().map(EventView::new).collect(Collectors.toList());
+    }
+
+    public static EventView of(Event event) {
+        return new EventView(event);
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
     }
 
     public String getGuideFullName() {
