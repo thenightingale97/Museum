@@ -44,11 +44,11 @@
     <!-- Left and right controls -->
     <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
         <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-        <span class="sr-only">Previous</span>
+        <span class="sr-only"><spring:message code="previous"/></span>
     </a>
     <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
         <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-        <span class="sr-only">Next</span>
+        <span class="sr-only"><spring:message code="next"/></span>
     </a>
 </div>
 
@@ -73,7 +73,7 @@
                         <img src="paris.jpg" alt="Paris" width="400" height="300">
                         <p><strong>${event.excursion.name}</strong></p>
                         <p>${event.startTime}</p>
-                        <a href="/excursion/${event.excursion.id}"><button class="btn">Відвідати</button></a>
+                        <a href="/excursion/${event.excursion.id}"><button class="btn"><spring:message code="visit"/></button></a>
                     </div>
                 </div>
             </c:forEach>

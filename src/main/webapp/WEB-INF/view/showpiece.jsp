@@ -1,6 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <header id="head" class="secondary"></header>
 
 <!-- container -->
@@ -23,12 +24,12 @@
         <article class="col-md-6">
             <header class="page-header">
                 <h1 class="">${excursionView.name}</h1>
-                <h5 class="page-title page-header">Автор: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
-                <h5 class="page-title">Зал: ${showpiece.hall.name}</h5>
-                <h5 class="page-title">Матеріал: ${showpiece.material}</h5>
-                <h5 class="page-title">Техніка вкионання: ${showpiece.technique}</h5>
-                <h5 class="page-title">Дата створення: ${showpiece.creationDate}</h5>
-                <h5 class="page-title">Опис: ${showpiece.description}</h5>
+                <h5 class="page-title page-header"><spring:message code="author"/>: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
+                <h5 class="page-title"><spring:message code="hall"/>: ${showpiece.hall.name}</h5>
+                <h5 class="page-title"><spring:message code="material"/>: ${showpiece.material}</h5>
+                <h5 class="page-title"><spring:message code="technique"/>: ${showpiece.technique}</h5>
+                <h5 class="page-title"><spring:message code="creationData"/>: ${showpiece.creationDate}</h5>
+                <h5 class="page-title"><spring:message code="description"/>: ${showpiece.description}</h5>
             </header>
 
             <%-- <blockquote>

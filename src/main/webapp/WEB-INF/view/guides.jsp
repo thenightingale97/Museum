@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container-fluid">
@@ -25,7 +26,7 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <h5 class="category-label">Оберіть посаду:</h5>
+                        <h5 class="category-label"><spring:message code="position"/></h5>
                     </div>
                 </div>
                 <div class="row">
@@ -40,15 +41,28 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <h5 class="category-label">Оберіть період, коли екскурсовод вільний:</h5>
+                        <h5 class="category-label"><spring:message code="period"/>:</h5>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2"><h5 class="item-label">Від:</h5></div>
+                    <div class="col-sm-2"><h5 class="item-label"><spring:message code="from"/>:</h5></div>
                     <div class='col-sm-10'>
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker6'>
                                 <form:input path="freeFromDateTime" type='text' class="form-control"/>
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                            </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-sm-2"><h5 class="item-label"><spring:message code="to"/>:</h5></div>
+                    <div class='col-sm-10'>
+                        <div class="form-group">
+                            <div class='input-group date' id='datetimepicker7'>
+                                <form:input path="freeToDateTime" type='text' class="form-control"/>
                                 <span class="input-group-addon">
                                 <span class="glyphicon glyphicon-calendar"></span>
                             </span>
@@ -62,10 +76,10 @@
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="guideView" items="${guideViews}">
                 <div class="col-sm-1 showpiece-item">
-                    <div class="row"><span class="showpiece-item-name"> Імя: ${guideView.firstName}</span></div>
-                    <div class="row"><span class="showpiece-item-name"> Прізвище: ${guideView.lastName}</span></div>
-                    <div class="row"><span class="showpiece-item-value">Телефон: ${guideView.phoneNumber}</span></div>
-                    <div class="row"><span class="showpiece-item-value">Посада: ${guideView.position}</span></div>
+                    <div class="row"><span class="showpiece-item-name"> <spring:message code="firstName"/>: ${guideView.firstName}</span></div>
+                    <div class="row"><span class="showpiece-item-name"> <spring:message code="lastName"/>: ${guideView.lastName}</span></div>
+                    <div class="row"><span class="showpiece-item-value"><spring:message code="phoneNumber"/>: ${guideView.phoneNumber}</span></div>
+                    <div class="row"><span class="showpiece-item-value"><spring:message code="position"/>: ${guideView.position}</span></div>
                 </div>
             </c:forEach>
         </div>

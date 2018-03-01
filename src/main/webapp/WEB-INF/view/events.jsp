@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <body>
@@ -9,7 +10,7 @@
             <form:form excurtionId="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h5 class="category-label">Оберіть екскурсію:</h5>
+                        <h5 class="category-label"><spring:message code="excursion"/>:</h5>
                     </div>
                 </div>
                 <div class="row">
@@ -24,11 +25,11 @@
                 </div>
                 <div class="row">
                     <div class="col-sm-12">
-                        <h5 class="category-label">Оберіть період:</h5>
+                        <h5 class="category-label"><spring:message code="period"/>:</h5>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2"><h5 class="item-label">Від:</h5></div>
+                    <div class="col-sm-2"><h5 class="item-label"><spring:message code="from"/>:</h5></div>
                     <div class='col-sm-10'>
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker6'>
@@ -41,7 +42,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-2"><h5 class="item-label">До:</h5></div>
+                    <div class="col-sm-2"><h5 class="item-label"><spring:message code="to"/>:</h5></div>
                     <div class='col-sm-10'>
                         <div class="form-group">
                             <div class='input-group date' id='datetimepicker7'>
@@ -53,11 +54,11 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default filter-submit">Пошук</button>
+                <button type="submit" class="btn btn-default filter-submit"><spring:message code="search"/></button>
             </form:form>
-             <h1>Статистика</h1>
+             <h1><spring:message code="STATISTIC"/></h1>
 
-            <h3><p>За вашим запитом знайдено <c:out value="${number}"/> подій </p></h3>
+            <h3><p><spring:message code="found"/><c:out value="${number}"/> <spring:message code="events"/> </p></h3>
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="eventView" items="${eventViews}">

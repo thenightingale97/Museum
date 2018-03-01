@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <div class="container-fluid">
@@ -9,23 +10,23 @@
             <form:form id="filterForm" action="/showpieces" method="GET" modelAttribute="showpieceFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">
-                        <h5 class="category-label">Оберіть експонат:</h5>
+                        <h5 class="category-label"><spring:message code="showpiece"/>:</h5>
                     </div>
                 </div>
                 <div class="row">
                     <div class='col-sm-12'>
                         <div class="form-group">
-                            <label>По автору: </label>
+                            <label><spring:message code="author"/></label>
                             <form:select class="form-control" path="authorId">
                                 <form:option value="" label="Всі"/>
                                 <form:options items="${authors}" itemValue="id" itemLabel="lastName"/>
                             </form:select>
-                            <label>По співробітнику: </label>
+                            <label><spring:message code="guardian"/></label>
                             <form:select class="form-control" path="guardianId">
                                 <form:option value="" label="Всі"/>
                                 <form:options items="${guardians}" itemValue="id" itemLabel="lastName"/>
                             </form:select>
-                            <label>По залу: </label>
+                            <label><spring:message code="hall"/></label>
                             <form:select class="form-control" path="hallId">
                                 <form:option value="" label="Всі"/>
                                 <form:options items="${halls}" itemValue="id" itemLabel="name"/>

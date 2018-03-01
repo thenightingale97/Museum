@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: Oleksiy
@@ -13,9 +14,9 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Статистика по експонатах</h1>
+<h1><spring:message code="STATISTIC"/></h1>
 <div class="container-fluid">
-    <h1 align="center" >матеріал</h1>
+    <h1 align="center" ><spring:message code="material"/></h1>
 <div class="row">
 <div class="col-sm-9 showpiece-container" align="center">
     <table align="center" class="table_showpiece" style="align-items: center">
@@ -34,7 +35,7 @@
   </table>
 </div>
 </div>
-    <h1 align="center" >Техніка</h1>
+    <h1 align="center" ><spring:message code="technique"/></h1>
     <div class="row">
     <div class="col-sm-9 showpiece-container" align="center">
         <table align="center" class="table_showpiece" style="align-items: center">
