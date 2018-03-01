@@ -1,106 +1,45 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<head>
-    <link href="<c:url value="/resources/css/style.css" />" rel="stylesheet">
-    <title></title>
-</head>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<header id="head" class="secondary"></header>
 
-<body>
-<div id="table_showpiece">
-    <table align="center" text-cellpadding="15" text-cellspacing="0" >
-        <tr align="right">
-            <td colspan ="3" ><h1 align="center"><b>${showpiece.name}</b></h1>
+<!-- container -->
+<div class="container">
 
-                <form action="obrabotka.php" method="POST" name="form1"  align="right">
+    <div class="row">
 
-                    <p>
-                        <input type="submit" name="button" value="Редагувати">
-                    </p>
+        <!-- Sidebar -->
+        <aside class="col-md-6 sidebar sidebar-left">
 
-                </form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><img src="/resources/images/showpieces/${showpiece.imageUrl}" alt="" style="width: 100%"></p>
+                </div>
+            </div>
+        </aside>
+        <!-- /Sidebar -->
 
-            </td>
-        </tr>
+        <!-- Article main content -->
+        <article class="col-md-6">
+            <header class="page-header">
+                <h1 class="">${excursionView.name}</h1>
+                <h5 class="page-title page-header">Автор: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
+                <h5 class="page-title">Зал: ${showpiece.hall.name}</h5>
+                <h5 class="page-title">Матеріал: ${showpiece.material}</h5>
+                <h5 class="page-title">Техніка вкионання: ${showpiece.technique}</h5>
+                <h5 class="page-title">Дата створення: ${showpiece.creationDate}</h5>
+                <h5 class="page-title">Опис: ${showpiece.description}</h5>
+            </header>
 
-        <tr align="center">
-            <td rowspan="8"width="65%" >
-                <img src="/resources/images/showpieces/${showpiece.imageUrl}" alt="Mona Liza" width="800" height="800">
-                 </td>
-            <tr class="showpiece_font">
-            <td >
-           <p>Автор</p>
-            </td>
-            <td >
-             <p> <b>${showpiece.author.firstName}</b> <b>${showpiece.author.lastName}</b></p>
-            </td>
-            </tr>
-        <tr class="showpiece_font">
-            <td >
-                <p>Зал</p>
-            </td>
-            <td >
-                <p>${showpiece.hall.name}</p>
-            </td>
-        </tr>
-        <tr class="showpiece_font">
-            <td >
-                <p>Матеріал</p>
-            </td>
-            <td >
-                <p>${showpiece.material}</p>
-            </td>
-        </tr>
+           <%-- <blockquote>
+                ${excursionView.description}
+            </blockquote>
+            <a href="/events?id=${showpiece.id}">
+                <button type="button" class="btn btn-success pull-right">Показати усі екскурсії!</button>
+            </a>>--%>
 
-        <tr class="showpiece_font">
-            <td >
-                <p>Техніка</p>
-            </td>
-            <td >
-                <p>${showpiece.technique}</p>
-            </td>
-        </tr>
-             <tr class="showpiece_font">
-                 <td >
-                     <p>Дата створення</p>
-                 </td>
-                 <td >
-                     <p>${showpiece.creationDate}</p>
-                 </td>
-            </tr>
-        <tr class="showpiece_font">
-            <td >
-                <p>Опис</p>
-            </td>
-            <td >
-                ${showpiece.description}
-            </td>
-        </tr>
-        <tr class="showpiece_font">
-            <td >
+        </article>
+        <!-- /Article -->
 
-                <p>Відвідувань</p>
-            </td>
-            <td >
-                <p>????</p>
-
-            </td>
-        </tr>
-
-        </tr>
-        <tr >
-            <td colspan="3" >
-                <form action="obrabotka.php" method="POST" name="form1" align="right">
-
-                    <p>
-                        <input type="submit" name="button" value="Відвідати">
-                    </p>
-
-                </form>
-
-            </td>
-        </tr>
-
-
-    </table>
+    </div>
 </div>
-
-</body>
