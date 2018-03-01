@@ -48,19 +48,9 @@ public class MainController {
 //    }
 
 
-    @RequestMapping(value = "/statisticByShowpieces", method = RequestMethod.GET)
-    public String statisticByShowpieces(Map<String, Object> model) {
-
-        model.put("statisticByMaterials", showpieceService.getStatisticByMaterial());
-        model.put("statisticByTechique", showpieceService.getStatisticByTechnique());
-            return "statisticByShowpieces";
-    }
 
 
-    @RequestMapping(value = "/statisticByExcursion", method = RequestMethod.GET)
-    public String statisticByExcursion(Map<String, Object> model) {
-       /*  model.put("ExcursionStatistic", excursionService. );*/
-          return "statisticByExcursion";
-    }
+
+
 
 }

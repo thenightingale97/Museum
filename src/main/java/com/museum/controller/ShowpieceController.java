@@ -10,11 +10,10 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class ShowpieceController {
@@ -47,6 +46,17 @@ public class ShowpieceController {
         model.addAttribute("guardians", guardianService.findAll());
         return "showpieces";
     }
+
+    @RequestMapping(value = "/statisticByShowpieces", method = RequestMethod.GET)
+    public String statisticByShowpieces(Map<String, Object> model) {
+
+        model.put("statisticByMaterials", showpieceService.getStatisticByMaterial());
+        model.put("statisticByTechique", showpieceService.getStatisticByTechnique());
+        return "statisticByShowpieces";
+    }
+
+
+
 
     @ModelAttribute("showpieceFilterRequest")
     public ShowpieceFilterRequest populateShowpieceFilterRequest() {
