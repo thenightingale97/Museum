@@ -21,12 +21,12 @@ public class FilterUtil {
         }
     }
 
-    public static Integer parseExcursionId(String excursionId) {
-        if (excursionId == null) {
+    public static Integer parseInteger(String integer) {
+        if (integer == null) {
             return null;
         }
         try {
-            return Integer.valueOf(excursionId);
+            return Integer.valueOf(integer);
         } catch (NumberFormatException ex) {
             return null;
         }
