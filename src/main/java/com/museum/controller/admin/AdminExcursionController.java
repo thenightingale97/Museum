@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/excursion")
-public class ExcursionController {
+public class AdminExcursionController {
 
     @Autowired
     private ExcursionService excursionService;

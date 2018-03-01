@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/guide")
-public class GuideController {
+public class AdminGuideController {
 
     @Autowired
     GuideService guideService;

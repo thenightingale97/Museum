@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/hall")
-public class HallController {
+public class AdminHallController {
 
     @Autowired
     private HallService hallService;

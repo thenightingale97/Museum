@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/showpiece")
-public class ShowpieceController {
+public class AdminShowpieceController {
 
     @Autowired
     private ShowpieceService showpieceService;

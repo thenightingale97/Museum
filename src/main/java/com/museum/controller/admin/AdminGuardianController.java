@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/guardian")
-public class GuardianController {
+public class AdminGuardianController {
 
     @Autowired
     private GuardianService guardianService;

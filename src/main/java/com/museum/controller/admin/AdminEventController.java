@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/admin/event")
-public class EventControllerAdmin {
+public class AdminEventController {
 
     @Autowired
     private EventService eventService;
