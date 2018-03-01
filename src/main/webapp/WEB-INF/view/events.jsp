@@ -56,9 +56,8 @@
                 </div>
                 <button type="submit" class="btn btn-default filter-submit"><spring:message code="search"/></button>
             </form:form>
-             <h1><spring:message code="STATISTIC"/></h1>
-
-            <h3><p><spring:message code="found"/><c:out value="${number}"/> <spring:message code="events"/> </p></h3>
+            <br/>
+            <h3><p><spring:message code="found"/> <c:out value="${number}"/> <spring:message code="events"/></p></h3>
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="eventView" items="${eventViews}">

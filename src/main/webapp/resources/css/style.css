@@ -77,11 +77,11 @@ h3, h4 {
     color: #555;
 }
 
-.btn {
+/*.btn {
     background-color: #eee;
     color: #000;
     transition: .2s;
-}
+}*/
 
 .btn:hover, .btn:focus {
     background-color: #fff;
@@ -251,10 +251,17 @@ textarea {
 }
 
 .showpiece-item-name {
-    font-size: 20px;
+    font-size: 16px;
     color: #555555;
     text-align: center;
 }
+
+.showpiece-item-name-head {
+    font-size: 16px;
+    color: #3c3c3c;
+    text-align: center;
+}
+
 
 .table_showpiece {
     margin-top: 5px;

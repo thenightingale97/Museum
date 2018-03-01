@@ -8,8 +8,6 @@
 <div class="container">
 
     <div class="row">
-
-        <!-- Sidebar -->
         <aside class="col-md-6 sidebar sidebar-left">
 
             <div class="row">
@@ -18,29 +16,22 @@
                 </div>
             </div>
         </aside>
-        <!-- /Sidebar -->
-
-        <!-- Article main content -->
         <article class="col-md-6">
             <header class="page-header">
                 <h1 class="">${excursionView.name}</h1>
-                <h5 class="page-title page-header"><spring:message code="author"/>: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
-                <h5 class="page-title"><spring:message code="hall"/>: ${showpiece.hall.name}</h5>
-                <h5 class="page-title"><spring:message code="material"/>: ${showpiece.material}</h5>
-                <h5 class="page-title"><spring:message code="technique"/>: ${showpiece.technique}</h5>
-                <h5 class="page-title"><spring:message code="creationData"/>: ${showpiece.creationDate}</h5>
-                <h5 class="page-title"><spring:message code="description"/>: ${showpiece.description}</h5>
+                <h5 class="page-title page-header"><span class="showpiece-item-name-head"><spring:message
+                        code="author"/></span>: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
+                <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
+                        code="hall"/></span>: ${showpiece.hall.name}</h5>
+                <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
+                        code="material"/></span>: ${showpiece.material}</h5>
+                <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
+                        code="technique"/></span>: ${showpiece.technique}</h5>
+                <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
+                        code="creationData"/></span>: ${showpiece.creationDate}</h5>
+                <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
+                        code="description"/></span>: ${showpiece.description}</h5>
             </header>
-
-            <%-- <blockquote>
-                 ${excursionView.description}
-             </blockquote>
-             <a href="/events?id=${showpiece.id}">
-                 <button type="button" class="btn btn-success pull-right">Показати усі екскурсії!</button>
-             </a>>--%>
-
         </article>
-        <!-- /Article -->
-
     </div>
 </div>

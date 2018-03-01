@@ -29,7 +29,7 @@ public class AdminAuthorController {
     @RequestMapping("/delete/{id}")
     public String delete(@PathVariable int id) {
         authorService.delete(id);
-        return "redirect:/admin/guardian";
+        return "redirect:/admin/author";
     }
 
     @RequestMapping("/updating/{id}")

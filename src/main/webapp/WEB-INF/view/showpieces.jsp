@@ -44,8 +44,10 @@
                         <div class="row">
                             <img class="showpiece-image" src="/resources/images/showpieces/${showpiece.imageUrl}">
                         </div>
-                        <div class="row"><span class="showpiece-item-name">${showpiece.name}</span></div>
-                        <div class="row"><span class="showpiece-item-value">${showpiece.creationDate}</span></div>
+                        <div class="row"><span class="showpiece-item-name-head">Назва експонату: </span><span
+                                class="showpiece-item-name">${showpiece.name}</span></div>
+                        <div class="row"><span class="showpiece-item-name-head">Зал: </span><span
+                                class="showpiece-item-value">${showpiece.hall.name}</span></div>
                     </div>
                 </a>
             </c:forEach>

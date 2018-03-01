@@ -8,9 +8,6 @@
         <div class="row">
             <div class="col-md-12 col-xs-12">
                 <form:form class="form-horizontal" action="/admin/guide/update" method="POST" modelAttribute="guide">
-                    <%--<div class="form-group">
-                        <label for="name" style="color:red;text-align:left;" class="col-sm-10 col-sm-offset-2 control-label"><form:errors path="name"/></label>
-                    </div>--%>
                     <form:input type="hidden" path="id"/>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label"><spring:message code="firstName"/></label>
@@ -27,14 +24,14 @@
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label"><spring:message code="phoneNumber"/></label>
                         <div class="col-sm-10">
-                            <form:input class="form-control" path="phoneNumber" id="name"/>
+                            <form:input class="form-control" path="phoneNumber"/>
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label"><spring:message code="position"/></label>
                         <div class="col-sm-10">
                             <form:select path="position" class="form-control">
-                               <form:options items="${guidePositions}" value="guide"/>
+                                <form:options items="${guidePositions}"/>
                             </form:select>
                         </div>
                     </div>
@@ -55,13 +52,14 @@
         </div>
         <c:forEach items="${guides}" var="guide">
             <div class="row">
-                <div class="col-md-3 col-xs-3">${guide.firstName} ${guide.lastName}</div>
-                <div class="col-md-2 col-xs-2">${guide.position}</div>
-                <div class="col-md-2 col-xs-2">${guide.phoneNumber}</div>
-                <div class="col-md-2 col-xs-1"><a class="btn btn-warning" href="guide/updating/${guide.id}"><spring:message code="update"/></a></div>
-                <div class="col-md-2 col-xs-1"><a class="btn btn-danger" href="guide/delete/${guide.id}"><spring:message code="delete"/></a></div>
+                <div class="col-md-3">${guide.firstName} ${guide.lastName}</div>
+                <div class="col-md-2">${guide.position}</div>
+                <div class="col-md-2">${guide.phoneNumber}</div>
+                <div class="col-md-2"><a class="btn btn-warning" href="guide/updating/${guide.id}"><spring:message
+                        code="update"/></a></div>
+                <div class="col-md-2"><a class="btn btn-danger" href="guide/delete/${guide.id}"><spring:message
+                        code="delete"/></a></div>
             </div>
         </c:forEach>
-
     </div>
 </div>

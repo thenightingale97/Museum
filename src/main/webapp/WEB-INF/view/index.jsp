@@ -98,7 +98,7 @@
         marker.setMap(map);
     }
 </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=EiN7IM3YsHAIzaSyAVlNcZK3Rae0GTCA_QyCQn8&callback=myMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDn_m2llZUMCjR1xlfxE4mgN0tGFGFX2cQ&callback=myMap"></script>
 <!--
 To use this code on your website, get a free API key from Google.
 Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
