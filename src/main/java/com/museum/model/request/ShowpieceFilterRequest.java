@@ -6,6 +6,8 @@ public class ShowpieceFilterRequest {
 
     private String authorId;
 
+    private String guardianId;
+
     public String getHallId() {
         return hallId;
     }
@@ -20,5 +22,13 @@ public class ShowpieceFilterRequest {
 
     public void setAuthorId(String authorId) {
         this.authorId = authorId;
+    }
+
+    public String getGuardianId() {
+        return guardianId;
+    }
+
+    public void setGuardianId(String guardianId) {
+        this.guardianId = guardianId;
     }
 }

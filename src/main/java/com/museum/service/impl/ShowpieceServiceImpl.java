@@ -1,6 +1,7 @@
 package com.museum.service.impl;
 
 import com.museum.entity.*;
+import com.museum.model.filter.ShowpieceFilter;
 import com.museum.model.request.ShowpieceRequest;
 import com.museum.repository.AuthorRepository;
 import com.museum.repository.GuardianRepository;
@@ -93,5 +94,10 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
         showpiece.setId(showpieceView.getId());
         showpiece.setCreationDate(LocalDate.parse(showpieceView.getCreationDate(), DateTimeFormatter.ofPattern("yyyy-MM-dd")));
         repository.update(showpiece);
+    }
+
+    @Override
+    public List<Showpiece> findAllByFilter(ShowpieceFilter showpieceFilter) {
+        return getRepository().findAllByFilter(showpieceFilter);
     }
 }

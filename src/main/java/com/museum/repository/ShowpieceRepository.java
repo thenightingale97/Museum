@@ -1,6 +1,7 @@
 package com.museum.repository;
 
 import com.museum.entity.*;
+import com.museum.model.filter.ShowpieceFilter;
 
 import java.util.List;
 import java.util.Map;
@@ -18,4 +19,6 @@ public interface ShowpieceRepository extends Repository<Showpiece, Integer> {
     Map<ShowpieceTechnique, Long> getStatisticByTechnique();
 
     Map<ShowpieceMaterial, Long> getStatisticByMaterial();
+
+    List<Showpiece> findAllByFilter(ShowpieceFilter showpieceFilter);
 }

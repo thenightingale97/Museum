@@ -1,6 +1,7 @@
 package com.museum.service;
 
 import com.museum.entity.*;
+import com.museum.model.filter.ShowpieceFilter;
 import com.museum.model.request.ShowpieceRequest;
 
 import java.util.List;
@@ -21,4 +22,6 @@ public interface ShowpieceService extends Service<Showpiece, Integer> {
     List<Showpiece> findAllByRandom(int count);
 
     void update(ShowpieceRequest showpiece);
+
+    List<Showpiece> findAllByFilter(ShowpieceFilter showpieceFilter);
 }

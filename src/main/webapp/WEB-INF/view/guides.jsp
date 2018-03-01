@@ -15,9 +15,9 @@
                 <div class="row">
                     <div class='col-sm-12'>
                         <div class="form-group">
-                            <form:select class="form-control" path="id">
+                            <form:select class="form-control" path="position">
                                 <form:option value="" label="Всі"/>
-                                <form:options items="${guides}" itemValue="id" itemLabel="position"/>
+                                <form:options items="${guides}" itemValue="position" itemLabel="position"/>
                             </form:select>
                         </div>
                     </div>
