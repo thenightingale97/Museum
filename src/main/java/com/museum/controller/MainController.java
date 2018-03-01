@@ -8,9 +8,7 @@ import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
@@ -52,10 +50,4 @@ public class MainController {
         return "showpieces";
     }
 
-
-    @RequestMapping(value = "/guides", method = RequestMethod.GET)
-    public String showGuides(Map<String, Object> model) {
-        model.put("guides", guideService.findAll());
-        return "guides";
-    }
 }

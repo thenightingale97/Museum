@@ -31,12 +31,12 @@
                 <h5 class="page-title">Опис: ${showpiece.description}</h5>
             </header>
 
-           <%-- <blockquote>
-                ${excursionView.description}
-            </blockquote>
-            <a href="/events?id=${showpiece.id}">
-                <button type="button" class="btn btn-success pull-right">Показати усі екскурсії!</button>
-            </a>>--%>
+            <%-- <blockquote>
+                 ${excursionView.description}
+             </blockquote>
+             <a href="/events?id=${showpiece.id}">
+                 <button type="button" class="btn btn-success pull-right">Показати усі екскурсії!</button>
+             </a>>--%>
 
         </article>
         <!-- /Article -->

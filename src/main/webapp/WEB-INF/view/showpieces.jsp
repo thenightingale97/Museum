@@ -1,27 +1,46 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Oleksiy
-  Date: 27.02.2018
-  Time: 20:24
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<style>
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
-        color:#000000;
-        font-size: 750%;
-    }
-</style>
-<h1 >Наші експонати</h1>
 
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-3 filters">
+           <%-- <form:form id="filterForm" action="/showpieces" method="GET" >--%>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="category-label">Оберіть екскурсію:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-sm-12'>
+                        <div class="form-group">
+                            <%--<form:select class="form-control" path="excursionId">
+                                <form:option value="" label="Всі"/>
+                                <form:options items="${excursions}" itemValue="id" itemLabel="name"/>
+                            </form:select>--%>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default filter-submit">Пошук</button>
+           <%-- </form:form>--%>
+        </div>
+        <div class="col-sm-9 showpiece-container">
+            <c:forEach var="showpiece" items="${showpieces}">
+                <a href="/showpiece?showpieceId=${showpiece.id}">
+                    <div class="col-sm-1 showpiece-item">
+                        <div class="row">
+                            <img class="showpiece-image" src="/resources/images/showpieces/${showpiece.imageUrl}">
+                        </div>
+                        <div class="row"><span class="showpiece-item-name">${showpiece.name}</span></div>
+                        <div class="row"><span class="showpiece-item-value">${showpiece.creationDate}</span></div>
+                    </div>
+                </a>
+            </c:forEach>
+        </div>
+    </div>
+</div>
 
+<%--
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-8 showpieceContext">
@@ -44,4 +63,4 @@
 
 
 </body>
-</html>
+</html>--%>

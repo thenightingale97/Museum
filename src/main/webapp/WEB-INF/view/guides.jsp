@@ -1,26 +1,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Oleksiy
-  Date: 27.02.2018
-  Time: 20:24
-  To change this template use File | Settings | File Templates.
---%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
-<head>
-    <title>Title</title>
-</head>
-<body>
-<style>
-    h1 {
-        font-family: 'Times New Roman', Times, serif;
-        color:#000000;
-        font-size: 750%;
-    }
-</style>
-<h1 >Наші екскурсоводи</h1>
 
+<div class="container-fluid">
+    <div class="row">
+        <form:form action="/guides" method="GET"  modelAttribute="guide">
+            <div class="col-sm-3 filters">
+                    <%-- <form:form id="filterForm" action="/showpieces" method="GET" >--%>
+                <div class="row">
+                    <div class="col-sm-12">
+                        <h5 class="category-label">Оберіть екскурсовода:</h5>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class='col-sm-12'>
+                        <div class="form-group">
+                            <form:select class="form-control" path="id">
+                                <form:option value="" label="Всі"/>
+                                <form:options items="${guides}" itemValue="id" itemLabel="position"/>
+                            </form:select>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-default filter-submit">Пошук</button>
+            </div>
+        </form:form>
+        <div class="col-sm-9 showpiece-container">
+            <c:forEach var="guide" items="${guidesByPosition}">
+                <div class="col-sm-1 showpiece-item">
+                    <div class="row"><span class="showpiece-item-name"> Імя: ${guide.firstName}</span></div>
+                    <div class="row"><span class="showpiece-item-name"> Прізвище: ${guide.lastName}</span></div>
+                    <div class="row"><span class="showpiece-item-value">Телефон: ${guide.phoneNumber}</span></div>
+                    <div class="row"><span class="showpiece-item-value">Посада: ${guide.position}</span></div>
+                </div>
+            </c:forEach>
+        </div>
+    </div>
+</div>
+
+<%--
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-8 showpieceContext">
@@ -46,4 +64,4 @@
 
 
 </body>
-</html>
+</html>--%>

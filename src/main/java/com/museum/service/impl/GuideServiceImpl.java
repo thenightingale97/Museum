@@ -26,6 +26,8 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
 
     @Override
     public List<Guide> findAllByPosition(GuidePosition position) {
+        if (position == null)
+            return findAll();
         Objects.requireNonNull(position, "position");
         return getRepository().findAllByPosition(position);
     }
