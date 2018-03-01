@@ -55,6 +55,9 @@
                 </div>
                 <button type="submit" class="btn btn-default filter-submit">Пошук</button>
             </form:form>
+             <h1>Статистика</h1>
+
+            <h3><p>За вашим запитом знайдено <c:out value="${number}"/> подій </p></h3>
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="event" items="${eventItemViews}">
@@ -73,6 +76,8 @@
                 </a>
             </c:forEach>
         </div>
+
+
     </div>
 </div>
 
