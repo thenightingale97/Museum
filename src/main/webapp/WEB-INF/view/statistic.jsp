@@ -7,20 +7,20 @@
         <h3>Статистика нашого музею: </h3>
         <table align="center" class="table_showpiece" style="align-items: center">
             <table class="table table-striped">
-            <thead>
-            <tr >
-                <th class="statisticTableHeader">Матеріал</th>
-                <th class="statisticTableHeader">Кількість</th>
-            </tr>
-            </thead>
-            <c:forEach var="materialStatistic" items="${statisticByMaterials}">
+                <thead>
+                <tr>
+                    <th class="statisticTableHeader">Матеріал</th>
+                    <th class="statisticTableHeader">Кількість</th>
+                </tr>
+                </thead>
+                <c:forEach var="materialStatistic" items="${statisticByMaterials}">
                     <tbody>
                     <tr>
                         <td>${materialStatistic.key}</td>
                         <td>${materialStatistic.value}</td>
                     </tr>
                     </tbody>
-            </c:forEach>
+                </c:forEach>
             </table>
         </table>
     </div>
@@ -31,7 +31,7 @@
         <table align="center" class="table_showpiece" style="align-items: center">
             <table class="table table-striped">
                 <thead>
-                <tr >
+                <tr>
                     <th class="statisticTableHeader">Техніка</th>
                     <th class="statisticTableHeader">Кількість</th>
                 </tr>

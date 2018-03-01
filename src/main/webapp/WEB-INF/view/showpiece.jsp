@@ -23,7 +23,8 @@
         <article class="col-md-6">
             <header class="page-header">
                 <h1 class="">${excursionView.name}</h1>
-                <h5 class="page-title page-header">Автор: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
+                <h5 class="page-title page-header">
+                    Автор: ${showpiece.author.firstName} ${showpiece.author.lastName}</h5>
                 <h5 class="page-title">Зал: ${showpiece.hall.name}</h5>
                 <h5 class="page-title">Матеріал: ${showpiece.material}</h5>
                 <h5 class="page-title">Техніка вкионання: ${showpiece.technique}</h5>
