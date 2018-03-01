@@ -24,10 +24,10 @@ public class EventController {
     ExcursionService excursionService;
 
     @RequestMapping("/events")
-    public String excursions(Model model, @ModelAttribute EventFilterRequest eventFilterRequest) {
+    public String events(Model model, @ModelAttribute EventFilterRequest eventFilterRequest) {
         List<Event> events = eventService.findAllByFilter(EventFilter.of(eventFilterRequest));
         List<EventView> eventViews = EventView.ofAll(events);
-        model.addAttribute("eventItemViews", eventViews);
+        model.addAttribute("eventViews", eventViews);
         model.addAttribute("excursions", excursionService.findAll());
         return "events";
     }

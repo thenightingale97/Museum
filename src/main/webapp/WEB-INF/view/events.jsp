@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 filters">
-            <form:form id="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
+            <form:form excurtionId="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">
                         <h5 class="category-label">Оберіть екскурсію:</h5>
@@ -57,18 +57,18 @@
             </form:form>
         </div>
         <div class="col-sm-9 showpiece-container">
-            <c:forEach var="event" items="${eventItemViews}">
-                <a href="/excursion/${event.id}">
+            <c:forEach var="eventView" items="${eventViews}">
+                <a href="/excursion/${eventView.excursionId}">
                     <div class="col-sm-1 showpiece-item">
                         <div class="row">
-                            <img class="showpiece-image" src="/resources/images/excursions/${event.imageUrl}">
+                            <img class="showpiece-image" src="/resources/images/excursions/${eventView.imageUrl}">
                         </div>
-                        <div class="row"><span class="showpiece-item-name">${event.name}</span></div>
-                        <div class="row"><span class="showpiece-item-value">${event.startDate}</span></div>
+                        <div class="row"><span class="showpiece-item-name">${eventView.name}</span></div>
+                        <div class="row"><span class="showpiece-item-value">${eventView.startDate}</span></div>
                         <div class="row"><span
-                                class="showpiece-item-value">${event.startTime} - ${event.finishTime}</span>
+                                class="showpiece-item-value">${eventView.startTime} - ${eventView.finishTime}</span>
                         </div>
-                        <div class="row"><span class="showpiece-item-value">${event.duration}</span></div>
+                        <div class="row"><span class="showpiece-item-value">${eventView.duration}</span></div>
                     </div>
                 </a>
             </c:forEach>
