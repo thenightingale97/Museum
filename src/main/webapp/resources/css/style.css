@@ -256,17 +256,19 @@ textarea {
     color: #555555;
 }
 
-#table_showpiece {
-    margin-top: 100px;
-    margin-bottom: 100px;
-
+.table_showpiece {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left:60%;
+    width:20%;
+  color: #2d2d30;
+  border: 1px solid black;
 }
 
-#table_showpiece table{
-
-    width:75%;
-    color: #2d2d30;;
+.table_showpiece td {
+     border: 1px solid black;
 }
+
 
 .col-md-7 {
     margin-top: 20px;
