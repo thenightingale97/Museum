@@ -66,7 +66,6 @@ public class Event extends IdentifiableEntity<Integer> {
         if (!super.equals(o)) return false;
 
         Event event = (Event) o;
-
         if (excursion != null ? !excursion.equals(event.excursion) : event.excursion != null) return false;
         if (guide != null ? !guide.equals(event.guide) : event.guide != null) return false;
         if (visitors != null ? !visitors.equals(event.visitors) : event.visitors != null) return false;

@@ -152,7 +152,7 @@ public class Showpiece extends IdentifiableEntity<Integer> {
                 ", technique=" + technique +
                 ", material=" + material +
                 ", author=" + author +
-                ", excursions=" + excursions +
+                ", events=" + events +
                 ", hall=" + hall +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", description='" + description + '\'' +

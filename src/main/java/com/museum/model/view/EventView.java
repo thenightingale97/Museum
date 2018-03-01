@@ -14,7 +14,7 @@ public class EventView {
 
     private static final DateTimeFormatter TIME_FORMATTER = DateTimeFormatter.ofPattern("HH:mm");
 
-    private Integer id;
+    private Integer excursionId;
 
     private String name;
 
@@ -33,7 +33,7 @@ public class EventView {
     private String description;
 
     public EventView(Event event) {
-        this.id = event.getId();
+        this.excursionId = event.getExcursion().getId();
         this.guideFullName = event.getGuide().getFirstName() + " " + event.getGuide().getLastName();
         this.name = event.getExcursion().getName();
         this.startDate = DATE_FORMATTER.format(event.getStartTime().toLocalDate());
@@ -82,12 +82,12 @@ public class EventView {
         this.guideFullName = guideFullName;
     }
 
-    public Integer getId() {
-        return id;
+    public Integer getExcursionId() {
+        return excursionId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setExcursionId(Integer excursionId) {
+        this.excursionId = excursionId;
     }
 
     public String getStartDate() {

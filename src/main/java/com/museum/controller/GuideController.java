@@ -1,30 +1,36 @@
 package com.museum.controller;
 
 import com.museum.entity.Guide;
+import com.museum.entity.GuidePosition;
+import com.museum.model.filter.GuideFilter;
+import com.museum.model.request.GuideFilterRequest;
+import com.museum.model.view.GuideView;
 import com.museum.service.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.List;
+
 @Controller
-@RequestMapping("/guides")
 public class GuideController {
 
     @Autowired
     GuideService guideService;
 
-    @GetMapping
-    public String showGuides(Model model, @ModelAttribute("guide") Guide guide) {
-        model.addAttribute("guides", guideService.findAll());
-        model.addAttribute("guidesByPosition", guideService.findAllByPosition(guide.getPosition()));
+    @RequestMapping("/guides")
+    public String guides(Model model, @ModelAttribute GuideFilterRequest guideFilterRequest) {
+        List<Guide> guides = guideService.findAllByFilter(GuideFilter.of(guideFilterRequest));
+        List<GuideView> guideViews = GuideView.ofAll(guides);
+        model.addAttribute("guideViews", guideViews);
+        model.addAttribute("guidePositions", GuidePosition.values());
         return "guides";
     }
 
-    @ModelAttribute("guide")
-    public Guide getForm(){
-        return new Guide();
+    @ModelAttribute("guideFilterRequest")
+    public GuideFilterRequest populateGuideFilter() {
+        return new GuideFilterRequest();
     }
 }

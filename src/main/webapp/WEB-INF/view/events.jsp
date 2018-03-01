@@ -6,7 +6,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 filters">
-            <form:form id="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
+            <form:form excurtionId="filterForm" action="/events" method="GET" modelAttribute="eventFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">
                         <h5 class="category-label">Оберіть екскурсію:</h5>
@@ -57,11 +57,11 @@
             </form:form>
              <h1>Статистика</h1>
 
-            <h3>За вашим запитом знайдено <c:out value="${number}"/> подій.</h3>
+            <h3><p>За вашим запитом знайдено <c:out value="${number}"/> подій </p></h3>
         </div>
         <div class="col-sm-9 showpiece-container">
             <c:forEach var="eventView" items="${eventViews}">
-                <a href="/excursion/${eventView.id}">
+                <a href="/excursion/${eventView.excursionId}">
                     <div class="col-sm-1 showpiece-item">
                         <div class="row">
                             <img class="showpiece-image" src="/resources/images/excursions/${eventView.imageUrl}">
