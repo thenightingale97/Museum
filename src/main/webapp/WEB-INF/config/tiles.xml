@@ -38,6 +38,7 @@
 
     <definition name="statistic" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/statistic.jsp"/>
+    </definition>
 
     <definition name="statisticByShowpieces" extends="baseAdminLayout">
         <put-attribute name="body" value="/WEB-INF/view/statisticByShowpieces.jsp"/>
