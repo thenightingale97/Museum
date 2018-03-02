@@ -6,7 +6,6 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-3 filters">
-            <%--@elvariable id="showpieceFilterRequest" type=""--%>
             <form:form id="filterForm" action="/showpieces" method="GET" modelAttribute="showpieceFilterRequest">
                 <div class="row">
                     <div class="col-sm-12">

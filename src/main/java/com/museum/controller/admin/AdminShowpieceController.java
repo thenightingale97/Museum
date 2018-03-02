@@ -48,6 +48,7 @@ public class AdminShowpieceController {
         return "admin-showpiece";
     }
 
+
     @GetMapping("/delete/{id}")
     public String delete(@PathVariable Integer id) {
         showpieceService.delete(id);

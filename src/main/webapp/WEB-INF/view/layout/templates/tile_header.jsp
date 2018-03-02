@@ -20,6 +20,7 @@
                     <li><a href="/events"><spring:message code="excursions"/></a></li>
                     <li><a href="/guides"><spring:message code="guides"/></a></li>
                     <li><a href="/showpieces"><spring:message code="showpieces"/></a></li>
+                    <li><a href="/authors">Authors</a></li>
                     <li class="dropdown">
                         <a class="dropdown-toggle" data-toggle="dropdown" href="#"><spring:message code="more"/>
                             <span class="caret"></span></a>
