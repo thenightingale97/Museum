@@ -10,36 +10,39 @@ public class FilterUtil {
 
     private static final DateTimeFormatter DATE_TIME_FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
-    public static LocalDateTime parseDateTime(String dateTime) {
-        if (dateTime == null) {
+    public static Boolean parseBoolean(String value) {
+        return parse(value, Boolean::valueOf, null);
+    }
+
+    public static LocalDateTime parseDateTime(String value) {
+        return parse(value, v -> LocalDateTime.parse(v, DATE_TIME_FORMATTER), DateTimeParseException.class);
+    }
+
+    public static Integer parseInteger(String value) {
+        return parse(value, Integer::valueOf, NumberFormatException.class);
+    }
+
+    public static GuidePosition parseGuidePosition(String value) {
+        return parse(value, GuidePosition::valueOf, IllegalArgumentException.class);
+    }
+
+    private static <V, X extends RuntimeException> V parse(String value, Parser<V, X> parser, Class<X> exceptionClass) {
+        if (value == null) {
             return null;
         }
         try {
-            return LocalDateTime.parse(dateTime, DATE_TIME_FORMATTER);
-        } catch (DateTimeParseException ex) {
-            return null;
+            return parser.parse(value);
+        } catch (RuntimeException ex) {
+            if (exceptionClass != null && exceptionClass.isInstance(ex)) {
+                return null;
+            } else {
+                throw ex;
+            }
         }
     }
 
-    public static Integer parseInteger(String integer) {
-        if (integer == null) {
-            return null;
-        }
-        try {
-            return Integer.valueOf(integer);
-        } catch (NumberFormatException ex) {
-            return null;
-        }
-    }
-
-    public static GuidePosition parseGuidePosition(String position) {
-        if (position == null) {
-            return null;
-        }
-        try {
-            return GuidePosition.valueOf(position);
-        } catch (IllegalArgumentException ex) {
-            return null;
-        }
+    @FunctionalInterface
+    private interface Parser<V, X extends RuntimeException> {
+        V parse(String value) throws X;
     }
 }
