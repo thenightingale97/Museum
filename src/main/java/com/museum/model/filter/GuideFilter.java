@@ -14,17 +14,20 @@ public class GuideFilter {
 
     private final GuidePosition position;
 
-    private final LocalDateTime freeFromDateTime;
+    private final Boolean busy;
 
-    private final LocalDateTime freeToDateTime;
+    private final LocalDateTime fromDateTime;
+
+    private final LocalDateTime toDateTime;
 
     public GuideFilter(String firstName, String lastName, GuidePosition position,
-                       LocalDateTime freeFromDateTime, LocalDateTime freeToDateTime) {
+                       Boolean busy, LocalDateTime fromDateTime, LocalDateTime toDateTime) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.position = position;
-        this.freeFromDateTime = freeFromDateTime;
-        this.freeToDateTime = freeToDateTime;
+        this.busy = busy;
+        this.fromDateTime = fromDateTime;
+        this.toDateTime = toDateTime;
     }
 
     public static GuideFilter of(GuideFilterRequest request) {
@@ -32,8 +35,13 @@ public class GuideFilter {
                 request.getFirstName(),
                 request.getLastName(),
                 FilterUtil.parseGuidePosition(request.getPosition()),
-                FilterUtil.parseDateTime(request.getFreeFromDateTime()),
-                FilterUtil.parseDateTime(request.getFreeToDateTime()));
+                FilterUtil.parseBoolean(request.getBusy()),
+                FilterUtil.parseDateTime(request.getFromDateTime()),
+                FilterUtil.parseDateTime(request.getToDateTime()));
+    }
+
+    public Boolean getBusy() {
+        return busy;
     }
 
     public String getFirstName() {
@@ -48,24 +56,24 @@ public class GuideFilter {
         return position;
     }
 
-    public LocalDateTime getFreeFromDateTime() {
-        return freeFromDateTime;
+    public LocalDateTime getFromDateTime() {
+        return fromDateTime;
     }
 
-    public LocalDateTime getFreeToDateTime() {
-        return freeToDateTime;
+    public LocalDateTime getToDateTime() {
+        return toDateTime;
     }
 
-    public boolean hasFreeFromDateTime() {
-        return freeFromDateTime != null;
+    public boolean hasFromDateTime() {
+        return fromDateTime != null;
     }
 
-    public boolean hasFreeToDateTime() {
-        return freeToDateTime != null;
+    public boolean hasToDateTime() {
+        return toDateTime != null;
     }
 
-    public boolean hasFreeFromOrToDateTime() {
-        return hasFreeFromDateTime() || hasFreeToDateTime();
+    public boolean hasFromOrToDateTime() {
+        return hasFromDateTime() || hasToDateTime();
     }
 
     public boolean hasPosition() {
@@ -78,5 +86,9 @@ public class GuideFilter {
 
     public boolean hasLastName() {
         return lastName != null;
+    }
+
+    public boolean hasBusy() {
+        return busy != null;
     }
 }

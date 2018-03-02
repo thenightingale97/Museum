@@ -8,24 +8,26 @@ public class GuideFilterRequest {
 
     private String position;
 
-    private String freeFromDateTime;
+    private String busy;
 
-    private String freeToDateTime;
+    private String fromDateTime;
 
-    public String getFreeFromDateTime() {
-        return freeFromDateTime;
+    private String toDateTime;
+
+    public String getFromDateTime() {
+        return fromDateTime;
     }
 
-    public void setFreeFromDateTime(String freeFromDateTime) {
-        this.freeFromDateTime = freeFromDateTime;
+    public void setFromDateTime(String fromDateTime) {
+        this.fromDateTime = fromDateTime;
     }
 
-    public String getFreeToDateTime() {
-        return freeToDateTime;
+    public String getToDateTime() {
+        return toDateTime;
     }
 
-    public void setFreeToDateTime(String freeToDateTime) {
-        this.freeToDateTime = freeToDateTime;
+    public void setToDateTime(String toDateTime) {
+        this.toDateTime = toDateTime;
     }
 
     public String getFirstName() {
@@ -50,5 +52,13 @@ public class GuideFilterRequest {
 
     public void setPosition(String position) {
         this.position = position;
+    }
+
+    public String getBusy() {
+        return busy;
+    }
+
+    public void setBusy(String busy) {
+        this.busy = busy;
     }
 }
