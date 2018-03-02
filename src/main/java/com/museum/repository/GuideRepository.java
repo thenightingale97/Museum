@@ -3,6 +3,7 @@ package com.museum.repository;
 import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.model.filter.GuideFilter;
+import com.museum.model.statistic.GuideStatistic;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -17,5 +18,5 @@ public interface GuideRepository extends Repository<Guide, Integer> {
 
     Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime);
 
-    List<Guide> findAllByFilter(GuideFilter filter);
+    List<GuideStatistic> findAllByFilterWithStatistic(GuideFilter filter);
 }

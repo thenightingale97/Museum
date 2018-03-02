@@ -3,6 +3,7 @@ package com.museum.service.impl;
 import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.model.filter.GuideFilter;
+import com.museum.model.statistic.GuideStatistic;
 import com.museum.repository.GuideRepository;
 import com.museum.service.AbstractService;
 import com.museum.service.GuideService;
@@ -50,7 +51,7 @@ public class GuideServiceImpl extends AbstractService<Guide, Integer, GuideRepos
     }
 
     @Override
-    public List<Guide> findAllByFilter(GuideFilter filter) {
-        return getRepository().findAllByFilter(filter);
+    public List<GuideStatistic> findAllByFilterWithStatistic(GuideFilter filter) {
+        return getRepository().findAllByFilterWithStatistic(filter);
     }
 }

@@ -3,24 +3,24 @@ package com.museum.repository.impl;
 
 import com.museum.entity.*;
 import com.museum.model.filter.GuideFilter;
+import com.museum.model.statistic.GuideStatistic;
 import com.museum.repository.AbstractRepository;
 import com.museum.repository.GuideRepository;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Query;
+import javax.persistence.Tuple;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.*;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Repository
 public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> implements GuideRepository {
 
-    /**
-     * Task 5.
-     */
     @Override
     public List<Guide> findAllByPosition(GuidePosition position) {
         String sql = "SELECT guide FROM Guide guide WHERE guide.position = :position";
@@ -29,9 +29,6 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         return query.getResultList();
     }
 
-    /**
-     * Task 6.
-     */
     @Override
     public List<Guide> findAllByPeriod(LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT guide FROM Guide guide " +
@@ -44,9 +41,6 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         return query.getResultList();
     }
 
-    /**
-     * Task 10.3
-     */
     @Override
     public Long getWorkTime(Guide guide) {
         String sql = "SELECT SUM(TIMESTAMPDIFF(MINUTE, event.startTime, event.finishTime)) " +
@@ -57,10 +51,6 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
         return ((BigDecimal) query.getSingleResult()).longValue();
     }
 
-
-    /**
-     * Task 10.4
-     */
     @Override
     public Long getWorkTimeByPeriod(Guide guide, LocalDateTime fromTime, LocalDateTime toTime) {
         String sql = "SELECT SUM(TIMESTAMPDIFF(MINUTE, event.startTime, event.finishTime)) " +
@@ -75,26 +65,31 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
     }
 
     @Override
-    public List<Guide> findAllByFilter(GuideFilter filter) {
+    public List<GuideStatistic> findAllByFilterWithStatistic(GuideFilter filter) {
         CriteriaBuilder builder = getEntityManager().getCriteriaBuilder();
-        CriteriaQuery<Guide> query = builder.createQuery(Guide.class);
+        CriteriaQuery<Tuple> query = builder.createQuery(Tuple.class);
 
         Root<Guide> guide = query.from(Guide.class);
-        query.select(guide);
+
+        Expression<Long> eventCount = builder.count(guide.join(Guide_.events, JoinType.LEFT));
+        Expression<Long> workDuration = builder.sum(guide.join(Guide_.events, JoinType.LEFT)
+                .join(Event_.excursion, JoinType.LEFT).get(Excursion_.duration).as(Long.class));
+        query.multiselect(guide, eventCount, workDuration);
 
         List<Predicate> predicates = new ArrayList<>();
-        if (filter.hasFreeFromOrToDateTime()) {
+        if (filter.hasFromOrToDateTime()) {
             Subquery<Guide> subQuery = query.subquery(Guide.class);
             subQuery.select(subQuery.from(Guide.class));
-            Join<Guide, Event> event = guide.join(Guide_.events);
+            Join<Guide, Event> subEvent = guide.join(Guide_.events, JoinType.LEFT);
 
-            if (filter.hasFreeToDateTime()) {
-                subQuery.where(builder.lessThan(event.get(Event_.startTime), filter.getFreeToDateTime()));
+            if (filter.hasToDateTime()) {
+                subQuery.where(builder.lessThan(subEvent.get(Event_.startTime), filter.getToDateTime()));
             }
-            if (filter.hasFreeFromDateTime()) {
-                subQuery.where(builder.greaterThan(event.get(Event_.finishTime), filter.getFreeFromDateTime()));
+            if (filter.hasFromDateTime()) {
+                subQuery.where(builder.greaterThan(subEvent.get(Event_.finishTime), filter.getFromDateTime()));
             }
-            predicates.add(builder.in(guide).value(subQuery).not());
+            CriteriaBuilder.In<Guide> in = builder.in(guide).value(subQuery);
+            predicates.add((filter.hasBusy() && filter.getBusy()) ? in : in.not());
         }
         if (filter.hasPosition()) {
             predicates.add(builder.equal(guide.get(Guide_.position), filter.getPosition()));
@@ -106,6 +101,12 @@ public class GuideRepositoryImpl extends AbstractRepository<Guide, Integer> impl
             predicates.add(builder.like(guide.get(Guide_.lastName), "%" + filter.getLastName() + "%"));
         }
         query.where(builder.and(predicates.toArray(new Predicate[predicates.size()])));
-        return getEntityManager().createQuery(query).getResultList();
+        query.groupBy(guide.get(Guide_.id));
+
+        List<Tuple> tuples = getEntityManager().createQuery(query).getResultList();
+        return tuples.stream()
+                .map(tuple -> new GuideStatistic(
+                        tuple.get(0, Guide.class), tuple.get(1, Long.class), tuple.get(2, Long.class)))
+                .collect(Collectors.toList());
     }
 }
