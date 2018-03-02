@@ -48,6 +48,14 @@ public class ShowpieceController {
         return "showpieces";
     }
 
+
+    @GetMapping("/statisticByShowpieces")
+    public String statisticByShowpieces(Model model) {
+        model.addAttribute("statisticByMaterials", showpieceService.getStatisticByMaterial());
+        model.addAttribute("statisticByTechnique", showpieceService.getStatisticByTechnique());
+        return "statisticByShowpieces";
+    }
+
     @ModelAttribute("showpieceFilterRequest")
     public ShowpieceFilterRequest populateShowpieceFilterRequest() {
         return new ShowpieceFilterRequest();
