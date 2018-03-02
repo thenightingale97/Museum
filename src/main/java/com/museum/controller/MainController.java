@@ -2,18 +2,11 @@ package com.museum.controller;
 
 
 import com.museum.entity.Showpiece;
-import com.museum.model.filter.ShowpieceFilter;
-import com.museum.model.request.ShowpieceFilterRequest;
 import com.museum.service.EventService;
-import com.museum.service.ExcursionService;
-import com.museum.service.GuideService;
 import com.museum.service.ShowpieceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -27,12 +20,6 @@ public class MainController {
     @Autowired
     EventService eventService;
 
-    @Autowired
-    GuideService guideService;
-
-    @Autowired
-    ExcursionService excursionService;
-
     @RequestMapping("/")
     public String main(Model model) {
         List<Showpiece> allByRandom = showpieceService.findAllByRandom(3);
@@ -40,20 +27,4 @@ public class MainController {
         model.addAttribute("upcomingEvents", eventService.findAllUpcomingOrderedByDate(3));
         return "index";
     }
-
-//    @RequestMapping(value = "/showpiece", method = RequestMethod.GET)
-//    public ModelAndView showpiece(@RequestParam("showpieceId") int id) {
-//        ModelAndView modelAndView = new ModelAndView();
-//        Showpiece showpiece = showpieceService.find(id);
-//        modelAndView.addObject("showpiece", showpiece);
-//        modelAndView.setViewName("showpiece");
-//        return modelAndView;
-//    }
-
-
-
-
-
-
-
 }

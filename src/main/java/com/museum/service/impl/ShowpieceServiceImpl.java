@@ -74,7 +74,7 @@ public class ShowpieceServiceImpl extends AbstractService<Showpiece, Integer, Sh
         final int showpieceCount = getRepository().count();
         Random random = new Random();
         List<Integer> showpieceIds = random
-                .ints(count, 1, showpieceCount + 1)
+                .ints(count, 1, showpieceCount)
                 .boxed()
                 .collect(Collectors.toList());
         return getRepository().findAllByIds(showpieceIds);
