@@ -24,9 +24,9 @@
                 <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
                         code="hall"/></span>: ${showpiece.hall.name}</h5>
                 <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
-                        code="material"/></span>: ${showpiece.material}</h5>
+                        code="material"/></span>: <spring:message code="${showpiece.material}"/></h5>
                 <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
-                        code="technique"/></span>: ${showpiece.technique}</h5>
+                        code="technique"/></span>: <spring:message code="${showpiece.technique}"/></h5>
                 <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
                         code="creationData"/></span>: ${showpiece.creationDate}</h5>
                 <h5 class="page-title"><span class="showpiece-item-name-head"><spring:message
