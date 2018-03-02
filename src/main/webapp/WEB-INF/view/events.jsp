@@ -16,8 +16,9 @@
                 <div class="row">
                     <div class='col-sm-12'>
                         <div class="form-group">
+                            <spring:message code="all" var="all"/>
                             <form:select class="form-control" path="excursionId">
-                                <form:option value="" label="Всі"/>
+                                <form:option value="" label="${all}"/>
                                 <form:options items="${excursions}" itemValue="id" itemLabel="name"/>
                             </form:select>
                         </div>

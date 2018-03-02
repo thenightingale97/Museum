@@ -14,6 +14,10 @@
                 <a class="navbar-brand" href="#myPage"><img class="navbar-brand-logo"
                                                             src="/resources/images/logo-2.png"></a>
             </div>
+            <ul class="nav navbar-nav navbar-right" style="padding-left: 60px">
+                <li><a href="?language=en"><spring:message code="eng"/></a></li>
+                <li><a href="?language=uk"><spring:message code="ukr"/></a></li>
+            </ul>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="/"><spring:message code="main"/></a></li>

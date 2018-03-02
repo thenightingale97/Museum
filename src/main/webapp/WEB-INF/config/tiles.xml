@@ -45,11 +45,11 @@
     </definition>
 
 
-    <definition name="authors" extends="baseAdminLayout">
+    <definition name="authors" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/authors.jsp"/>
     </definition>
 
-    <definition name="author" extends="baseAdminLayout">
+    <definition name="author" extends="baseLayout">
         <put-attribute name="body" value="/WEB-INF/view/author.jsp"/>
     </definition>
 

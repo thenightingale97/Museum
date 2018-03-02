@@ -13,13 +13,13 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3"><h5 class="item-label">Ім'я:</h5></div>
+                    <div class="col-sm-3"><h5 class="item-label"><spring:message code="firstName"/></h5></div>
                     <div class="col-sm-9">
                         <form:input class="form-control" path="firstName"/>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-sm-3"><h5 class="item-label">Прізвище:</h5></div>
+                    <div class="col-sm-3"><h5 class="item-label"><spring:message code="lastName"/></h5></div>
                     <div class="col-sm-9">
                         <form:input class="form-control" path="lastName"/>
                     </div>
@@ -32,8 +32,9 @@
                 <div class="row">
                     <div class='col-sm-12'>
                         <div class="form-group">
+                            <spring:message code="all" var="all"/>
                             <form:select class="form-control" path="position">
-                                <form:option value="" label="Всі"/>
+                                <form:option value="" label="${all}"/>
                                 <form:options items="${guidePositions}"/>
                             </form:select>
                         </div>
@@ -80,7 +81,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-default filter-submit">Пошук</button>
+                <button type="submit" class="btn btn-default filter-submit"><spring:message code="search"/></button>
             </div>
         </form:form>
         <div class="col-sm-9 showpiece-container">
