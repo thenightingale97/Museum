@@ -1,9 +1,9 @@
 package com.museum.controller;
 
-import com.museum.entity.Guide;
 import com.museum.entity.GuidePosition;
 import com.museum.model.filter.GuideFilter;
 import com.museum.model.request.GuideFilterRequest;
+import com.museum.model.statistic.GuideStatistic;
 import com.museum.model.view.GuideView;
 import com.museum.service.GuideService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +22,9 @@ public class GuideController {
 
     @RequestMapping("/guides")
     public String guides(Model model, @ModelAttribute GuideFilterRequest guideFilterRequest) {
-        List<Guide> guides = guideService.findAllByFilter(GuideFilter.of(guideFilterRequest));
-        List<GuideView> guideViews = GuideView.ofAll(guides);
+        List<GuideStatistic> guideStatistics =
+                guideService.findAllByFilterWithStatistic(GuideFilter.of(guideFilterRequest));
+        List<GuideView> guideViews = GuideView.listOfStatistics(guideStatistics);
         model.addAttribute("guideViews", guideViews);
         model.addAttribute("guidePositions", GuidePosition.values());
         return "guides";

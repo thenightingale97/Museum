@@ -14,11 +14,14 @@
 
         <link rel="stylesheet" href="/resources/css/bootstrap.min.css"/>
         <link rel="stylesheet" href="/resources/css/bootstrap-datetimepicker.min.css"/>
+        <link rel="stylesheet" href="/resources/css/bootstrap2-toggle.min.css"/>
 
         <script src="/resources/js/jquery-3.2.1.min.js"></script>
         <script src="/resources/js/moment-with-locales.min.js"></script>
         <script src="/resources/js/bootstrap.min.js"></script>
         <script src="/resources/js/bootstrap-datetimepicker.min.js"></script>
+        <script src="/resources/js/bootstrap2-toggle.min.js"></script>
+
 
         <link rel="stylesheet" href="/resources/css/style.css"/>
         <%--<link rel="stylesheet" href="/resources/css/main.css"/>--%>
